@@ -1,0 +1,55 @@
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+h2{
+    font-family: 'Montserrat', sans-serif;
+}
+section{padding: 30px 0; float: left; width: 100%}
+.card{float: left; width:100%; margin-top: 10px; margin-bottom: 10px;}
+.title-small { color: #141517; font-size: 16px; font-weight: 400; line-height: 23px; margin: 6px 0 0;}
+.title-small a {color: inherit}
+.card-text{margin: 0}
+.text-time{color: blueviolet; font-weight: 600;}
+.section-01 .title-small {margin-bottom: 5px; font-size:17px }
+.section-01 .card{border: none; }
+.section-01 .card-block{padding: 10px 0;}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+
+.right{
+    float:right;
+}
+
+.left{
+    float:left;
+}
+
+.lien-ch :hover {
+    background-color: blueviolet;
+    color:white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    font-size: 20px;
+}
+
+.radiuss{
+    border-radius: 12px;
+}
+.badge-danger{
+    background-color: blueviolet;
+}
+
+.checkedStart {
+    color: orange;
+  }
+
+.lien-client :hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    color : blueviolet;
+    font-size: 23px;
+}
+
