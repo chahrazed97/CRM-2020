@@ -18,6 +18,7 @@ class CreateHistoriqueClientTable extends Migration
             $table->string('type_act');
             $table->date('date_act');
             $table->text('compte_rendu');
+            $table->string('organisateur')->nullable()->default('client');
             $table->unsignedInteger('clients_id');
             $table->foreign('clients_id')->references('id')->on('clients')->nullable()->default(0);
             $table->timestamps();

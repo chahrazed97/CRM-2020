@@ -1,5 +1,4 @@
 <!-- Custom Content start -->
-{{ $test }}
 <div class="">
     <div class="card-body">
         <h4 class="header-title"><i class="fa fa-puzzle-piece"></i>Informations détaillées</h4>

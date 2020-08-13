@@ -11,6 +11,9 @@ use App\models\clients;
 use App\models\Activite;
 use App\models\Commande;
 use App\models\actionMarketing;
+use App\models\HistoriqueClient;
+use App\models\Commentaire;
+use Carbon\Carbon;
 
 
 class clientsController extends Controller 
@@ -21,6 +24,7 @@ class clientsController extends Controller
     public function __construct()
     {
       $this->commande = new Commande(); 
+      $this->client = new clients();
     }
 
     public function index()
@@ -32,14 +36,24 @@ class clientsController extends Controller
 
     public function HistoriqueClient(clients $client, $scorecheck, $scoreNocheck)
     {
-        $test = $this->commande->listProduit($client->id);
+        //timeline conversation
+        $activite_cl= HistoriqueClient::where('clients_id', '=', $client->id )->select('titre', 'organisateur', 'type_act', 'date_act');
+        $activite_emp= Activite::where('clients_id', '=', $client->id)->where('status', '=', 'terminé')->select('titre', 'organisateur', 'type_activite', 'date_act');  
+        $activite_all = $activite_cl->unionAll($activite_emp)->latest('date_act')->get();
+        //dernier commentaire
+        $commentaire = Commentaire::where('clients_id', '=', $client->id)->latest()->first();
+        //comportement d'achat
+        $commande_cl = Commande::where('clients_id', '=', $client->id)->latest()->get();  
+        //info sur le score
         if ( $scorecheck == 0 ){
             $segment = 9;
         }else{
         $segment = 10 - $scorecheck;
         }
         $action_marketing = actionMarketing::where('segment', '=', $segment)->first(); 
-        return view('front_office.MesClients.historique_client', compact('client', 'scorecheck', 'scoreNocheck', 'action_marketing', 'test'));
+        //produit préferé
+        $top_produit = $this->client->ProduitPrefere();
+        return view('front_office.MesClients.historique_client', compact('client', 'scorecheck', 'scoreNocheck', 'action_marketing', 'commande_cl', 'activite_all', 'commentaire', 'top_produit'));
     }
 
     public function StoreActiviteClient(AjouterActiviteRequest $request, clients $client)
@@ -63,5 +77,16 @@ class clientsController extends Controller
         $activite->description = $description;
         $activite->save();
         return redirect()->back()->with("ok", "L'activité " . $activite->titre . " a bien été créée.");
+    }
+
+    public function storeComment(Clients $client)
+    {
+        $commentaire= new Commentaire();
+        $commentaire->description = $_POST['comment'];
+        $commentaire->date_comm = Carbon::now();
+        $commentaire->clients_id = $client->id;
+        $commentaire->employee_id = 1;
+        $commentaire->save();
+        return redirect()->back()->with("ok", "Votre commentaire sur le client". $client->nom.' '.$client->prenom ."a bien été enregistrer.");
     }
 }

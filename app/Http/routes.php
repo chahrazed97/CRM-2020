@@ -15,7 +15,7 @@
 test route
 */
 Route::get('ajax', function () {
-    return view('front_office.MesActivites.mesActivites');
+    return view('front_office.Our_team.membres_equipe');
 })->name('ajax');
 
 
@@ -45,7 +45,16 @@ Clients
 Route::get('Clients', 'crm\ClientsController@index')->name('Clients');
 Route::get('historique/{client}/{scorecheck}/{scoreNocheck}', 'crm\ClientsController@HistoriqueClient')->name('historique.client');
 Route::post('ajouterActivite/{client}', 'crm\ClientsController@StoreActiviteClient')->name('AjouterActivite.client');
-
+Route::post('ajouter/commentaire/{client}', 'crm\ClientsController@storeComment')->name('Client.ajouter.commentaire');
+/*
+Prospects
+*/
+Route::get('Prospects', 'crm\ProspectsController@index')->name('Prospects');
+/*
+Our_team
+*/
+Route::get('Our_team', 'crm\OurTeamController@index')->name('OurTeam');
+Route::post('Our_team/{membre}', 'crm\OurTeamController@EnvoyerMsg')->name('contact');
 /*
 LOGIN
 */

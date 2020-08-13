@@ -233,5 +233,20 @@ class clients extends Model
     
     }
 
+    public function ProduitPrefere()
+    {
+        $commandes = Commande::where('clients_id', '=', $this->id)->get();
+        $produits = array();
+        foreach ($commandes as $commande){
+            foreach ($commande->produit as $produit){
+                $produits[] = $produit->type;
+            }
+        }
+        
+        $prod_occ= array_count_values($produit); //compter le nbr d'occurence de chaque element du tableau 'produit'
+        $top_produit = array_keys($prod_occ,max($prod_occ)); //récupere la clé de la valeur la plus grande
+        return $top_produit;
+        
+    }
 
 }

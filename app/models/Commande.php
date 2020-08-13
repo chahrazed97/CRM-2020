@@ -33,12 +33,4 @@ class Commande extends Model
         return $newComm;
     }
 
-    public function listProduit($id_client)
-    {
-        $commande_client = self::where('clients_id', '=', $id_client)->get();
-        foreach ($commande_client->produit as $product ){
-             echo $product->id;
-        }
-    }
-
 }

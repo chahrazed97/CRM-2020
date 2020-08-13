@@ -19,6 +19,7 @@ class CreateActiviteTable extends Migration
             $table->string('status')->nullable()->default('planifié');
             $table->datetime('date_act');
             $table->text('description');
+            $table->string('organisateur')->nullable()->default('employe');
             $table->unsignedInteger('employee_id');
             $table->unsignedInteger('clients_id');
             $table->foreign('employee_id')->references('id')->on('employees')->nullable()->default(0);

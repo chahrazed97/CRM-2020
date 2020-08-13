@@ -12,8 +12,10 @@ class userSeed extends Seeder
     public function run()
     {
         $user = [
-            'name' => 'chahrazed',
+            'nom' => 'Khoudi',
+            'prenom' => 'chahrazed',
             'email' => 'khoudichahrazed@gmail.com',
+            'phone' => '0554648378',
             'password' => Hash::make('chouchou'),
             'role' => 'admin' // admin
             ];

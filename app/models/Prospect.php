@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Prospect extends Model
 {
-    protected $table = 'prospects';
+    protected $table = 'prospect';
     protected $fillable = [
         'nom', 'prenom', 'phone', 'email', 'adresse', 'code_postal', 'date_naissance', 'pays', 'status', 'deleted_at',
     ];

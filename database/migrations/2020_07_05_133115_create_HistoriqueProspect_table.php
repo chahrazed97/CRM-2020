@@ -18,6 +18,7 @@ class CreateHistoriqueProspectTable extends Migration
             $table->string('type_act');
             $table->date('date_act');
             $table->text('compte_rendu');
+            $table->string('organisateur')->nullable()->default('prospect');
             $table->unsignedInteger('prospect_id');
             $table->foreign('prospect_id')->references('id')->on('Prospect')->nullable()->default(0);
             $table->timestamps();
