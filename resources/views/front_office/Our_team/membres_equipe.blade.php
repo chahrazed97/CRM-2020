@@ -10,25 +10,6 @@
 @endsection
 
 @section('contenu')
-<?php
-$commandes = App\models\Commande::where('clients_id', '=', '1')->get();
-        $produits = array();
-        foreach ($commandes as $commande){
-            foreach ($commande->produit as $produit){
-                $produits[] = $produit->type;
-            }
-        }
-        $nbr= array_count_values($produits);
-        var_dump($nbr);
-        $top_produit = array_keys($nbr,max($nbr));
-        var_dump($top_produit);
-         foreach ($top_produit as $top){
-             echo $top. '</br>';
-         }
-        foreach ($nbr as $pro => $occ){
-            echo $pro. ' exite'. $occ.' fois'.'</br>';
-        }
-        ?>
 <div class="main-content-inner">
 @if(session()->has('ok'))
 	<div class="alert alert-success alert-dismissible">{!! session()->get('ok') !!}</div>
@@ -64,12 +45,12 @@ $commandes = App\models\Commande::where('clients_id', '=', '1')->get();
                                         <button class="btn btn-rounded btn- btn-sm right mt-1" data-toggle="modal" data-target="#ModalLong">contacter</button>
                                         <!-- Modal -->
                                         
+                                       </div>
                                     </div>
                                 </div>
-                           </div>
-                        </div>
-                    </div>
-                </div>
+                            </div>
+                       </div>
+                   </div>
                 <!-- ./Team member -->
                 <!--modal contacter-->
                 @include('front_office.Our_team.contacter_employe_modal')

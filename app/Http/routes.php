@@ -54,7 +54,7 @@ Route::get('Prospects', 'crm\ProspectsController@index')->name('Prospects');
 Our_team
 */
 Route::get('Our_team', 'crm\OurTeamController@index')->name('OurTeam');
-Route::post('Our_team/{membre}', 'crm\OurTeamController@EnvoyerMsg')->name('contact');
+Route::post('Ourteam/contacter/{membre}', 'crm\OurTeamController@EnvoyerMsg')->name('Envoyer.msg');
 /*
 LOGIN
 */

@@ -1,5 +1,5 @@
 <!-- Custom Content start -->
-<div class="">
+
     <div class="card-body">
         <h4 class="header-title"><i class="fa fa-puzzle-piece"></i>Informations détaillées</h4>
             <div class="list-group">
@@ -35,11 +35,17 @@
                 </a>
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                     <p class="mb-1"><b>Produit préféré :</b></br>
+                                     @foreach ( $top_produit as $top_prod )
+                                     {{ $top_prod }}</br>
+                                     @endforeach
                                     <b>Mode de payement préféré :</b></br>
-                                    <b>Panier moyen : </b>
+                                    @foreach ( $top_modePayement as $top_pay  )
+                                    {{ $top_pay }}</br>
+                                    @endforeach
+                                    <b>Panier moyen : </b> {{ $panier_moyen. ' DA' }}
                     </p>
                 </a>
             </div>
     </div>
-</div>
+
 <!-- Custom Content end -->

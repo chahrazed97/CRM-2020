@@ -52,8 +52,12 @@ class clientsController extends Controller
         }
         $action_marketing = actionMarketing::where('segment', '=', $segment)->first(); 
         //produit préferé
-        $top_produit = $this->client->ProduitPrefere();
-        return view('front_office.MesClients.historique_client', compact('client', 'scorecheck', 'scoreNocheck', 'action_marketing', 'commande_cl', 'activite_all', 'commentaire', 'top_produit'));
+        $top_produit = $this->client->ProduitPrefere($client->id);
+        //mode payement préferé
+        $top_modePayement = $this->client->modePayementPrefere($client->id);
+        //panier moyen
+        $panier_moyen = $this->client->PanierMoyen($client->id);
+        return view('front_office.MesClients.historique_client', compact('client', 'scorecheck', 'scoreNocheck', 'action_marketing', 'commande_cl', 'activite_all', 'commentaire', 'top_produit', 'top_modePayement', 'panier_moyen'));
     }
 
     public function StoreActiviteClient(AjouterActiviteRequest $request, clients $client)

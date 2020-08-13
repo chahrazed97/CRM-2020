@@ -233,9 +233,9 @@ class clients extends Model
     
     }
 
-    public function ProduitPrefere()
+    public function ProduitPrefere($id)
     {
-        $commandes = Commande::where('clients_id', '=', $this->id)->get();
+        $commandes = Commande::where('clients_id', '=', $id)->get();
         $produits = array();
         foreach ($commandes as $commande){
             foreach ($commande->produit as $produit){
@@ -243,9 +243,52 @@ class clients extends Model
             }
         }
         
-        $prod_occ= array_count_values($produit); //compter le nbr d'occurence de chaque element du tableau 'produit'
+        $prod_occ= array_count_values($produits); //compter le nbr d'occurence de chaque element du tableau 'produit'
         $top_produit = array_keys($prod_occ,max($prod_occ)); //récupere la clé de la valeur la plus grande
         return $top_produit;
+        
+    }
+
+    public function modePayementPrefere($id)
+    {
+        $commandes = Commande::where('clients_id', '=', $id)->get();
+        $mode_payements = array();
+        foreach ( $commandes as $commande ){
+            $mode_payements[]= $commande->facture->mode_payement;
+        }
+        $mod_pay_occ = array_count_values($mode_payements);
+        $top_mod_pay = array_keys($mod_pay_occ,max($mod_pay_occ));
+        return $top_mod_pay;
+    }
+
+    public function PanierMoyen($id)
+    {
+        //calculer la fréquence
+        $befor_3month= Carbon::today()->subMonths(3);
+        $nbr_fact= DB::table('Facture')
+        ->join('Commande', 'Facture.commande_id', '=', 'Commande.id')
+        ->join('clients', 'clients.id', '=', 'Commande.clients_id' )
+        ->where('clients.id', '=', $id)
+        ->where('date_fac', '>', $befor_3month)
+        ->count();
+
+        //calculer le montant
+        $total = 0;
+        $total_montant= DB::table('Facture')->select('total')
+        ->join('Commande', 'Facture.commande_id', '=', 'Commande.id')
+        ->join('clients', 'clients.id', '=', 'Commande.clients_id' )
+        ->where('clients.id', '=', $id)
+        ->where('date_fac', '>', $befor_3month)
+        ->get();
+
+        foreach ($total_montant as $montant)
+        {
+            $total = $montant->total + $total;
+        }
+
+        //calculer le panier moyen
+        $panier_moy = $total / $nbr_fact ;
+        return $panier_moy;
         
     }
 

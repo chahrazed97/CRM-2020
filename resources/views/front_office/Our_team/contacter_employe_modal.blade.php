@@ -1,10 +1,10 @@
  <!-- Modal -->
  <div class="modal fade" id="ModalLong">
     <div class="modal-dialog">
-        <form  action="{{ route('contact' , ['membre' => $membre ]) }}"  method="post" class="modal-content">
+        <form  action="{{ route('Envoyer.msg', ['membre' => $membre]) }}"  method="post" class="modal-content">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-body">
-                <textarea type="text" class="form-control" rows="5" name="msg" placeholder="Rédigez votre message"></textarea>
+                <textarea type="text" class="form-control" rows="5" name="msg" placeholder="Rédigez votre message" required></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary left" data-dismiss="modal">Annuler</button>

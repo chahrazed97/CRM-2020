@@ -17,6 +17,7 @@ class CreateFactureTable extends Migration
             $table->string('num_fac');
             $table->date('date_fac');
             $table->float('total');
+            $table->string('mode_payement');
             $table->unsignedInteger('commande_id');
             $table->foreign('commande_id')->references('id')->on('Commande')->nullable()->default(0);
             $table->timestamps();

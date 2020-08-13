@@ -8,7 +8,7 @@ class Facture extends Model
 {
     protected $table = 'Facture';
     protected $fillable = [
-        'num_fac', 'date_fac', 'commande_id', 'deleted_at', 
+        'num_fac', 'date_fac', 'total', 'mode_payement', 'commande_id', 'deleted_at', 
     ];
 
     public function commande() 
