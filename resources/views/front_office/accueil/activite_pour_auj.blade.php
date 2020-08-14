@@ -12,6 +12,8 @@
             </div>
 
             <div id="accordion5" class="according accordion-s2 gradiant-bg">
+           
+            @if ( $activites !== NULL)
                 @foreach ( $activites as $activite )
                 <div class="card">
                     <div class="card-header">
@@ -56,6 +58,9 @@
                 </div>
                 
                 @endforeach
+            @else
+            <small>Vous n'avez aucune activité pour aujourd'hui</small>
+            @endif
             </div>
         </div>
     </div>

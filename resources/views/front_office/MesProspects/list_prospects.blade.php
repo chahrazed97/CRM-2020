@@ -55,14 +55,15 @@
                                     <td>{{ $prospect->pays }}</td>
                                     <td>{{ $prospect->code_postal }}</td>
                                     <td>
+                                        @for ($i = 0; $i < $prospect->scoreProspect() ; $i++)
                                        <span class="fa fa-star checkedStart"></span>
-                                       <span class="fa fa-star checkedStart"></span>
-                                       <span class="fa fa-star checkedStart"></span>
+                                       @endfor
+                                       <?php $noScore = 5 - $prospect->scoreProspect(); ?>
+                                       @for ($i = 0; $i < $noScore ; $i++)
                                        <span class="fa fa-star"></span>
-                                       <span class="fa fa-star"></span>
-                                       
+                                       @endfor
                                     </td>
-                                    <td><a class="lien-client" href="{{ route('historique.client', ['prospect' => $prospect]) }}"  title="voir l'historique de ce prospect"><i class="fa fa-database"></i></a></td>
+                                    <td><a class="lien-client" href="#"  title="voir l'historique de ce prospect"><i class="fa fa-database"></i></a></td>
                                     
                                 </tr>
                                 @endforeach
