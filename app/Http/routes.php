@@ -15,7 +15,7 @@
 test route
 */
 Route::get('ajax', function () {
-    return view('front_office.Our_team.membres_equipe');
+    return view('front_office.emails.envoyerEmail');
 })->name('ajax');
 
 
@@ -55,6 +55,11 @@ Our_team
 */
 Route::get('Our_team', 'crm\OurTeamController@index')->name('OurTeam');
 Route::post('Ourteam/contacter/{membre}', 'crm\OurTeamController@EnvoyerMsg')->name('Envoyer.msg');
+/*
+emails
+*/
+
+Route::get('email', 'crm\sendEmailController@sendEmailReminder')->name('send.email');
 /*
 LOGIN
 */
