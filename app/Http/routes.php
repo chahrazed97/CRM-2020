@@ -68,7 +68,13 @@ Route::post('login/process', 'CRM\AdminController@processLoginAdmin')->name('log
 Route::get('logout', 'CRM\AdminController@logout')->name('logout');
 Route::get('/hom', 'DashboardController@index')->name('home');
 
-
+/*
+-----BACK_END---------
+*/
+Route::get('employes', 'admin\EmployeController@index')->name('Employees');
+Route::post('employes/update/{employe}', 'admin\EmployeController@update')->name('admin.modifier.employe');
+Route::get('employe/destroy/{employe}', 'admin\EmployeController@destroy')->name('admin.supprimer.employe');
+Route::post('employe/creer', 'admin\EmployeController@storeEmploye')->name('admin.ajouter.employe');
 
 
 
