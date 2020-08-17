@@ -51,8 +51,9 @@ class AccueilController extends Controller
 		$new_product = $this->produit->newProduct();
 		$new_promo = $this->promotion->newPromo();
 		$new_reclam = $this->reclamation->newReclamation();
+		$birthday_today = $this->clients->isBirthday();
 		
-		return view('front_office.accueil.CRMaccueil', compact('activites', 'email_ouvert', 'email_termine', 'appel_ouvert', 'appel_termine', 'rendezVous_ouvert', 'rendezVous_termine', 'liens', 'new_client', 'new_event', 'new_product', 'new_promo', 'new_reclam'));
+		return view('front_office.accueil.CRMaccueil', compact('activites', 'email_ouvert', 'email_termine', 'appel_ouvert', 'appel_termine', 'rendezVous_ouvert', 'rendezVous_termine', 'liens', 'new_client', 'new_event', 'new_product', 'new_promo', 'new_reclam', 'birthday_today'));
 	}
 	
 	public function ajaxModifier(Activite $activite)

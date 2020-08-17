@@ -19,7 +19,7 @@ class Evenement extends Model
     
     function newEvent()
     {
-        $newEvent = self::whereDate('created_at', '=', Carbon::today())->get();
+        $newEvent = self::whereDate('created_at', '=', Carbon::today())->count();
         return $newEvent;
     }
 }

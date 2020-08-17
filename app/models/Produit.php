@@ -24,7 +24,7 @@ class Produit extends Model
 
     function newProduct()
     {
-        $newProduct = self::whereDate('created_at', '=', Carbon::today())->get();
+        $newProduct = self::whereDate('created_at', '=', Carbon::today())->count();
         return $newProduct;
     }
 

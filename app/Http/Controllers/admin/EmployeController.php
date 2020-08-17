@@ -38,8 +38,6 @@ class EmployeController extends Controller
         $employe->phone = $phone;
         $employe->email = $email;
         $employe->role = $role;
-        $employe->is_active = 1;
-        $employe->admin_id = 1;
             
         $employe->save();
         return redirect()->back()->with("ok", "L'employe " . $employe->nom.' '.$employe->prenom . " a bien été modifié.");
@@ -61,6 +59,8 @@ class EmployeController extends Controller
         $employe->phone = $phone;
         $employe->email = $email;
         $employe->role = $role;
+        $employe->is_active = 1;
+        $employe->admin_id = 1;
             
         $employe->save();
         return redirect()->back()->with("ok", "L'employe " . $employe->nom.' '.$employe->prenom . " a bien été créé.");
@@ -69,6 +69,6 @@ class EmployeController extends Controller
     public function destroy(Employees $employe)
 	{
 		$employe->delete();
-		return redirect()->back()->with('ok', 'Cet employe a bien été supprimé !');
+		return redirect()->back()->with('ok', "L'employe a bien été supprimé !");
 	}
 }

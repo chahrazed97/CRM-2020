@@ -49,8 +49,14 @@ class clients extends Model
     
     public function newClient()
     {
-        $newClient = self::whereDate('created_at', '=', Carbon::today())->get();
+        $newClient = self::whereDate('created_at', '=', Carbon::today())->count();
         return $newClient;
+    }
+
+    public function isBirthday()
+    {
+        $is_birthday = self::where('date_naissance', '=', Carbon::today())->count();
+        return $is_birthday;
     }
 
     public function Recence()

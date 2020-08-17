@@ -71,10 +71,20 @@ Route::get('/hom', 'DashboardController@index')->name('home');
 /*
 -----BACK_END---------
 */
+
+/* Employes */
 Route::get('employes', 'admin\EmployeController@index')->name('Employees');
 Route::post('employes/update/{employe}', 'admin\EmployeController@update')->name('admin.modifier.employe');
 Route::get('employe/destroy/{employe}', 'admin\EmployeController@destroy')->name('admin.supprimer.employe');
 Route::post('employe/creer', 'admin\EmployeController@storeEmploye')->name('admin.ajouter.employe');
+
+/* Clients */
+Route::get('Admin/Clients', 'admin\ClientController@index')->name('list.clients');
+Route::get('Admin/clients/Historique/{client}/{scorecheck}/{scoreNocheck}', 'admin\ClientController@HistoriqueClient')->name('admin.historique.client');
+Route::post('Admin/Ajouter/Clients', 'admin\ClientController@storeClient')->name('admin.ajouter.client');
+Route::post('client/update/{client}', 'admin\ClientController@updateClient')->name('admin.modifier.client');
+Route::get('client/destroy/{client}', 'admin\ClientController@destroy')->name('admin.supprimer.client');
+
 
 
 
