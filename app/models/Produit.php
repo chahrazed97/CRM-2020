@@ -2,6 +2,7 @@
 
 namespace App\models;
 use Carbon\Carbon;
+use DB;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,6 +27,18 @@ class Produit extends Model
     {
         $newProduct = self::whereDate('created_at', '=', Carbon::today())->count();
         return $newProduct;
+    }
+    
+    function newProducts()
+    {
+        $newProduct = self::whereDate('created_at', '=', Carbon::today())->get();
+        return $newProduct;
+    }
+
+    public function NbrFoisAcheter()
+    {
+        $nbr_fois = DB::table('commande_produit')->where('produit_id', '=', $this->id )->count();
+        return $nbr_fois;
     }
 
 }

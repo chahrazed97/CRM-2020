@@ -22,4 +22,28 @@ class Promotion extends Model
         $newPromo = self::whereDate('created_at', '=', Carbon::today())->count();
         return $newPromo;
     }
+
+    function newPromos()
+    {
+        $newPromo = self::whereDate('created_at', '=', Carbon::today())->get();
+        return $newPromo;
+    }
+
+    public function StatusPromo()
+    {
+        $today = Carbon::today();
+        if ($this->start_date > $today)
+        {
+            $status = 'Planifiée';
+        }
+        if ($this->end_date < $today)
+        {
+            $status = 'Terminée';
+        }
+        if ($this->start_date < $today &&  $this->end_date > $today)
+        {
+            $status = 'En cours';
+        }
+        return $status;
+    }
 }

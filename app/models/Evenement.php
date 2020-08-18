@@ -22,4 +22,10 @@ class Evenement extends Model
         $newEvent = self::whereDate('created_at', '=', Carbon::today())->count();
         return $newEvent;
     }
+
+    function newEvents()
+    {
+        $newEvent = self::whereDate('created_at', '=', Carbon::today())->get();
+        return $newEvent;
+    }
 }

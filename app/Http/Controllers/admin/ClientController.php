@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AjouterClientRequest;
+use App\Http\Requests\UpdateClientRequest;
 use App\models\Commande;
 use App\models\clients;
 use App\models\HistoriqueClient;

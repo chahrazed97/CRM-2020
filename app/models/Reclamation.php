@@ -22,4 +22,9 @@ class Reclamation extends Model
         $newReclam = self::whereDate('created_at', '=', Carbon::today())->count();
         return $newReclam;
     }
+    function newReclamations()
+    {
+        $newReclam = self::whereDate('created_at', '=', Carbon::today())->get();
+        return $newReclam;
+    }
 }

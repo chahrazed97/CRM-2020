@@ -47,13 +47,19 @@ class AccueilController extends Controller
 		$rendezVous_termine= $this->activite->RendezVousTermine();
 		$liens = lienRapide::All();
 		$new_client = $this->clients->newClient();
+		$new_clients = $this->clients->newClients();
 		$new_event = $this->evenement->newEvent();
+		$new_events = $this->evenement->newEvents();
 		$new_product = $this->produit->newProduct();
+		$new_products = $this->produit->newProducts();
 		$new_promo = $this->promotion->newPromo();
+		$new_promos = $this->promotion->newPromos();
 		$new_reclam = $this->reclamation->newReclamation();
+		$new_reclams = $this->reclamation->newReclamations();
 		$birthday_today = $this->clients->isBirthday();
+		$birthday_clients = $this->clients->isBirthdayClients();
 		
-		return view('front_office.accueil.CRMaccueil', compact('activites', 'email_ouvert', 'email_termine', 'appel_ouvert', 'appel_termine', 'rendezVous_ouvert', 'rendezVous_termine', 'liens', 'new_client', 'new_event', 'new_product', 'new_promo', 'new_reclam', 'birthday_today'));
+		return view('front_office.accueil.CRMaccueil', compact('activites', 'email_ouvert', 'email_termine', 'appel_ouvert', 'appel_termine', 'rendezVous_ouvert', 'rendezVous_termine', 'liens', 'new_client', 'new_clients',  'new_event', 'new_events', 'new_product', 'new_products', 'new_promo', 'new_promos', 'new_reclam', 'new_reclams', 'birthday_today', 'birthday_clients'));
 	}
 	
 	public function ajaxModifier(Activite $activite)

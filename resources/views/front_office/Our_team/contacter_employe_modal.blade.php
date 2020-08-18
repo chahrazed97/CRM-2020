@@ -1,7 +1,7 @@
  <!-- Modal -->
- <div class="modal fade" id="ModalLong">
+ <div class="modal fade" id="ModalLong{{ $membre->phone }}">
     <div class="modal-dialog">
-        <form  action="{{ route('Envoyer.msg', ['membre' => $membre]) }}"  method="post" class="modal-content">
+        <form  action="{{ route('Envoyer.msg', ['id' => $membre->id, 'role' => $membre->role]) }}"  method="post" class="modal-content">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-body">
                 <textarea type="text" class="form-control" rows="5" name="msg" placeholder="Rédigez votre message" required></textarea>

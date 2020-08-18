@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\models\activite;
 use App\models\clients;
+use App\models\Evenement;
+use App\models\Promotion;
 use Calendar;
 
 class mesActivitesController extends Controller
@@ -32,6 +34,43 @@ class mesActivitesController extends Controller
                     // Add color and link on event
 	                [
 	                    'color' => 'blueviolet',
+	                   // 'url' => url('MesActivites/#'.$value->id),
+                    ]
+                   
+                );
+            }
+        }
+        $evenements = Evenement::all();
+        if($evenements->count()) {
+            foreach ($evenements as $key => $value) {
+                $events[] = Calendar::event(
+                    $value->titre,
+                    true,
+                    new \DateTime($value->date),
+                    new \DateTime($value->date.' +1 day'),
+                    null,
+                    // Add color and link on event
+	                [
+	                    'color' => '#f05050',
+	                   // 'url' => url('MesActivites/#'.$value->id),
+                    ]
+                   
+                );
+            }
+        }
+
+        $promotions = Promotion::all();
+        if($promotions->count()) {
+            foreach ($promotions as $key => $value) {
+                $events[] = Calendar::event(
+                    $value->titre,
+                    true,
+                    new \DateTime($value->start_date),
+                    new \DateTime($value->end_date.' +1 day'),
+                    null,
+                    // Add color and link on event
+	                [
+	                    'color' => 'yellow',
 	                   // 'url' => url('MesActivites/#'.$value->id),
                     ]
                    

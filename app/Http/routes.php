@@ -54,7 +54,7 @@ Route::get('Prospects', 'crm\ProspectsController@index')->name('Prospects');
 Our_team
 */
 Route::get('Our_team', 'crm\OurTeamController@index')->name('OurTeam');
-Route::post('Ourteam/contacter/{membre}', 'crm\OurTeamController@EnvoyerMsg')->name('Envoyer.msg');
+Route::post('Ourteam/contacter/{id}/{role}', 'crm\OurTeamController@EnvoyerMsg')->name('Envoyer.msg');
 /*
 emails
 */
@@ -84,6 +84,20 @@ Route::get('Admin/clients/Historique/{client}/{scorecheck}/{scoreNocheck}', 'adm
 Route::post('Admin/Ajouter/Clients', 'admin\ClientController@storeClient')->name('admin.ajouter.client');
 Route::post('client/update/{client}', 'admin\ClientController@updateClient')->name('admin.modifier.client');
 Route::get('client/destroy/{client}', 'admin\ClientController@destroy')->name('admin.supprimer.client');
+/* Prospect */
+Route::get('Admin/prospect', 'admin\ProspectController@index')->name('list.prospects');
+Route::post('Admin/Ajouter/prospect', 'admin\ProspectController@storeProspect')->name('admin.ajouter.prospect');
+Route::post('prospect/update/{prospect}', 'admin\ProspectController@updateProspect')->name('admin.modifier.prospect');
+Route::get('prospect/destroy/{prospect}', 'admin\ProspectController@destroy')->name('admin.supprimer.prospect');
+/* Produits */
+Route::get('Admin/produit', 'admin\ProduitController@index')->name('list.produits');
+/* Promotions */
+Route::get('Admin/promotion', 'admin\PromotionController@index')->name('list.promotions');
+Route::post('Admin/Ajouter/promotion', 'admin\PromotionController@storePromotion')->name('admin.ajouter.promotion');
+Route::post('promotion/update/{promotion}', 'admin\PromotionController@updatePromotion')->name('admin.modifier.promotion');
+Route::get('promotion/destroy/{promotion}', 'admin\PromotionController@destroy')->name('admin.supprimer.promotion');
+
+
 
 
 

@@ -42,7 +42,7 @@
                                         <p class="card-text"><b>E-mail : </b>{{ $membre->email }}</br>
                                                             <b>Télephone :</b>{{ $membre->phone }}</br>
                                                             <b>Fonction :</b>{{ $membre->role }} </p>
-                                        <button class="btn btn-rounded btn- btn-sm right mt-1" data-toggle="modal" data-target="#ModalLong">contacter</button>
+                                        <button class="btn btn-rounded btn- btn-sm right mt-1" data-toggle="modal" data-target="#ModalLong{{ $membre->phone }}">contacter</button>
                                         <!-- Modal -->
                                         
                                        </div>
