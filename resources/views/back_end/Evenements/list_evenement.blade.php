@@ -28,49 +28,39 @@
         <div class="col-12 mt-1">
             <div class="card">
                 <div class="card-body">
-                    <a class=" right" title="Ajouter un prospect"><button class="btn btn-rounded btn- btn-xs" data-toggle="modal" data-target="#ModalLong">Ajouter Promotion</button></a>
-                    @include('back_end.Promotion.Ajouter_promo_modal')
+                    <a class=" right" title="Ajouter un evenement"><button class="btn btn-rounded btn- btn-xs" data-toggle="modal" data-target="#ModalLong">Ajouter Evenement</button></a>
+                    @include('back_end.Evenements.Ajouter_event_modal')
                     <div class="data-tables datatable-primary">
                         <table id="dataTable2" class="text-center">
                             <thead class="text-capitalize">
                                 <tr>
                                     <th>Titre</th>
-                                    <th>Start date</th>
-                                    <th>End date</th>
-                                    <th>Pourcentage promo</th>
-                                    <th>Le produit de la promo</th>
-                                    <th>status</th>
-                                    <th>nombre de vente</th>
+                                    <th>date</th>
+                                    <th>Localisation</th>
+                                    <th>Description</th>
                                     <th></th>
                                     
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($promotions as $promotion)
+                                @foreach($evenements as $evenement)
                                 <tr>
-                                    <td>{{ $promotion->titre }}</td>
-                                    <td>{{ $promotion->start_date }}</td>
-                                    <td>{{ $promotion->end_date }}</td>
-                                    <td>{{ $promotion->pourcetage_promo }}</td>
-                                    <td>{{ $promotion->Produit->type }}</td>
-                                    <td>{{ $promotion->StatusPromo() }}</td>
-                                    @if ( $promotion->StatusPromo() !== "Planifiée"  )
-                                    <td>{{ $promotion->nbrVente() }}</td>
-                                    @else
-                                    <td>/</td>
-                                    @endif
+                                    <td>{{ $evenement->titre }}</td>
+                                    <td>{{ $evenement->date }}</td>
+                                    <td>{{ $evenement->localisation }}</td>
+                                    <td>{{ $evenement->description }}</td>
                                     <!-- start dropdawn buttons -->
                                     
                                     <td> <button class="btn btn-rounded btn- btn-xs" type="button" data-toggle="dropdown">
                                             <i class="fa fa-angle-double-down"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="lien-ch"><button type="button" class="btn btn-rounded btn- btn-xs" title="modifier la promotion" data-toggle="modal" data-target="#ModalLong{{ $promotion->id }}"><i class="fa fa-pencil-square-o"></i></button></a>
-                                            <a class="lien-ch" href="{{ route('admin.supprimer.promotion', ['promotion' => $promotion]) }}" title="Supprimer la promotion"><button class="btn btn-rounded btn- btn-xs" onclick= "return confirm('Etes vous sur de vouloir supprimer cette promotion ?')"><i class="fa fa-trash-o"></i></button></a>         
+                                            <a class="lien-ch"><button type="button" class="btn btn-rounded btn- btn-xs" title="modifier l'evenement" data-toggle="modal" data-target="#ModalLong{{ $evenement->id }}"><i class="fa fa-pencil-square-o"></i></button></a>
+                                            <a class="lien-ch" href="{{ route('admin.supprimer.evenement', ['evenement' => $evenement]) }}" title="Supprimer l'evenement"><button class="btn btn-rounded btn- btn-xs" onclick= "return confirm('Etes vous sur de vouloir supprimer cet evenement ?')"><i class="fa fa-trash-o"></i></button></a>         
                                         </div>
                                     </td>
                                     
-                                        @include('back_end.Promotion.modifier_promo_modal')
+                                        @include('back_end.Evenements.modifier_event_modal')
                                     
                                     <!-- end dropdawn buttons -->
                                     

@@ -2,6 +2,7 @@
 
 namespace App\models;
 use Carbon\Carbon;
+use DB;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -45,5 +46,17 @@ class Promotion extends Model
             $status = 'En cours';
         }
         return $status;
+    }
+
+    public function nbrVente()
+    {
+        $nbr_vente = DB::table('commande')
+        ->join('commande_produit', 'commande.id', '=', 'commande_produit.commande_id')
+        ->join('produit', 'produit.id', '=', 'Commande_produit.produit_id' )
+        ->where('commande.date_comm', '>=', $this->start_date)
+        ->where('commande.date_comm', '<=', $this->end_date)
+        ->where('produit.type', '=', $this->Produit->type)
+        ->count();
+        return $nbr_vente;
     }
 }

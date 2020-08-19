@@ -96,6 +96,11 @@ Route::get('Admin/promotion', 'admin\PromotionController@index')->name('list.pro
 Route::post('Admin/Ajouter/promotion', 'admin\PromotionController@storePromotion')->name('admin.ajouter.promotion');
 Route::post('promotion/update/{promotion}', 'admin\PromotionController@updatePromotion')->name('admin.modifier.promotion');
 Route::get('promotion/destroy/{promotion}', 'admin\PromotionController@destroy')->name('admin.supprimer.promotion');
+/* Evenements */
+Route::get('Admin/evenement', 'admin\EvenementController@index')->name('list.evenements');
+Route::post('Admin/Ajouter/evenement', 'admin\EvenementController@storeEvenement')->name('admin.ajouter.evenement');
+Route::post('evenement/update/{evenement}', 'admin\EvenementController@updateEvenement')->name('admin.modifier.evenement');
+Route::get('evenement/destroy/{evenement}', 'admin\EvenementController@destroy')->name('admin.supprimer.evenement');
 
 
 

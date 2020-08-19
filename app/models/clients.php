@@ -311,4 +311,33 @@ class clients extends Model
         
     }
 
+    public function NbrReponsePromo()
+    {
+       /* $nbr_rep_promo= DB::table('commande')
+        ->join('commande_produit', 'commande_produit.commande_id', '=', 'commande.id')
+        ->join('produit', 'produit.id', '=', 'commande_produit.produit_id' )
+        ->join('promotion', 'promotion.produit_id', '=', 'produit.id')
+        ->where('commande.date_comm', '>=', 'promotion.start_date')
+        ->where('commande.date_comm', '<=', 'promotion.end_date')
+        ->where('commande.clients_id', '=', $this->id)
+        ->get();
+        return $nbr_rep_promo;*/
+
+       $promotions = Promotion::All();
+       $nbr_tt_promo = 0;
+       foreach ($promotions as $promo)
+       {
+         $nbr_promo = DB::table('commande')
+         ->where('commande.clients_id', '=', $this->id)
+         ->where('commande.date_comm', '>=', $promo->start_date)
+         ->where('commande.date_comm', '<=', $promo->end_date)
+         ->join('commande_produit', 'commande_produit.commande_id', '=', 'commande.id')
+         ->where('commande_produit.produit_id', '=', $promo->produit_id)
+         ->count();
+         $nbr_tt_promo = $nbr_tt_promo + $nbr_promo;
+
+       }
+       return $nbr_tt_promo;
+    }
+
 }

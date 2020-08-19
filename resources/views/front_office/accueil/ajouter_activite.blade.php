@@ -20,38 +20,38 @@
                 <label class="custom-control-label" for="customRadio6">Rendez-vous</label>
             </div>
 
-            <div class="form-group">
+            <div class="form-group has-error">
                 <label for="example-text-input" class="col-form-label">Titre</label>
                 <div class="form-group {!! $errors->has('titre') ? 'has-error' : '' !!}">
-                    <input class="form-control" type="text" name="titre" placeholder="Ajouter un titre" id="example-text-input">
-                    {{ $errors->first('titre', '<small class="help-block">:message</small>') }}
+                    <input class="form-control" type="text" name="titre" placeholder="Ajouter un titre" id="example-text-input" value="{{ old('titre') }}">
+                    {!! $errors->first('titre', '<small class="help-block">:message</small>') !!}
                 </div>
 	
             </div>
             <div class="row">
                 <div class="col-6">
-                    <div class="form-group">
+                    <div class="form-group has-error">
                         <label for="example-date-input" class="col-form-label">Date</label>
                         <div class="form-group {!! $errors->has('date') ? 'has-error' : '' !!}">
-                            <input class="form-control" type="date" name="date" placeholder="Ajouter une date" id="example-date-input">
-                            {{ $errors->first('date', '<small class="help-block">:message</small>') }}
+                            <input class="form-control" type="date" name="date" placeholder="Ajouter une date" id="example-date-input"  value="{{ old('date') }}">
+                            {!! $errors->first('date', '<small class="help-block">:message</small>') !!}
                         </div>
                     </div>
                 </div>
 
                 <div class="col-6">
-                    <div class="form-group">
+                    <div class="form-group has-error">
                         <label for="example-time-input" class="col-form-label">Heure</label>
                         <div class="form-group {{ $errors->has('heure') ? 'has-error' : '' }}">
-                            <input class="form-control" type="time" name="heure" placeholder="Donner l'horaire" id="example-time-input">
-                            {{ $errors->first('heure', '<small class="help-block">:message</small>') }}
+                            <input class="form-control" type="time" name="heure" placeholder="Donner l'horaire" id="example-time-input"  value="{{ old('heure') }}">
+                            {!! $errors->first('heure', '<small class="help-block">:message</small>') !!}
                         </div>
 	
                     </div>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group has-error">
                 <label class="col-form-label">Selection client</label>
                 <div class="form-group {{ $errors->has('client') ? 'has-error' : '' }}">   
                 <select class="custom-select" name="client">
@@ -61,16 +61,13 @@
                     @endforeach
                 
                 </select>
-                {{ $errors->first('client', '<small class="help-block">:message</small>') }}
+                {!! $errors->first('client', '<small class="help-block">:message</small>') !!}
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="example-text-input-lg" class="col-form-label">Description</label>
-                
-                <input class="form-control form-control-lg" type="text" name="description" placeholder="Ajouter une description" id="example-text-input-lg">
-                
-	
+            <div class="form-group has-error">
+                <label for="example-text-input-lg" class="col-form-label" >Description</label>
+                <input class="form-control form-control-lg" type="text" name="description" placeholder="Ajouter une description"  value="{{ old('description') }}" id="example-text-input-lg">
             </div>
             <div class="modal-footer">
                 <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AjouterLienRequest extends Request
+class AjouterEventRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,10 @@ class AjouterLienRequest extends Request
     public function rules()
     {
         return [
-            'titre' => 'min:3|max:255|unique:lienRapide',
-            'url' => 'required|url'
+            'titre' => 'max:255',
+            'date' => 'required|date',
+            'localisation' => 'string',
+            'description' => 'string'
         ];
     }
 }

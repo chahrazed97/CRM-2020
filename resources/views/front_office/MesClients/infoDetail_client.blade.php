@@ -1,5 +1,5 @@
 <!-- Custom Content start -->
-
+{{ var_dump($client->NbrReponsePromo()) }}
     <div class="card-body">
         <h4 class="header-title"><i class="fa fa-puzzle-piece"></i>Informations détaillées</h4>
             <div class="list-group">

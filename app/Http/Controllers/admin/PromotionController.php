@@ -33,7 +33,7 @@ class PromotionController extends Controller
         $promotion->titre = $titre;
         $promotion->start_date = $start_date;
         $promotion->end_date = $end_date;
-        $promotion->pourcentage_promo = $pourcentage;
+        $promotion->pourcetage_promo = $pourcentage;
         $promotion->produit_id = $produit_id;
             
         $promotion->save();
@@ -52,7 +52,7 @@ class PromotionController extends Controller
         $promotion->titre = $titre;
         $promotion->start_date = $start_date;
         $promotion->end_date = $end_date;
-        $promotion->pourcentage_promo = $pourcentage;
+        $promotion->pourcetage_promo = $pourcentage;
         $promotion->produit_id = $produit_id;
             
         $promotion->save();

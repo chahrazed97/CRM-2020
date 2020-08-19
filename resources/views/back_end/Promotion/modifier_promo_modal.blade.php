@@ -53,7 +53,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="example-time-input" class="col-form-label">pourcentage</label>
-                                        <input class="form-control" type="number" name="pourcentage" value="{{ $promotion->pourcentage_promo }}" id="example-time-input">
+                                        <input class="form-control" type="number" name="pourcentage" value="{{ $promotion->pourcetage_promo }}" id="example-time-input">
                                         {!! $errors->first('pourcentage', '<small class="help-block">:message</small>') !!}
                                     </div>
                                 </div>
