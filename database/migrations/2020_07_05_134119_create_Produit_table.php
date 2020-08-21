@@ -15,6 +15,7 @@ class CreateProduitTable extends Migration
         Schema::create('Produit', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ref_prod');
+            $table->string('nom');
             $table->string('type');
             $table->float('prix');
             $table->float('taux_tva');

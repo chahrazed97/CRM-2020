@@ -18,6 +18,11 @@ Route::get('ajax', function () {
     return view('front_office.emails.envoyerEmail');
 })->name('ajax');
 
+Route::get('mail', 'CKEditorController@index')->name('CRMaccueil');
+Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
+Route::any('msg/envoie', 'CKEditorController@envoie')->name('envoie.msg');
+
+
 
 /*
 Accueil
