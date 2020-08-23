@@ -15,12 +15,12 @@
 test route
 */
 Route::get('ajax', function () {
-    return view('front_office.emails.envoyerEmail');
-})->name('ajax');
+    return view('front_office.emails.promotion_template');
+})->name('ajax_route');
 
-Route::get('mail', 'CKEditorController@index')->name('CRMaccueil');
-Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
-Route::any('msg/envoie', 'CKEditorController@envoie')->name('envoie.msg');
+Route::get('mail', 'crm\sendEmailController@index')->name('CRMaccueil');
+Route::post('ckeditor/image_upload', 'crm\sendEmailController@upload')->name('upload');
+Route::any('msg/envoie', 'crm\sendEmailController@envoie')->name('envoie.msg');
 
 
 
@@ -63,8 +63,9 @@ Route::post('Ourteam/contacter/{id}/{role}', 'crm\OurTeamController@EnvoyerMsg')
 /*
 emails
 */
-
-Route::get('email', 'crm\sendEmailController@sendEmailReminder')->name('send.email');
+Route::get('mail', 'crm\sendEmailController@index')->name('index.emails');
+Route::post('ckeditor/image_upload', 'crm\sendEmailController@upload')->name('upload');
+Route::get('email', 'crm\sendEmailController@sendEmail')->name('send.email');
 /*
 LOGIN
 */

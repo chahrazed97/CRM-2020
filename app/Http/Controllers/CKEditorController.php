@@ -45,9 +45,12 @@ class CKEditorController extends Controller
 
     public function envoie()
     {
+        $email_dest=$_POST['destination'];
         $msg= $_POST['summary-ckeditor'];
         $mesg = new Messg();
+        $mesg->destination = $email_dest;
         $mesg->msg = $msg;
+        $mesg->admin_id = 1;
 
         $mesg->save();
 

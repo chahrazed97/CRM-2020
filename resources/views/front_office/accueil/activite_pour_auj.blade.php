@@ -4,10 +4,7 @@
 
             <div class="d-flex justify-content-between mb-4">
                 <h4 class="header-title mb-0">Mes activités pour aujourd'hui</h4>
-                <select class="custome-select border-0 pr-3">
-                    <option selected="">Today</option>
-                    <option value="7days">Last 7 Days</option>
-                </select>
+                
                 <a class="lien-ch"><button id="B1" class="btn btn-rounded btn- btn-xs"><i class="fa fa-plus"></i></button></a>
             </div>
 
