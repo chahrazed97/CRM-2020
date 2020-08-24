@@ -18,9 +18,6 @@ Route::get('ajax', function () {
     return view('front_office.emails.promotion_template');
 })->name('ajax_route');
 
-Route::get('mail', 'crm\sendEmailController@index')->name('CRMaccueil');
-Route::post('ckeditor/image_upload', 'crm\sendEmailController@upload')->name('upload');
-Route::any('msg/envoie', 'crm\sendEmailController@envoie')->name('envoie.msg');
 
 
 
@@ -63,8 +60,9 @@ Route::post('Ourteam/contacter/{id}/{role}', 'crm\OurTeamController@EnvoyerMsg')
 /*
 emails
 */
-Route::get('mail', 'crm\sendEmailController@index')->name('index.emails');
+Route::get('mail/{client_id}/{produit_id}/{promo_id}/{event_id}/{reclam_id}/{activite_id}/{type}', 'crm\sendEmailController@index')->name('index.emails');
 Route::post('ckeditor/image_upload', 'crm\sendEmailController@upload')->name('upload');
+Route::post('rediger/email/{type}/{id_type}', 'crm\sendEmailController@redigerEmail')->name('rediger.email');
 Route::get('email', 'crm\sendEmailController@sendEmail')->name('send.email');
 /*
 LOGIN
@@ -107,6 +105,9 @@ Route::get('Admin/evenement', 'admin\EvenementController@index')->name('list.eve
 Route::post('Admin/Ajouter/evenement', 'admin\EvenementController@storeEvenement')->name('admin.ajouter.evenement');
 Route::post('evenement/update/{evenement}', 'admin\EvenementController@updateEvenement')->name('admin.modifier.evenement');
 Route::get('evenement/destroy/{evenement}', 'admin\EvenementController@destroy')->name('admin.supprimer.evenement');
+/* Actions Marketing */
+Route::get('Admin/actionMarketing', 'admin\actionMarketingController@index')->name('list.actionMarketing');
+Route::post('actionMarketing/update/{action}', 'admin\actionMarketingController@updateActionMarketing')->name('admin.modifier.actionMarketing');
 
 
 

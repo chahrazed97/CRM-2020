@@ -1,5 +1,5 @@
 <!-- Custom Content start -->
-{{ var_dump($client->NbrReponsePromo()) }}
+
     <div class="card-body">
         <h4 class="header-title"><i class="fa fa-puzzle-piece"></i>Informations détaillées</h4>
             <div class="list-group">
@@ -42,7 +42,8 @@
                                     @foreach ( $top_modePayement as $top_pay  )
                                     {{ $top_pay }}</br>
                                     @endforeach
-                                    <b>Panier moyen : </b> {{ $panier_moyen. ' DA' }}
+                                    <b>Panier moyen : </b> {{ $panier_moyen. ' DA' }}</br>
+                                    <b>nombre de participation aux promo</b> : {{ $client->NbrReponsePromo() }} fois
                     </p>
                 </a>
             </div>

@@ -1,5 +1,11 @@
 
-
+ @if ( $produit !== 0 )
+<?php $nom = $produit->nom;
+      $prix = $produit->prix; ?>
+@else
+<?php $nom = "(donnez le nom de votre produit)"; 
+      $prix = "(donnez le prix)"; ?>
+@endif
 <!--
 Responsive Email Template by @keenthemes
 A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
@@ -65,8 +71,8 @@ Licensed under MIT
 				<div style="line-height: 24px;">
 					<font face="Arial, Helvetica, sans-serif" size="4" color="#57697e" style="font-size: 15px;">
 					<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #57697e;">
-                       Découvrez (nom produit), notre nouveau produit disponible à partir d'aujourd'hui,</br>
-                       en ce moment à (prix) DA</br>
+                       Découvrez {{ $nom }}, notre nouveau produit disponible à partir d'aujourd'hui,</br>
+                       en ce moment à {{ $prix }} DA</br>
                        Rendez-vous vite sur notre site internet pour en bénéficier!
 					</span></font>
 				</div>
@@ -76,7 +82,7 @@ Licensed under MIT
 				<div style="line-height: 24px;">
 					<a href="#" target="_blank" style="color: #596167; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">
 						<font face="Arial, Helvetica, sans-seri; font-size: 13px;" size="3" color="#596167">
-							<button class="btn btn-danger block-center">J'en profite</button></font></a>
+							<input type="button" class="btn btn-danger block-center" value="J'en profite"></font></a>
 				</div>
 				<!-- padding --><div style="height: 60px; line-height: 60px; font-size: 10px;"> </div>
 			</td></tr>

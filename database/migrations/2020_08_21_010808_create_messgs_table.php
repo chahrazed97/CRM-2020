@@ -15,7 +15,10 @@ class CreateMessgsTable extends Migration
         Schema::create('messgs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('destination');
+            $table->string('subject');
             $table->longtext('msg');
+            $table->string('type');
+            $table->integer('type_id');
             $table->unsignedInteger('admin_id');
             $table->foreign('admin_id')->references('id')->on('users')->nullable()->default(1);
             $table->timestamps();

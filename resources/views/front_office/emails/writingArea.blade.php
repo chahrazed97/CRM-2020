@@ -3,9 +3,8 @@
 @section('CRMaccueil_CSS')
 <link rel="stylesheet" href="{{asset('CSS_bootsnipp/activite_dashboard.css')}}">
 <link rel="stylesheet" href="{{asset('CSS_bootsnipp/email_template1.css')}}">
-@endsection
-@section('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<link rel="stylesheet" href="{{asset('CSS_bootsnipp/timeline.css')}}">
+
 @endsection
 @section('contenu')
 <div class="main-content-inner">
@@ -29,13 +28,48 @@
         </form>
  
     <div class="col-8 mt-5">
-<form action="{{ route('send.email') }}" method="get">
+    <!--info sur l'email -->
+    @include('front_office.emails.info_Email')
+    <!--info sur l'email end-->
+<form action="{{ route('rediger.email', ['type' => $type, 'id_type' => $id_type]) }}" method="POST">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <div class="form-group">
-    <label for="example-text-input" class="col-form-label">To :</label>
+    @if ( $client !== 0 )
+    <?php $email = $client->email; ?>
+    @else
+    <?php $email = ""; ?>
+    @endif
+    
     <div class="form-group {!! $errors->has('titre') ? 'has-error' : '' !!}">
-        <input class="form-control" type="email" name="destination" placeholder="Exemple@email.com" id="example-text-input" required>
+        <input class="form-control" type="email" name="destination" value="{{ $email }}" placeholder="A" id="example-email-input" required>
         {{ $errors->first('destination', '<small class="help-block">:message</small>') }}
+    </div>
+</div>
+
+<div class="form-group">
+    @if ( isset($_GET['bouton']) )
+      @if ( $_GET['bouton'] == "nvProduit_template" )
+      <?php $objet = "Nouveauté"; ?>
+      @endif
+      @if ( $_GET['bouton'] == "template_bienvenue" )
+      <?php $objet = "Bienvenue"; ?>
+      @endif
+      @if ( $_GET['bouton'] == "offreAnniv_template" )
+      <?php $objet = "Promo Anniversaire"; ?>
+      @endif
+      @if ( $_GET['bouton'] == "promotion_template" )
+      <?php $objet = "Promotion"; ?>
+      @endif
+      @if ( $_GET['bouton'] == "rappelPromotion_template" )
+      <?php $objet = "Rappel promotion"; ?>
+      @endif
+     
+    @else
+    <?php $objet = ""; ?>
+    @endif
+    <div class="form-group {!! $errors->has('titre') ? 'has-error' : '' !!}">
+        <input class="form-control" type="text" name="objet" value="{{ $objet }}" placeholder="Objet" id="example-text-input" required>
+        {{ $errors->first('objet', '<small class="help-block">:message</small>') }}
     </div>
 </div>
 <textarea class="form-control" id="summary-ckeditor" name="summary-ckeditor" required>

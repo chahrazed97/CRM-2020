@@ -258,7 +258,7 @@ class clients extends Model
         $produits = array();
         foreach ($commandes as $commande){
             foreach ($commande->produit as $produit){
-                $produits[] = $produit->type;
+                $produits[] = $produit->nom;
             }
         }
         
