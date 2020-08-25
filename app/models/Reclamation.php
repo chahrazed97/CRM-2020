@@ -19,12 +19,12 @@ class Reclamation extends Model
     
     function newReclamation()
     {
-        $newReclam = self::whereDate('created_at', '=', Carbon::today())->count();
+        $newReclam = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_répondu')->count();
         return $newReclam;
     }
     function newReclamations()
     {
-        $newReclam = self::whereDate('created_at', '=', Carbon::today())->get();
+        $newReclam = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_répondu')->get();
         return $newReclam;
     }
 }

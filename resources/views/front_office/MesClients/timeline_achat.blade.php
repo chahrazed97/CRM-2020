@@ -14,7 +14,7 @@
                 </div>
                 <p><b>Produit acheté</b><br>
                 @foreach ( $commande->produit as $produit )
-                {{ $produit->ref_prod }}</br>
+                {{ $produit->nom }}</br>
                 @endforeach
                 </p>
             </div>

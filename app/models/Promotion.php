@@ -20,13 +20,13 @@ class Promotion extends Model
 
     function newPromo()
     {
-        $newPromo = self::whereDate('created_at', '=', Carbon::today())->count();
+        $newPromo = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_partagé')->count();
         return $newPromo;
     }
 
     function newPromos()
     {
-        $newPromo = self::whereDate('created_at', '=', Carbon::today())->get();
+        $newPromo = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_partagé')->get();
         return $newPromo;
     }
 

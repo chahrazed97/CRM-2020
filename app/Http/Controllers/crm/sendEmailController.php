@@ -16,9 +16,15 @@ use App\models\Reclamation;
 use App\models\Activite;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\carbon;
+use DB;
 
 class sendEmailController extends Controller
 {
+    protected $messg;
+    public function __construct()
+    {
+        $this->messg = new Messg();
+    }
     
 
     public function index($client_id, $produit_id, $promo_id, $event_id, $reclam_id, $activite_id, $type)
@@ -94,15 +100,20 @@ class sendEmailController extends Controller
 
     public function redigerEmail($type, $id_type)
     {
+      
         $email_dest = $_POST['destination'];
         $mssg = $_POST['summary-ckeditor'];
+        if ( isset($_POST['objet']) ){
         $objet = $_POST['objet'];
+        }else{
+            $objet = 'Nom entreprise';
+        }
         $mesg = new Messg();
         $mesg->destination = $email_dest;
         $mesg->subject = $objet;
         $mesg->msg = $mssg;
-        $mesg->type = $type;
-        $mesg->type_id = $id_type;
+        $mesg->table = $type;
+        $mesg->table_id = $id_type;
         $mesg->admin_id = 1;
 
         $mesg->save();
@@ -122,8 +133,14 @@ class sendEmailController extends Controller
             if (count(Mail::failures()) > 0) {
                 return redirect()->back()->with("ok", "echec, message non envoyé");
             } else {
-               
-                return redirect('/')->with("ok", "Envoyé avec succès!");
+                if ( $dernier_msg->table !== 'clients_contact' and $dernier_msg->table !== 'clients_anniv' )
+                {
+                    $notif_table = DB::table($dernier_msg->table)
+                    ->where('id', '=', $dernier_msg->table_id)
+                    ->update(['status' => 'terminé']);
+                }
+                   
+               return redirect('/')->with("ok", "Envoyé avec succès!");
             }
     }
 }

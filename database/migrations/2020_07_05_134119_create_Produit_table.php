@@ -19,6 +19,7 @@ class CreateProduitTable extends Migration
             $table->string('type');
             $table->float('prix');
             $table->float('taux_tva');
+            $table->string('status')->default('non_partagé');
             $table->unsignedInteger('commande_id');
             $table->foreign('commande_id')->references('id')->on('Commande')->nullable()->default(0);
             $table->timestamps();

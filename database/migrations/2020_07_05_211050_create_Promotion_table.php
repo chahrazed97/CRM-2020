@@ -17,6 +17,7 @@ class CreatePromotionTable extends Migration
         $table->string('titre');
         $table->date('start_date');
         $table->date('end_date');
+        $table->string('status')->default('non_partagé');
         $table->unsignedInteger('produit_id');
         $table->integer('pourcetage_promo');
         $table->foreign('produit_id')->references('id')->on('Produit')->nullable()->default(0);

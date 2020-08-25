@@ -19,13 +19,13 @@ class Evenement extends Model
     
     function newEvent()
     {
-        $newEvent = self::whereDate('created_at', '=', Carbon::today())->count();
+        $newEvent = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_partagé')->count();
         return $newEvent;
     }
 
     function newEvents()
     {
-        $newEvent = self::whereDate('created_at', '=', Carbon::today())->get();
+        $newEvent = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_partagé')->get();
         return $newEvent;
     }
 }

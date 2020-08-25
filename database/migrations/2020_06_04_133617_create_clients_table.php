@@ -23,8 +23,7 @@ class CreateClientsTable extends Migration
             $table->text('code_postal');
             $table->date('date_naissance');
             $table->text('pays');
-            $table->string('status');
-            $table->boolean('is_active')->nullable()->default(0);
+            $table->string('status')->default('non_active');
             $table->unsignedInteger('employee_id');
             $table->unsignedInteger('admin_id');
             $table->foreign('employee_id')->references('id')->on('employees');

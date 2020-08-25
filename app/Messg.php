@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Messg extends Model
 {
@@ -14,4 +15,6 @@ class Messg extends Model
         {
             return $this->belongsTo('App\User');
         }
+
+       
 }

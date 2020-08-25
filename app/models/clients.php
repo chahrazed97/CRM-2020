@@ -3,6 +3,7 @@
 namespace App\models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use App\Messg;
 use DB;
 
 class clients extends Model
@@ -49,27 +50,58 @@ class clients extends Model
     
     public function newClient()
     {
-        $newClient = self::whereDate('created_at', '=', Carbon::today())->count();
+        $newClient = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_active')->count();
         return $newClient;
     }
 
     public function newClients()
     {
-        $newClient = self::whereDate('created_at', '=', Carbon::today())->get();
+        $newClient = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_active')->get();
         return $newClient;
     }
 
 
     public function isBirthday()
     {
-        $is_birthday = self::where('date_naissance', '=', Carbon::today())->count();
-        return $is_birthday;
+        $date = Carbon::now(); 
+        $jour= $date->format("d");
+        $mois = $date->format("m");
+        
+        $non_envoye = 0;
+        $is_birthday = self::whereDay('date_naissance', '=', $jour)->whereMonth('date_naissance', '=', $mois)->get();
+        foreach( $is_birthday as $birthday){
+            $mssgs = Messg::where('table_id', '=', $birthday->id)->where('destination', '=', $birthday->email)->where('table', '=', 'clients_anniv')->whereDate('created_at', '=', Carbon::today() )->count();
+            if( $mssgs == 0 ){
+                $non_envoye = $non_envoye + 1;
+                
+            }else{
+                $non_envoye = $non_envoye;
+            }
+           
+        }
+        return $non_envoye;
     }
 
     public function isBirthdayClients()
     {
-        $is_birthday = self::where('date_naissance', '=', Carbon::today())->get();
-        return $is_birthday;
+        $date = Carbon::now(); 
+        $jour= $date->format("d");
+        $mois = $date->format("m");
+        
+        $tt_nn_envoye = array();
+        $non_envoye_id = array();
+        $is_birthday = self::whereDay('date_naissance', '=', $jour)->whereMonth('date_naissance', '=', $mois)->get();
+        foreach( $is_birthday as $birthday){
+            $mssgs = Messg::where('table_id', '=', $birthday->id)->where('destination', '=', $birthday->email)->where('table', '=', 'clients_anniv')->whereDate('created_at', '=', Carbon::today() )->count();
+            if( $mssgs == 0 ){
+                $non_envoye_id [] = $birthday->id;
+                
+            }else{
+                $non_envoye_id  = $non_envoye_id ;
+            }
+            
+        }
+        return $non_envoye_id;
     }
 
     public function Recence()

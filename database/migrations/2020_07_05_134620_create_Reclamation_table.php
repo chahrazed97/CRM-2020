@@ -16,6 +16,7 @@ class CreateReclamationTable extends Migration
             $table->increments('id');
             $table->text('description');
             $table->date('date_rec');
+            $table->string('status')->default('non_répondu');
             $table->unsignedInteger('clients_id');
             $table->foreign('clients_id')->references('id')->on('clients')->nullable()->default(0);
             $table->timestamps();

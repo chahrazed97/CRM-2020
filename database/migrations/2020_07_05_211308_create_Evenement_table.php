@@ -18,6 +18,7 @@ class CreateEvenementTable extends Migration
             $table->dateTime('date');
             $table->text('localisation');
             $table->text('description');
+            $table->string('status')->default('non_partagé');
             $table->unsignedInteger('admin_id');
             $table->foreign('admin_id')->references('id')->on('users')->nullable()->default(1);
             $table->timestamps();

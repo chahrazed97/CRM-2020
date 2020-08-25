@@ -31,7 +31,7 @@
                                 @foreach( $new_products as $new_product )
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     {{ $new_product->nom }}
-                                    <a href="{{ route('index.emails', ['client_id' => 0 , 'produit_id' => $new_product->id, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'nv_produit' ]) }}" class=""><span class="badge badge-primary badge-pill">Faire découvrir ce produit aux clients</span></a>
+                                    <a href="{{ route('index.emails', ['client_id' => 0 , 'produit_id' => $new_product->id, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'produit' ]) }}" class=""><span class="badge badge-primary badge-pill">Faire découvrir ce produit aux clients</span></a>
                                 </li>
                                 @endforeach
                             </ul>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="seofct-icon">
                 @if( $new_client == 1 )
-                 Vous avez un ouveau client
+                 Vous avez un nouveau client
                 @else
                  Vous avez {{ $new_client }} Nouveaux clients
                 @endif 
@@ -81,7 +81,7 @@
                                 @foreach( $new_clients as $new_client )
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     {{ $new_client->nom.' '.$new_client->prenom }}
-                                    <a href="{{ route('index.emails', ['client_id' => $new_client->id,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'nv_client'  ]) }}" class=""><span class="badge badge-primary badge-pill">Envoyer lui un bienvenue</span></a>
+                                    <a href="{{ route('index.emails', ['client_id' => $new_client->id,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'clients'  ]) }}" class=""><span class="badge badge-primary badge-pill">Envoyer lui un bienvenue</span></a>
                                 </li>
                                 @endforeach
                             </ul>
@@ -111,27 +111,13 @@
                 </div>
                 <div class="seofct-icon">
                 @if( $birthday_today == 1 )
-                 Aujourd'hui c'est l'anniversaire d'un client
+                Aujourd'hui c'est l'anniversaire d'un client
                 @else
                  Aujourd'hui c'est l'anniversaire de {{ $birthday_today }} clients
                 @endif
                 </div>
             </div>
-            @if ( $birthday_today == 1 )
-              @foreach( $birthday_clients as $birth_client )
-               <?php
-                if ($birth_client->scoreClient() !== 0)
-                {
-                    $scorecheck = 10 - ($birth_client->scoreClient());
-                    $scoreNocheck = 9 - $scorecheck;
-                }else{
-                    $scorecheck = 0;
-                    $scoreNocheck = 9;
-                    }  
-               ?>
-            <a href="{{ route('historique.client', ['client' => $birth_client , 'scorecheck' => $scorecheck , 'scoreNocheck' => $scoreNocheck ]) }}" class=""><i class="fa fa-angle-double-right right"></i><cite class="right">Offre d'anniversaire</cite></a>
-               @endforeach
-            @else
+           
             <a data-toggle="modal" data-target="#Modalbirth" class=""><i class="fa fa-angle-double-right right"></i><cite class="right">Offre d'anniversaire</cite></a>
             <!-- Modal -->
             <div class="modal fade" id="Modalbirth">
@@ -145,9 +131,10 @@
                             <ul class="list-group">
                                 @foreach( $birthday_clients as $birth_client )
                                 <?php
-                                    if ($birth_client->scoreClient() !== 0)
+                                    $b_client = App\models\clients::find($birth_client)->first();
+                                    if ($b_client->scoreClient() !== 0)
                                     {
-                                        $scorecheck = 10 - ($birth_client->scoreClient());
+                                        $scorecheck = 10 - ($b_client->scoreClient());
                                         $scoreNocheck = 9 - $scorecheck;
                                     }else{
                                         $scorecheck = 0;
@@ -155,9 +142,8 @@
                                         }  
                                 ?>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    {{ $birth_client->nom.' '.$birth_client->prenom }}
-                                    <a href="{{ route('historique.client', ['client' => $birth_client , 'scorecheck' => $scorecheck , 'scoreNocheck' => $scoreNocheck ]) }}" class=""><span class="badge badge-primary badge-pill">Voir plus d'informations sur ce client</span></a></br>
-                                    <a href="{{ route('index.emails', ['client_id' => $birth_client->id,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'anniv' ]) }}" class=""><span class="badge badge-primary badge-pill">Envoyer lui une offre d'anniversaire</span></a>
+                                    {{ $b_client->nom.' '.$b_client->prenom }}
+                                    <a href="{{ route('index.emails', ['client_id' => $b_client->id,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'clients_anniv' ]) }}" class=""><span class="badge badge-primary badge-pill">Envoyer lui une offre d'anniversaire</span></a>
 
                                 </li>
                                 @endforeach
@@ -170,7 +156,6 @@
                     </div>
                 </div>
             </div>
-            @endif
         </div>
     </div>
 </div>
@@ -215,7 +200,7 @@
                                     {{ 'End date : '.$new_promo->end_date }}</br>
                                     {{ 'Produit concerné : '.$new_promo->Produit->type }}</br>
                                     {{ 'Pourcentage de la promo : '.$new_promo->pourcetage_promo. '%' }}
-                                    <a href="{{ route('index.emails', ['client_id' => 0,  'produit_id' => 0, 'promo_id' => $new_promo->id, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'nv_promo'  ]) }}" class=""><span class="badge badge-primary badge-pill">Offrir cette promotion aux clients</span></a>
+                                    <a href="{{ route('index.emails', ['client_id' => 0,  'produit_id' => 0, 'promo_id' => $new_promo->id, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'promotion'  ]) }}" class=""><span class="badge badge-primary badge-pill">Offrir cette promotion aux clients</span></a>
                                 </li>
                                 @endforeach
                             </ul>
@@ -270,7 +255,7 @@
                                     {{ 'Date : '.(new Carbon\Carbon($new_event->date))->format("d-M-Y").'  à : '.(new Carbon\Carbon($new_event->date))->format("H:i") }}</br>
                                     {{ 'Localisation : '.$new_event->localisation }}</br>
                                     {{ 'Description : '.$new_event->description }}
-                                    <a href="{{ route('index.emails', ['client_id' => 0,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => $new_event->id, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'nv_event' ]) }}"><span class="badge badge-primary badge-pill">Partager aux clients</span></a>
+                                    <a href="{{ route('index.emails', ['client_id' => 0,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => $new_event->id, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'evenement' ]) }}"><span class="badge badge-primary badge-pill">Partager aux clients</span></a>
                                 </li>
                                 @endforeach
                             </ul>
@@ -324,7 +309,7 @@
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     {{ $new_reclam->clients->nom.' '.$new_reclam->clients->prenom }}</br>
                                     {{ 'Reclamation : '.$new_reclam->description }}
-                                    <a href="{{ route('index.emails', ['client_id'=> 0 ,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => $new_reclam->id, 'activite_id' => 0, 'type' => 'nv_reclam' ]) }}"><span class="badge badge-primary badge-pill">Répondre</span></a>
+                                    <a href="{{ route('index.emails', ['client_id'=> 0 ,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => $new_reclam->id, 'activite_id' => 0, 'type' => 'reclamation' ]) }}"><span class="badge badge-primary badge-pill">Répondre</span></a>
                                 </li>
                                 @endforeach
                             </ul>

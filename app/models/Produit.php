@@ -25,13 +25,13 @@ class Produit extends Model
 
     function newProduct()
     {
-        $newProduct = self::whereDate('created_at', '=', Carbon::today())->count();
+        $newProduct = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_partagé')->count();
         return $newProduct;
     }
     
     function newProducts()
     {
-        $newProduct = self::whereDate('created_at', '=', Carbon::today())->get();
+        $newProduct = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_partagé')->get();
         return $newProduct;
     }
 
