@@ -5,73 +5,52 @@
 </div>
 @include('front_office.MesClients.ajouterActiviteClient_modal')
 <ul class="timeline">
-  @foreach ( $activite_all as $activite )
-  @if ( $activite->organisateur == 'client')
+<?php $i= 0; ?>
+  @foreach ( $activite_all as $activite_ll )
+ <?php $i = $i + 1; ?>
+  @if ( $activite_ll->destination == 'CRM 2020')
   <?php $inverted = "timeline-inverted";
         $emetteur = $client->nom.' '.$client->prenom. ':'; ?>
   @else
   <?php $inverted = "";
-        $emetteur = "Vous:" ?>
+        $emetteur = "Vous:";
+        ?>
   @endif
   <li class="{{ $inverted }}">
-    @if ( $activite->type_act == 'phone' )
-    <?php $icon = "phone"; ?>
-    @else
     <?php $icon = "envelope"; ?>
-    @endif
     <div class="timeline-badge"><i class="fa fa-{{ $icon }}"></i></div>
-    <div class="timeline-panel">
+    <a class="timeline-panel" data-toggle="modal" data-target="#ModalLong{{ $i }}">
       <div class="timeline-heading">
         <small>{{ $emetteur }}</small>
-        <h6 class="timeline-title">{{ $activite->titre }}</h6>
-        <p><small class="text-muted"><i class="fa fa-time"></i>{{ $activite->date_act }}</small></p>
+        <h6 class="timeline-title">{{ $activite_ll->subject }}</h6>
+        <p><small class="text-muted"><i class="fa fa-time"></i>{{ $activite_ll->created_at }}</small></p>
       </div>
       <div class="timeline-body">
-        {{ $activite->type_act }}
+      </div>
+    </a>
+  
+  <!-- Modal -->
+<div class="modal fade" id="ModalLong{{ $i }}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+     <b>Object : {{ $activite_ll->subject }}</b></br>
+     <b>A : </b>{{ $activite_ll->destination }}
+     </div>
+      <?php echo '<div class="modal-body">'.
+       $activite_ll->msg;
+      '</div>'
+      ?>
+      <div class="modal-footer">
+      <a class="right" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>
       </div>
     </div>
+  </div>
+</div>
+  <!-- modal fin -->
   </li>
   @endforeach
-  <li class="timeline-inverted">
-    <div class="timeline-badge warning"><i class="fa fa-credit-card"></i></div>
-    <div class="timeline-panel">
-      <div class="timeline-heading">
-        <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-      </div>
-      <div class="timeline-body">
-        <p></p>
-      </div>
-    </div>
-  </li>
-
        
-  <!-- exemple -->      
-  <li>
-    <div class="timeline-badge info"><i class="fa fa-envelope"></i></div>
-    <div class="timeline-panel">
-      <div class="timeline-heading">
-        <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-      </div>
-      <div class="timeline-body">
-        <p>.</p>
-        <hr>
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-phone"></i> <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </li>
-  <!--exemple fin -->
-
 </ul>
 <div class="row">
   <div class="col-7">  

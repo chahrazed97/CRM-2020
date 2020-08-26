@@ -50,7 +50,7 @@
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <div class="panel panel-primary">
                             <div class="panel-body">
-                                {!! $calendar->calendar() !!}
+                            {!! $calendar->calendar() !!}
                             </div>
                         </div>
                     </div>

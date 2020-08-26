@@ -64,6 +64,14 @@ Route::get('mail/{client_id}/{produit_id}/{promo_id}/{event_id}/{reclam_id}/{act
 Route::post('ckeditor/image_upload', 'crm\sendEmailController@upload')->name('upload');
 Route::post('rediger/email/{type}/{id_type}', 'crm\sendEmailController@redigerEmail')->name('rediger.email');
 Route::get('email', 'crm\sendEmailController@sendEmail')->name('send.email');
+
+/*
+Mes conversations
+*/
+Route::get('mesConversations', 'crm\mesConversationsController@index')->name('mesConversation');
+Route::get('conversation/client/{client}', 'crm\mesConversationsController@conversationClient')->name('conversation.client');
+Route::get('conversation/destroy/{email_destroy}', 'crm\mesConversationsController@destroy')->name('conversation.supprimer');
+
 /*
 LOGIN
 */

@@ -84,7 +84,7 @@ class clients extends Model
 
     public function isBirthdayClients()
     {
-        $date = Carbon::now(); 
+        $date = Carbon::today(); 
         $jour= $date->format("d");
         $mois = $date->format("m");
         

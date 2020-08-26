@@ -2,6 +2,9 @@
    <div class="card-body">
    @if ( $type == 'clients_contact' )
    <?php $id_type = $client->id; ?>
+   <b>{{ $client->nom. ' '.$client->prenom }} </b></br>
+   <b>Adresse :</b> {{ $client->adresse }}</br>
+   </b>E-mail :</b> {{ $client->email }}
    @endif
    @if ( $type == 'produit')
    <?php $id_type = $produit->id; ?>

@@ -129,9 +129,10 @@
                         <div class="modal-body">
                             <!-- list clients -->
                             <ul class="list-group">
-                                @foreach( $birthday_clients as $birth_client )
+                                @for ($i = 0; $i < count($birthday_clients) ; $i++)
                                 <?php
-                                    $b_client = App\models\clients::find($birth_client)->first();
+                                    echo $birthday_clients[$i];
+                                    $b_client = App\models\clients::where('id', '=', $birthday_clients[$i])->first();
                                     if ($b_client->scoreClient() !== 0)
                                     {
                                         $scorecheck = 10 - ($b_client->scoreClient());
@@ -146,7 +147,7 @@
                                     <a href="{{ route('index.emails', ['client_id' => $b_client->id,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'clients_anniv' ]) }}" class=""><span class="badge badge-primary badge-pill">Envoyer lui une offre d'anniversaire</span></a>
 
                                 </li>
-                                @endforeach
+                                @endfor
                             </ul>
                             <!-- list clients end -->
                         </div>

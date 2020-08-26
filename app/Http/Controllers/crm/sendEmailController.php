@@ -30,7 +30,7 @@ class sendEmailController extends Controller
     public function index($client_id, $produit_id, $promo_id, $event_id, $reclam_id, $activite_id, $type)
     {
         if ($client_id !== '0'){
-        $client = clients::find($client_id)->first();
+        $client = clients::where('id', '=', $client_id)->first();
         $top_produit = $client->ProduitPrefere($client->id);
         }else{
             $client = 0;
@@ -38,31 +38,31 @@ class sendEmailController extends Controller
         }
 
         if ($produit_id !== '0'){
-            $produit = Produit::find($produit_id)->first();
+            $produit = Produit::where('id', '=', $produit_id)->first();
             }else{
                 $produit = 0;
             }
 
         if ($promo_id !== '0'){
-            $promo = Promotion::find($promo_id)->first();
+            $promo = Promotion::where('id', '=', $promo_id)->first();
             }else{
                 $promo = 0;
             }
 
         if ($event_id !== '0'){
-            $event = Evenement::find($event_id)->first();
+            $event = Evenement::where('id', '=', $event_id)->first();
                 }else{
                     $event = 0;
                 }
 
         if ($reclam_id !== '0'){
-            $reclam = Reclamation::find($reclam_id)->first();
+            $reclam = Reclamation::where('id', '=', $reclam_id)->first();
                 }else{
                     $reclam = 0;
                 }
 
         if ($activite_id !== '0'){
-            $activite = Activite::find($activite_id)->first();
+            $activite = Activite::where('id', '=', $activite_id)->first();
                 }else{
             $activite = 0;
             }
@@ -114,7 +114,7 @@ class sendEmailController extends Controller
         $mesg->msg = $mssg;
         $mesg->table = $type;
         $mesg->table_id = $id_type;
-        $mesg->admin_id = 1;
+        $mesg->employee_id = 1;
 
         $mesg->save();
         return redirect::to('email');
@@ -139,8 +139,24 @@ class sendEmailController extends Controller
                     ->where('id', '=', $dernier_msg->table_id)
                     ->update(['status' => 'terminé']);
                 }
-                   
-               return redirect('/')->with("ok", "Envoyé avec succès!");
+                if ($dernier_msg->table == 'clients_contact')
+                {
+                    $activite = new Activite();
+                    $activite->titre = $dernier_msg->subject;
+                    $activite->type_activite = 'e-mail';
+                    $activite->status = 'terminé';
+                    $activite->date_act = carbon::today();
+                    $activite->description = '';
+                    $activite->organisateur = 'employe';
+                    $activite->employee_id = 1;
+                    $activite->clients_id = $dernier_msg->table_id;
+
+                    $activite->save();
+                    return redirect()->back()->with("ok", "Envoyé avec succès!");
+                }
+               
+                   return redirect('/')->with("ok", "Envoyé avec succès!");
+                
             }
     }
 }

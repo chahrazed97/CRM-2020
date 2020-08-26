@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessgsTable extends Migration
+class CreateMessgClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,14 @@ class CreateMessgsTable extends Migration
      */
     public function up()
     {
-        Schema::create('messgs', function (Blueprint $table) {
+        Schema::create('messg_clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('destination');
             $table->string('subject');
             $table->longtext('msg');
-            $table->string('table');
-            $table->integer('table_id');
-            $table->unsignedInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees')->default(1);;
+            $table->unsignedInteger('clients_id');
+            $table->foreign('clients_id')->references('id')->on('clients')->nullable()->default(0);
             $table->timestamps();
-            $table->dateTime('deleted_at')->nullable();
         });
     }
 
@@ -33,6 +30,6 @@ class CreateMessgsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('messgs');
+        Schema::drop('messg_clients');
     }
 }

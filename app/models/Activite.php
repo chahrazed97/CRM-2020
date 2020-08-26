@@ -4,6 +4,7 @@ namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Messg;
 
 class Activite extends Model
 {
@@ -63,4 +64,12 @@ class Activite extends Model
         $rendezVous_termine = self::whereDate('date_act', '=', Carbon::today())->where('type_activite', '=', 'rendez-vous')->where('status', '=', 'terminé')->count();
         return $rendezVous_termine;
     }
+
+    
+    public function ExtraireMsg($id)
+    {
+        $msg = Messg::where('table', '=', 'activites')->where('table_id', '=', $id)->first();
+        return $msg;
+    }
+
 }

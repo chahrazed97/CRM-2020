@@ -11,8 +11,9 @@ use App\models\clients;
 use App\models\Activite;
 use App\models\Commande;
 use App\models\actionMarketing;
-use App\models\HistoriqueClient;
+use App\models\MessgClient;
 use App\models\Commentaire;
+use App\Messg;
 use Carbon\Carbon;
 
 
@@ -37,9 +38,10 @@ class clientsController extends Controller
     public function HistoriqueClient(clients $client, $scorecheck, $scoreNocheck)
     {
         //timeline conversation
-        $activite_cl= HistoriqueClient::where('clients_id', '=', $client->id )->select('titre', 'organisateur', 'type_act', 'date_act');
-        $activite_emp= Activite::where('clients_id', '=', $client->id)->where('status', '=', 'terminé')->select('titre', 'organisateur', 'type_activite', 'date_act');  
-        $activite_all = $activite_cl->unionAll($activite_emp)->latest('date_act')->get();
+        $activite_cl= MessgClient::where('clients_id', '=', $client->id )->select('id', 'destination', 'subject', 'msg', 'created_at');
+        $activite_emp= Messg::where('employee_id', '=', 1)->where('destination', '=', $client->email)->select('id', 'destination', 'subject', 'msg', 'created_at');  
+        $activite_all = $activite_cl->unionAll($activite_emp)->latest()->get();
+        
         //dernier commentaire
         $commentaire = Commentaire::where('clients_id', '=', $client->id)->latest()->first();
         //comportement d'achat
@@ -93,4 +95,6 @@ class clientsController extends Controller
         $commentaire->save();
         return redirect()->back()->with("ok", "Votre commentaire sur le client". $client->nom.' '.$client->prenom ."a bien été enregistrer.");
     }
+
+    
 }

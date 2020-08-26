@@ -74,7 +74,7 @@ Licensed under MIT
 					<font face="Arial, Helvetica, sans-serif" size="5" color="#57697e" style="font-size: 34px;">
 					<span style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; color: #57697e;">
                         {{ $nom }}</br>
-                        -{{ $poucentage }}% de réduction
+                        -{{ $pourcentage }}% de réduction
 					</span></font>
 				</div>
 				<!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;"> </div>
