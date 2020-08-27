@@ -51,97 +51,28 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-home"></i><span>Home</span></a>
+                                <a href="{{ route('admin.home') }}" aria-expanded="true"><i class="fa fa-home"></i><span>Home</span></a>
                                 
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-calendar-check-o"></i><span>Mes activités</span></a>
-                                <ul class="collapse">
-                                    <li><a href="index.html">Left Sidebar</a></li>
-                                    <li><a href="index3-horizontalmenu.html">Horizontal Sidebar</a></li>
-                                </ul>
+                                <a href="{{ route('list.clients') }}" aria-expanded="true"><i class="fa fa-calendar-check-o"></i><span>Clients</span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-user-plus"></i><span>Clients</span></a>
-                                <ul class="collapse">
-                                    <li><a href="barchart.html">bar chart</a></li>
-                                    <li><a href="linechart.html">line Chart</a></li>
-                                    <li><a href="piechart.html">pie chart</a></li>
-                                </ul>
+                                <a href="{{ route('list.prospects') }}" aria-expanded="true"><i class="fa fa-user-plus"></i><span>Prospects</span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-user"></i><span>Prospects</span></a>
-                                <ul class="collapse">
-                                    <li><a href="accordion.html">Accordion</a></li>
-                                    <li><a href="alert.html">Alert</a></li>
-                                    <li><a href="badge.html">Badge</a></li>
-                                    <li><a href="button.html">Button</a></li>
-                                    <li><a href="button-group.html">Button Group</a></li>
-                                    <li><a href="cards.html">Cards</a></li>
-                                    <li><a href="dropdown.html">Dropdown</a></li>
-                                    <li><a href="list-group.html">List Group</a></li>
-                                    <li><a href="media-object.html">Media Object</a></li>
-                                    <li><a href="modal.html">Modal</a></li>
-                                    <li><a href="pagination.html">Pagination</a></li>
-                                    <li><a href="popovers.html">Popover</a></li>
-                                    <li><a href="progressbar.html">Progressbar</a></li>
-                                    <li><a href="tab.html">Tab</a></li>
-                                    <li><a href="typography.html">Typography</a></li>
-                                    <li><a href="form.html">Form</a></li>
-                                    <li><a href="grid.html">grid system</a></li>
-                                </ul>
+                                <a href="{{ route('Employees') }}" aria-expanded="true"><i class="fa fa-user"></i><span>Employes</span></a> 
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-comments-o"></i><span>Mes conversations</span></a>
-                                <ul class="collapse">
-                                    <li><a href="fontawesome.html">fontawesome icons</a></li>
-                                    <li><a href="themify.html">themify icons</a></li>
-                                </ul>
+                                <a href="{{ route('list.produits') }}" aria-expanded="true"><i class="fa fa-comments-o"></i><span>Produits</span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-users"></i>
-                                    <span>My team</span></a>
-                                <ul class="collapse">
-                                    <li><a href="table-basic.html">basic table</a></li>
-                                    <li><a href="table-layout.html">table layout</a></li>
-                                    <li><a href="datatable.html">datatable</a></li>
-                                </ul>
+                                <a href="{{ route('list.promotions') }}" aria-expanded="true"><i class="fa fa-users"></i><span>Promotions</span></a>
                             </li>
-                            <li><a href="maps.html"><i class="fa fa-object-group"></i> <span>Social Media</span></a></li>
-                            <li><a href="invoice.html"><i class="fa fa-cogs"></i> <span>Paramétres compte</span></a></li>
+                            <li><a href="{{ route('list.evenements') }}"><i class="fa fa-object-group"></i> <span>Evénements</span></a></li>
+                            <li><a href="{{ route('list.actionMarketing') }}"><i class="fa fa-cogs"></i> <span>Actions marketings</span></a></li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layers-alt"></i> <span>Pages</span></a>
-                                <ul class="collapse">
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="login2.html">Login 2</a></li>
-                                    <li><a href="login3.html">Login 3</a></li>
-                                    <li><a href="register.html">Register</a></li>
-                                    <li><a href="register2.html">Register 2</a></li>
-                                    <li><a href="register3.html">Register 3</a></li>
-                                    <li><a href="register4.html">Register 4</a></li>
-                                    <li><a href="screenlock.html">Lock Screen</a></li>
-                                    <li><a href="screenlock2.html">Lock Screen 2</a></li>
-                                    <li><a href="reset-pass.html">reset password</a></li>
-                                    <li><a href="pricing.html">Pricing</a></li>
-                                    <li><a href="404.html">Error 404</a></li>
-                                    <li><a href="500.html">Error 500</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i> <span>Multi
-                                        level menu</span></a>
-                                <ul class="collapse">
-                                    <li><a href="#">Item level (1)</a></li>
-                                    <li><a href="#">Item level (1)</a></li>
-                                    <li><a href="#" aria-expanded="true">Item level (1)</a>
-                                        <ul class="collapse">
-                                            <li><a href="#">Item level (2)</a></li>
-                                            <li><a href="#">Item level (2)</a></li>
-                                            <li><a href="#">Item level (2)</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Item level (1)</a></li>
-                                </ul>
+                                <a href="{{ route('list.actionMarketing') }}" aria-expanded="true"><i class="ti-layers-alt"></i> <span>Paramètre compte</span></a>
                             </li>
                         </ul>
                     </nav>
@@ -323,11 +254,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Dashboard</h4>
-                            <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
-                                <li><span>Dashboard</span></li>
-                            </ul>
+                            <h4 class="page-title pull-left"> @yield('titre') </h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">

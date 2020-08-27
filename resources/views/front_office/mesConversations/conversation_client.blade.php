@@ -2,7 +2,7 @@
 @section('CRMaccueil_CSS')
 <link rel="stylesheet" href="{{asset('CSS_bootsnipp/timeline.css')}}">
 <link rel="stylesheet" href="{{asset('CSS_bootsnipp/activite_dashboard.css')}}">
-
+@section('titre', 'Mes conversations client')
 @endsection
 @section('contenu')
 <div class="main-content-inner">

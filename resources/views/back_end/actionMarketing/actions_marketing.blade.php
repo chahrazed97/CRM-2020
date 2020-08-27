@@ -2,6 +2,7 @@
 @section('CRMaccueil_CSS')
 <link rel="stylesheet" href="{{asset('CSS_bootsnipp/activite_dashboard.css')}}">
 @endsection
+@section('titre', 'Actions marketing')
 @section('contenu')
 <div class="main-content-inner">
 @if(session()->has('ok'))

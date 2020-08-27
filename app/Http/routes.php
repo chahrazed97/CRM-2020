@@ -15,11 +15,13 @@
 test route
 */
 Route::get('ajax', function () {
-    return view('front_office.emails.promotion_template');
+    return view('front_office.mesConversations.tester-search');
 })->name('ajax_route');
 
 
-
+/*
+-----FONT_OFFICE---------
+*/
 
 /*
 Accueil
@@ -68,9 +70,15 @@ Route::get('email', 'crm\sendEmailController@sendEmail')->name('send.email');
 /*
 Mes conversations
 */
+// 1- conversation client
 Route::get('mesConversations', 'crm\mesConversationsController@index')->name('mesConversation');
 Route::get('conversation/client/{client}', 'crm\mesConversationsController@conversationClient')->name('conversation.client');
 Route::get('conversation/destroy/{email_destroy}', 'crm\mesConversationsController@destroy')->name('conversation.supprimer');
+// 2- conversation equipe
+Route::get('ConversationsEquipe', 'crm\equipeConversationController@index')->name('Conversation.equipe');
+Route::get('conversation/employe/{employe}', 'crm\equipeConversationController@conversationEmploye')->name('conversation.employe');
+Route::get('conversation/destroy/{employe}', 'crm\equipeConversationController@destroy')->name('conversation.supprimer');
+
 
 /*
 LOGIN
@@ -83,6 +91,11 @@ Route::get('/hom', 'DashboardController@index')->name('home');
 /*
 -----BACK_END---------
 */
+
+/* index */
+Route::get('admin/home', function () {
+    return view('back_end.index.index');
+})->name('admin.home');
 
 /* Employes */
 Route::get('employes', 'admin\EmployeController@index')->name('Employees');
@@ -116,41 +129,5 @@ Route::get('evenement/destroy/{evenement}', 'admin\EvenementController@destroy')
 /* Actions Marketing */
 Route::get('Admin/actionMarketing', 'admin\actionMarketingController@index')->name('list.actionMarketing');
 Route::post('actionMarketing/update/{action}', 'admin\actionMarketingController@updateActionMarketing')->name('admin.modifier.actionMarketing');
-
-
-
-
-
-
-
-
-
-
-/*
-CLIENT
-*/
-Route::resource('client', 'crm\ClientController');
-Route::post('client/{id}/update', 'crm\ClientController@update');
-Route::any('client/{id}/update', 'crm\ClientController@update');
-
-
-/*
-EMPLOYE
-*/
-Route::resource('employe', 'crm\EmployesController');
-Route::post('employe/{id}/update', 'crm\EmployesController@update');
-Route::any('employe/{id}/update', 'crm\EmployesController@update');
-
-/*
-TASKS
-
-Route::resource('tasks', 'crm\TasksController');
-*/
-Route::get('events', 'crm\EventController@index')->name('events.index');
-Route::post('events', 'crm\EventController@addEvent')->name('events.add');
-/* EVENT */
-Route::resource('eventList', 'EventListController');
-Route::post('eventList/{id}/update', 'EventListController@update');
-Route::any('eventList/{id}/update', 'EventListController@update');
 
 

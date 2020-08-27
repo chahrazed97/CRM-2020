@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{asset('CSS_bootsnipp/timeline.css')}}">
 
 @endsection
+@section('titre','Envoyer e-mail')
 @section('contenu')
 <div class="main-content-inner">
 @if(session()->has('ok'))
@@ -101,7 +102,7 @@
     @endif
     
     <div class="form-group {!! $errors->has('titre') ? 'has-error' : '' !!}">
-        <input class="form-control" type="email" name="destination" value="{{ $email }}" placeholder="A" id="example-email-input" required>
+        <input class="form-control" type="email" id="dest" name="destination" value="{{ $email }}" placeholder="A" id="example-email-input" required>
         {{ $errors->first('destination', '<small class="help-block">:message</small>') }}
     </div>
 </div>
@@ -137,7 +138,10 @@
 @include('front_office.emails.'.$_GET['bouton'])
 @endif
 </textarea>
-<input class="btn btn-rounded btn-secondary mb-3 mt-2 mr-2 right" type="submit" value="Envoyer">
+<input name="envoyer" class="btn btn-rounded btn-secondary mb-3 mt-2 mr-2 right" type="submit" value="Envoyer">
+@if( $type == 'promotion' || $type == 'evenement' || $type == 'produit')
+<input name="envoyer" class="btn btn-rounded btn-secondary mb-3 mt-2 mr-2 right" onclick="myFunction()" type="submit" value="Envoyer à tout le monde">
+@endif
 <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>
 
 
@@ -149,6 +153,12 @@ CKEDITOR.replace( 'summary-ckeditor', {
     filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
     filebrowserUploadMethod: 'form'
 });
+</script>
+<script>
+    function myFunction() {
+        input = document.getElementById("dest")
+        input.required = false;
+    }
 </script>
 </form>
 </div>

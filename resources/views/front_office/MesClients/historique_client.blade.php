@@ -2,8 +2,8 @@
 @section('CRMaccueil_CSS')
 <link rel="stylesheet" href="{{asset('CSS_bootsnipp/timeline.css')}}">
 <link rel="stylesheet" href="{{asset('CSS_bootsnipp/activite_dashboard.css')}}">
-
 @endsection
+@section('titre', 'Historique client')
 @section('contenu')
 <div class="main-content-inner">
 @if(session()->has('ok'))

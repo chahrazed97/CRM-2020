@@ -26,7 +26,7 @@ class mesConversationsController extends Controller
     {
         $client = clients::where('email', '=', $client->email)->first();
         $activite_cl= MessgClient::where('clients_id', '=', $client->id )->select('id', 'destination', 'subject', 'msg', 'created_at');
-        $activite_emp= Messg::where('employee_id', '=', 1)->where('destination', '=', $client->email)->select('id', 'destination', 'subject', 'msg', 'created_at');  
+        $activite_emp= Messg::where('employee_id', '=', 1)->where('destination', '=', $client->email)->orwhere('destination', '=', 'tout_le_monde')->select('id', 'destination', 'subject', 'msg', 'created_at');  
         $activite_all = $activite_cl->unionAll($activite_emp)->latest()->get();
         return view('front_office.mesConversations.conversation_client', compact('activite_all', 'client'));
     }

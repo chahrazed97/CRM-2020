@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{asset('CSS_bootsnipp/our_team.css')}}">
  
 @endsection
-
+@section('titre', 'mon équipe')
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 

@@ -52,3 +52,27 @@ color: #999;
     font-size: 23px;
 }
 
+#myInput {
+    width: 130px;
+    height: 40px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 33px;
+    font-size: 14px;
+    background-color: #4d2ffa0c;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin-bottom: 2ex;
+    
+  }
+  
+  #myInput:focus {
+    width: 100%;
+  }
+  .heading-tr {
+    border-radius: 20px;
+    height: 40px;
+  }

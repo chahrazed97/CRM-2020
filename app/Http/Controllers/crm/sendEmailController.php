@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Messg;
 use App\models\clients;
 use App\models\Produit;
+use App\models\Prospect;
 use App\models\Promotion;
 use App\models\Evenement;
 use App\models\Reclamation;
@@ -100,9 +101,14 @@ class sendEmailController extends Controller
 
     public function redigerEmail($type, $id_type)
     {
-      
-        $email_dest = $_POST['destination'];
+    
         $mssg = $_POST['summary-ckeditor'];
+        $envoie = $_POST['envoyer'];
+        if ( $envoie == 'Envoyer' ){
+            $email_dest =  $_POST['destination'];
+        }else{
+            $email_dest = 'tout_le_monde';
+        }
         if ( isset($_POST['objet']) ){
         $objet = $_POST['objet'];
         }else{
@@ -122,14 +128,31 @@ class sendEmailController extends Controller
 
     public function sendEmail()
     {
+        //recuperer tout les emails
+        $clients_email= clients::select('email');
+        $prospects_email= Prospect::select('email');  
+        $emails = $clients_email->unionAll($prospects_email)->get();
+        //recuperer le dernier msg 
         $dernier_msg = Messg::latest()->first();
-       
-            Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($dernier_msg) {
-                $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
 
-                $m->to($dernier_msg->destination);
-            });
+        if ( $dernier_msg->destination == 'tout_le_monde' ){
+            $destination = $emails;
+            foreach($destination as $dest){
+                Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($dest) {
+                    $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
+               
+                    $m->to($dest->email);
+                });
+            }
+        }else{
+            $destination = $dernier_msg->destination;
+            Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($destination) {
+                $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
            
+                $m->to($destination);
+            });
+        }
+      
             if (count(Mail::failures()) > 0) {
                 return redirect()->back()->with("ok", "echec, message non envoyé");
             } else {

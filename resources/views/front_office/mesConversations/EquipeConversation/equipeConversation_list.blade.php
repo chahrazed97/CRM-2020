@@ -23,15 +23,13 @@
                         <div class="table-responsive">
                             <table class="dbkit-table" >
                                 <tbody id="body">
-                                    @foreach ( $destination_client as $destination_cl )
-                                      @if ( $destination_cl->destination !== 'tout_le_monde')
-                                    <?php $client = App\models\clients::where('email', '=', $destination_cl->destination )->first();
-                                    $nom_complet = $client->nom.' '.$client->prenom; ?>
+                                    @foreach ( $sender_emp as $sender )
+                                    <?php $employe = App\models\Employees::where('id', '=', $sender->send_emp_id )->first();
+                                    $nom_complet = $employe->nom.' '.$employe->prenom; ?>
                                     <tr class="heading-tr mt-1" style="background-color :rgba(145, 13, 233, 0.075); height: 50px;">
-                                        <td><a href="{{ route('conversation.client', ['client' => $client]) }}">{{ $nom_complet }} <br><cite><small>{{ $client->email }}</small></cite></a></td>
-                                        <td><a href="{{ route('conversation.supprimer', ['email_destroy' => $destination_cl->destination]) }}"><i class="fa fa-trash-o right"></i></a></td>  
+                                        <td><a href="{{ route('conversation.employe', ['employe' => $employe]) }}">{{ $nom_complet }} <br><cite><small>{{ $employe->role }}</small></cite></a></td>
+                                        <td><a href="{{ route('conversation.supprimer', ['employe' => $employe]) }}"><i class="fa fa-trash-o right"></i></a></td>  
                                     </tr>
-                                      @endif
                                     @endforeach
                                 </tbody>
                             </table>
