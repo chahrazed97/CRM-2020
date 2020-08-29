@@ -23,7 +23,12 @@ class Employees extends Model
 
     public function clients() 
     {
-        return $this->hasMany('App\models\clients');
+        return $this->hasMany('App\models\clients', 'employee_id');
+    }
+
+    public function Prospect() 
+    {
+        return $this->hasMany('App\models\Prospect', 'employee_id');
     }
 
     public function user() 

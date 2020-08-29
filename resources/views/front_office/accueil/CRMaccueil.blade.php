@@ -14,20 +14,19 @@
 	<div class="alert alert-success alert-dismissible">{!! session()->get('ok') !!}</div>
 @endif
     <div class="row">
-
     <!--notification -->
     @include('front_office.accueil.notification')
     <!-- end notification -->
 
     <!-- activite pour aujourd'hui + résumé d'aujourd'hui -->
-    <div class= col-md-12">
+   
         <div class="row">
-          
+            <div class="col-xl-3 col-ml-8 col-lg-8 mt-5">
             <!-- activite pour aujourd'hui start -->
              @include('front_office.accueil.activite_pour_auj')
             <!-- activite pour aujourd'hui end -->
-
-            <div class="col-xl-4 col-lg-5 col-md-12 mt-5">
+            </div>
+            <div class="col-xl-3 col-ml-4 col-lg-4 mt-5">
             <!-- résumé d'aujourd'hui start -->
             @include('front_office.accueil.resume_auj')
             <!-- résumé d'aujoud'hui end --> 
@@ -38,7 +37,7 @@
             </div>
            
         </div> 
-    </div>
+    
                     
 <!-- end Activite pour aujoud'hui + résumé d'aujourd'hui -->
 </div>

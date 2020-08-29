@@ -35,7 +35,7 @@ class User extends Authenticatable
 
     public function employes() 
     {
-        return $this->hasMany('App\models\Employees');
+        return $this->hasOne('App\models\Employees', 'admin_id');
     }
 
     public function Evenements() 

@@ -40,13 +40,13 @@
             {{ csrf_field() }}
                 <div class="form-group">
                   
-                   <input type="email" name="email" class="form-control" placeholder="Enter your email">
+                   <input type="email" name="email" class="form-control" placeholder="Entrez votre e-mail">
                     
                 </div>
            
                 <div class="form-group">
                   
-                   <input type="password" name="password" class="form-control" placeholder="Enter your password">
+                   <input type="password" name="password" class="form-control" placeholder="Entrez votre mot de passe">
                     
                 </div>
                 <div class="">

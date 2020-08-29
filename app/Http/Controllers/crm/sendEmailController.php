@@ -15,9 +15,11 @@ use App\models\Promotion;
 use App\models\Evenement;
 use App\models\Reclamation;
 use App\models\Activite;
+use App\models\Employees;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\carbon;
 use DB;
+use Auth;
 
 class sendEmailController extends Controller
 {
@@ -28,8 +30,15 @@ class sendEmailController extends Controller
     }
     
 
-    public function index($client_id, $produit_id, $promo_id, $event_id, $reclam_id, $activite_id, $type)
+    public function index($client_id, $prospect_id, $produit_id, $promo_id, $event_id, $reclam_id, $activite_id, $type)
     {
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
+        //tout les emails
+        $email_client = clients::where('employee_id', '=', $employe->id)->select('email');
+        $email_prospect = Prospect::where('employee_id', '=', $employe->id)->select('email');
+        $tt_email = $email_client->unionAll($email_prospect)->get();
+
         if ($client_id !== '0'){
         $client = clients::where('id', '=', $client_id)->first();
         $top_produit = $client->ProduitPrefere($client->id);
@@ -37,6 +46,12 @@ class sendEmailController extends Controller
             $client = 0;
             $top_produit = 0;
         }
+
+        if ($prospect_id !== '0'){
+            $prospect = Prospect::where('id', '=', $prospect_id)->first();
+            }else{
+                $prospect = 0;
+            }
 
         if ($produit_id !== '0'){
             $produit = Produit::where('id', '=', $produit_id)->first();
@@ -67,7 +82,7 @@ class sendEmailController extends Controller
                 }else{
             $activite = 0;
             }
-        return view('front_office.emails.writingArea', compact('client', 'top_produit', 'produit', 'promo', 'event', 'reclam', 'activite', 'type'));
+        return view('front_office.emails.writingArea', compact('client', 'top_produit', 'prospect', 'produit', 'promo', 'event', 'reclam', 'activite', 'type', 'tt_email'));
     }
 
     public function upload(Request $request)
@@ -101,13 +116,21 @@ class sendEmailController extends Controller
 
     public function redigerEmail($type, $id_type)
     {
-    
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
         $mssg = $_POST['summary-ckeditor'];
         $envoie = $_POST['envoyer'];
         if ( $envoie == 'Envoyer' ){
             $email_dest =  $_POST['destination'];
-        }else{
-            $email_dest = 'tout_le_monde';
+        }
+        if ( $envoie == 'Envoyer à tout le monde' ){
+            $email_dest =  'tout_le_monde';
+        }
+        if ( $envoie == 'Envoyer à tout les clients' ){
+            $email_dest =  'tout_les_clients';
+        }
+        if ( $envoie == 'Envoyer à tout les prospects' ){
+            $email_dest =  'tout_les_prospects';
         }
         if ( isset($_POST['objet']) ){
         $objet = $_POST['objet'];
@@ -120,7 +143,7 @@ class sendEmailController extends Controller
         $mesg->msg = $mssg;
         $mesg->table = $type;
         $mesg->table_id = $id_type;
-        $mesg->employee_id = 1;
+        $mesg->employee_id = $employe->id;
 
         $mesg->save();
         return redirect::to('email');
@@ -128,13 +151,16 @@ class sendEmailController extends Controller
 
     public function sendEmail()
     {
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
         //recuperer tout les emails
-        $clients_email= clients::select('email');
-        $prospects_email= Prospect::select('email');  
+        $clients_email= clients::where('employee_id', '=', $employe->id)->select('email');
+        $prospects_email= Prospect::where('employee_id', '=', $employe->id)->select('email');  
         $emails = $clients_email->unionAll($prospects_email)->get();
         //recuperer le dernier msg 
-        $dernier_msg = Messg::latest()->first();
+        $dernier_msg = Messg::where('employee_id', '=', $employe->id)->latest()->first();
 
+       //envoyer a tout le monde
         if ( $dernier_msg->destination == 'tout_le_monde' ){
             $destination = $emails;
             foreach($destination as $dest){
@@ -144,7 +170,30 @@ class sendEmailController extends Controller
                     $m->to($dest->email);
                 });
             }
-        }else{
+        }
+        //envoyer a tout les clients
+        if ( $dernier_msg->destination == 'tout_les_clients' ){
+            $destination = $clients_email->get();
+            foreach($destination as $dest){
+                Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($dest) {
+                    $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
+               
+                    $m->to($dest->email);
+                });
+            }
+        }
+         //envoyer a tout les prospect
+         if ( $dernier_msg->destination == 'tout_les_prospects' ){
+            $destination = $prospects_email->get();
+            foreach($destination as $dest){
+                Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($dest) {
+                    $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
+               
+                    $m->to($dest->email);
+                });
+            }
+        }
+        else{
             $destination = $dernier_msg->destination;
             Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($destination) {
                 $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
@@ -156,7 +205,7 @@ class sendEmailController extends Controller
             if (count(Mail::failures()) > 0) {
                 return redirect()->back()->with("ok", "echec, message non envoyé");
             } else {
-                if ( $dernier_msg->table !== 'clients_contact' and $dernier_msg->table !== 'clients_anniv' )
+                if ( $dernier_msg->table !== 'clients_contact' and $dernier_msg->table !== 'clients_anniv' and $dernier_msg->table !== 'prospect_contact' )
                 {
                     $notif_table = DB::table($dernier_msg->table)
                     ->where('id', '=', $dernier_msg->table_id)
@@ -171,10 +220,15 @@ class sendEmailController extends Controller
                     $activite->date_act = carbon::today();
                     $activite->description = '';
                     $activite->organisateur = 'employe';
-                    $activite->employee_id = 1;
+                    $activite->employee_id = $employe->id;
                     $activite->clients_id = $dernier_msg->table_id;
 
                     $activite->save();
+                    return redirect()->back()->with("ok", "Envoyé avec succès!");
+                }
+
+                if ($dernier_msg->table == 'prospect_contact')
+                {
                     return redirect()->back()->with("ok", "Envoyé avec succès!");
                 }
                

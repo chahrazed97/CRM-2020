@@ -4,17 +4,23 @@ namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Auth;
 
 class Prospect extends Model
 {
     protected $table = 'prospect';
     protected $fillable = [
-        'nom', 'prenom', 'phone', 'email', 'adresse', 'code_postal', 'date_naissance', 'pays', 'status', 'deleted_at',
+        'nom', 'prenom', 'phone', 'email', 'adresse', 'code_postal', 'date_naissance', 'pays', 'status', 'employee_id', 'deleted_at',
     ];
 
     public function HistoriqueProspect() 
     {
         return $this->hasMany('App\models\HistoriqueProspect');
+    }
+
+    public function Employees() 
+	{
+		return $this->belongsTo('App\models\Employees', 'employee_id');
     }
 
     public function user() 
@@ -24,7 +30,17 @@ class Prospect extends Model
     
     function newProspect()
     {
-        $newPros = self::whereDate('created_at', '=', Carbon::today())->get();
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
+        $newPros = self::where('employee_id', '=' , $employe->id)->whereDate('created_at', '=', Carbon::today())->where('status', '!=', 'terminé')->count();
+        return $newPros;
+    }
+
+    function newProspects()
+    {
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
+        $newPros = self::where('employee_id', '=' , $employe->id)->whereDate('created_at', '=', Carbon::today())->where('status', '!=', 'terminé')->get();
         return $newPros;
     }
 

@@ -27,7 +27,6 @@
     <!-- liste des employes -->
     <!-- Primary table start -->
     <div class="col-12 mt-1">
-
         <div class="card">
 
             <div class="card-body">
@@ -42,6 +41,8 @@
                                 <th>Téléphone</th>
                                 <th>E-mail</th>
                                 <th>Fontion</th>
+                                <th>Clients a suivre</th>
+                                <th>Prospects a suivre</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -53,6 +54,38 @@
                                 <td>{{ $employe->phone }}</td>
                                 <td>{{ $employe->email }}</td>
                                 <td>{{ $employe->role }}</td>
+                                <td>
+                                    <button class="btn btn-rounded btn- btn-xs" type="button" data-toggle="dropdown">
+                                        voir
+                                    </button>
+                                    <div class="dropdown-menu">
+                                      <div class="card-body">
+    
+                                    @if ($employe->clients !== NULL)
+                                      @foreach($employe->clients as $client)
+                                       {{ $client->nom.' '.$client->prenom }}<hr>
+                                      @endforeach
+                                    @endif
+                            
+                                    </div>
+                                    </div>
+                                   
+                                </td>
+                                <td>
+                                    <button class="btn btn-rounded btn- btn-xs" type="button" data-toggle="dropdown">
+                                        voir
+                                    </button>
+                                    <div class="dropdown-menu">
+                                    <div class="card-body">
+                                    @if ($employe->Prospect !== NULL)
+                                      @foreach($employe->Prospect as $prospect)
+                                       {{ $prospect->nom.' '.$prospect->prenom }}<hr>
+                                      @endforeach
+                                    @endif
+                                    </div>
+                                    </div>
+                                    
+                                </td>
                                
                                 <!-- start dropdawn buttons -->
                                 <td>

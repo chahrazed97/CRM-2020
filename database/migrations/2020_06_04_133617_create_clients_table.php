@@ -24,7 +24,7 @@ class CreateClientsTable extends Migration
             $table->date('date_naissance');
             $table->text('pays');
             $table->string('status')->default('non_active');
-            $table->unsignedInteger('employee_id');
+            $table->unsignedInteger('employee_id')->nullable()->default(0);
             $table->unsignedInteger('admin_id');
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->foreign('admin_id')->references('id')->on('users')->nullable()->default(1);

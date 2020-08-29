@@ -63,16 +63,18 @@
         <!-- end info employe -->
     </div>
 
-    <!-- envoyer msg -->
-    <form  action=""  method="post" class="modal-content">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="modal-body">
-                <textarea type="text" class="form-control" rows="5" name="msg" placeholder="{{ 'Envoyer à '.$employe->nom.' '.$employe->prenom.' un message...' }}" required></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Envoyer</button>
-            </div>
-        </form>
+   <!-- envoyer msg -->
+   <form  action="{{ route('Envoyer.msg', ['id' => $employe->id, 'role' => $employe->role]) }}"  method="post" class="modal-content">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="modal-body">
+            <textarea type="text" class="form-control" rows="5" name="msg" placeholder="{{ 'Envoyer à '.$employe->nom.' '.$employe->prenom.' un message...' }}" required></textarea>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+    </form>
     <!-- fin msg -->
+</div>
+</div>
 </div>
 @endsection

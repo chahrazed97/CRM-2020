@@ -34,7 +34,18 @@
    <div class="card-body">
    @if ( $type == 'clients_contact' )
    <?php $id_type = $client->id; ?>
+   <b>{{ $client->nom. ' '.$client->prenom }} </b></br>
+   <b>Adresse :</b> {{ $client->adresse }}</br>
+   </b>E-mail :</b> {{ $client->email }}
    @endif
+
+   @if ( $type == 'prospect_contact' )
+   <?php $id_type = $prospect->id; ?>
+   <b>{{ $prospect->nom. ' '.$prospect->prenom }} </b></br>
+   <b>Adresse :</b> {{ $prospect->adresse }}</br>
+   </b>E-mail :</b> {{ $prospect->email }}
+   @endif
+
    @if ( $type == 'produit')
    <?php $id_type = $produit->id; ?>
    Le produit </b> {{ $produit->nom }}</b> est ajouté au stock</br>
@@ -47,6 +58,13 @@
    <b>{{ $client->nom. ' '.$client->prenom }} </b>est un nouveau client</br>
    <b>Adresse :</b> {{ $client->adresse }}</br>
    </b>E-mail :</b> {{ $client->email }}
+   @endif
+
+   @if ( $type == 'prospect')
+   <?php $id_type = $prospect->id; ?>
+   <b>{{ $prospect->nom. ' '.$prospect->prenom }} </b>est un nouveau prospect</br>
+   <b>Adresse :</b> {{ $prospect->adresse }}</br>
+   </b>E-mail :</b> {{ $prospect->email }}
    @endif
 
    @if ( $type == 'clients_anniv')
@@ -98,12 +116,17 @@
     @if ( $client !== 0 )
     <?php $email = $client->email; ?>
     @else
-    <?php $email = ""; ?>
+    <?php $email = "A: "; ?>
     @endif
     
     <div class="form-group {!! $errors->has('titre') ? 'has-error' : '' !!}">
-        <input class="form-control" type="email" id="dest" name="destination" value="{{ $email }}" placeholder="A" id="example-email-input" required>
-        {{ $errors->first('destination', '<small class="help-block">:message</small>') }}
+        <select class="custom-select" name="destination" placeholder="A" required>
+            <option selected="selected">{{ $email }}</option>
+            @foreach($tt_email as $email)
+                    <option value="{{ $email->email }}">{{ $email->email }}</option>
+            @endforeach
+        </select>
+        
     </div>
 </div>
 
@@ -141,6 +164,9 @@
 <input name="envoyer" class="btn btn-rounded btn-secondary mb-3 mt-2 mr-2 right" type="submit" value="Envoyer">
 @if( $type == 'promotion' || $type == 'evenement' || $type == 'produit')
 <input name="envoyer" class="btn btn-rounded btn-secondary mb-3 mt-2 mr-2 right" onclick="myFunction()" type="submit" value="Envoyer à tout le monde">
+<input name="envoyer" class="btn btn-rounded btn-secondary mb-3 mt-2 mr-2 right" onclick="myFunction()" type="submit" value="Envoyer à tout les clients">
+<input name="envoyer" class="btn btn-rounded btn-secondary mb-3 mt-2 mr-2 right" onclick="myFunction()" type="submit" value="Envoyer à tout les prospects">
+
 @endif
 <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>
 

@@ -10,6 +10,7 @@ use App\Http\Requests\AjouterClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 use App\models\Commande;
 use App\models\clients;
+use App\models\Employees;
 use App\models\HistoriqueClient;
 use App\models\Activite;
 use App\models\Commentaire;
@@ -29,8 +30,9 @@ class ClientController extends Controller
     public function index()
     {
       $clients = clients::All();
+      $employes = Employees::All();
       
-      return view('back_end.Clients.list_client', compact('clients'));
+      return view('back_end.Clients.list_client', compact('clients', 'employes'));
     }
 
     public function HistoriqueClient(clients $client, $scorecheck, $scoreNocheck)
@@ -67,6 +69,7 @@ class ClientController extends Controller
         $pays = $request->get('pays');
         $code_postal = $request->get('code_postal');
         $metier = $request->get('metier');
+        $employe_id = $request->get('employe');
 
         $client = new clients();
         $client->nom = $nom;
@@ -79,7 +82,7 @@ class ClientController extends Controller
         $client->code_postal = $code_postal;
         $client->metier = $metier;
         $client->admin_id = 1;
-        $client->employee_id = 1;
+        $client->employee_id = $employe_id;
         $client->status = 'active';
             
         $client->save();
@@ -103,6 +106,7 @@ class ClientController extends Controller
         $pays = $request->get('pays');
         $code_postal = $request->get('code_postal');
         $metier = $request->get('metier');
+        $employe_id =  $request->get('employe');
 
         $client->nom = $nom;
         $client->prenom = $prenom;
@@ -113,6 +117,7 @@ class ClientController extends Controller
         $client->pays = $pays;
         $client->code_postal = $code_postal;
         $client->metier = $metier;
+        $client->employee_id = $employe_id;
         
         $client->save();
         return redirect()->back()->with("ok", "Le client " . $client->nom.' '.$client->prenom . " a bien été modifié.");

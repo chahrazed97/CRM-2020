@@ -19,7 +19,8 @@ class CreateEmployesTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('role');
-            $table->boolean('is_active')->nullable()->default(1);
+            $table->string('password');
+            $table->boolean('is_active')->nullable()->default(0);
             $table->unsignedInteger('admin_id');
             $table->foreign('admin_id')->references('id')->on('users')->nullable()->default(1);
             $table->timestamps();

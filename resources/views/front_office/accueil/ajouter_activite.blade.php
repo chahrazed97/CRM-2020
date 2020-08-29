@@ -56,6 +56,11 @@
                 <div class="form-group {{ $errors->has('client') ? 'has-error' : '' }}">   
                 <select class="custom-select" name="client">
                     <option selected="selected">Ajouter un client</option>
+                    <?php 
+                    
+                    $employe= App\models\Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+                    $clients = App\models\clients::where('employee_id', '=', $employe->id)->get();
+                    ?>
                     @foreach($clients as $client)
                     <option value="{{ $client->id }}">{{ $client->nom.' '.$client->prenom }}</option>
                     @endforeach

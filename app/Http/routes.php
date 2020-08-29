@@ -36,7 +36,7 @@ Route::post('accueil/create', 'crm\AccueilController@storeLien')->name('accueil.
 Route::get('accueil/annuler/{lien}', 'crm\AccueilController@destroyLien')->name('accueil.lien.annuler');
 
 Route::get('/ajouter', function () {
-    return view('front_office.accueil.ajouter_activite', ['clients' => App\models\clients::All()]);
+    return view('front_office.accueil.ajouter_activite');
 })->name('ajouter.activite');
 
 /*
@@ -54,6 +54,9 @@ Route::post('ajouter/commentaire/{client}', 'crm\ClientsController@storeComment'
 Prospects
 */
 Route::get('Prospects', 'crm\ProspectsController@index')->name('Prospects');
+Route::get('historiqueP/{prospect}', 'crm\ProspectsController@HistoriqueProspect')->name('historique.prospect');
+Route::post('ajouter/commantaire/{prospect}', 'crm\ProspectsController@storeComment')->name('prospect.ajouter.commentaire');
+
 /*
 Our_team
 */
@@ -62,7 +65,7 @@ Route::post('Ourteam/contacter/{id}/{role}', 'crm\OurTeamController@EnvoyerMsg')
 /*
 emails
 */
-Route::get('mail/{client_id}/{produit_id}/{promo_id}/{event_id}/{reclam_id}/{activite_id}/{type}', 'crm\sendEmailController@index')->name('index.emails');
+Route::get('mail/{client_id}/{prospect_id}/{produit_id}/{promo_id}/{event_id}/{reclam_id}/{activite_id}/{type}', 'crm\sendEmailController@index')->name('index.emails');
 Route::post('ckeditor/image_upload', 'crm\sendEmailController@upload')->name('upload');
 Route::post('rediger/email/{type}/{id_type}', 'crm\sendEmailController@redigerEmail')->name('rediger.email');
 Route::get('email', 'crm\sendEmailController@sendEmail')->name('send.email');
@@ -78,8 +81,9 @@ Route::get('conversation/destroy/{email_destroy}', 'crm\mesConversationsControll
 Route::get('ConversationsEquipe', 'crm\equipeConversationController@index')->name('Conversation.equipe');
 Route::get('conversation/employe/{employe}', 'crm\equipeConversationController@conversationEmploye')->name('conversation.employe');
 Route::get('conversation/destroy/{employe}', 'crm\equipeConversationController@destroy')->name('conversation.supprimer');
-
-
+//3- conversation prospect
+Route::get('ConversationsProspect', 'crm\prospectConersationController@index')->name('Conversation.prospect');
+Route::get('conversation/prospect/{prospect}', 'crm\prospectConersationController@conversationProspect')->name('conversation.prospect');
 /*
 LOGIN
 */
@@ -102,6 +106,7 @@ Route::get('employes', 'admin\EmployeController@index')->name('Employees');
 Route::post('employes/update/{employe}', 'admin\EmployeController@update')->name('admin.modifier.employe');
 Route::get('employe/destroy/{employe}', 'admin\EmployeController@destroy')->name('admin.supprimer.employe');
 Route::post('employe/creer', 'admin\EmployeController@storeEmploye')->name('admin.ajouter.employe');
+
 
 /* Clients */
 Route::get('Admin/Clients', 'admin\ClientController@index')->name('list.clients');

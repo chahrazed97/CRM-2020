@@ -10,7 +10,9 @@ use App\models\activite;
 use App\models\clients;
 use App\models\Evenement;
 use App\models\Promotion;
+use App\models\Employees;
 use Calendar;
+use Auth;
 
 class mesActivitesController extends Controller
 {
@@ -21,8 +23,10 @@ class mesActivitesController extends Controller
 
     public function index()
     {
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
         $events = [];
-        $activites = activite::all();
+        $activites = activite::where('employee_id', '=', $employe->id);
         if($activites->count()) {
             foreach ($activites as $key => $value) {
                 $events[] = Calendar::event(

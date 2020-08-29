@@ -16,8 +16,11 @@ use App\models\Promotion;
 use App\models\Evenement;
 use App\models\Produit;
 use App\models\Reclamation;
+use App\models\Employees;
+use App\models\Prospect;
 use Carbon\Carbon;
 use DB;
+use Auth;
 
 class AccueilController extends Controller
 {
@@ -33,11 +36,14 @@ class AccueilController extends Controller
 	$this->evenement = new Evenement();
 	$this->produit = new Produit();
 	$this->reclamation = new Reclamation();
+	$this->prospect = new Prospect();
 		
 	}
 
 	public function index()
 	{
+		$employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
 		$activites  = $this->activite->ActiviteAujourdHui();
 		$email_ouvert= $this->activite->EmailOuvert();
 		$email_termine= $this->activite->EmailTermine();
@@ -45,9 +51,12 @@ class AccueilController extends Controller
 		$appel_termine= $this->activite->AppelTermine();
 		$rendezVous_ouvert= $this->activite->RendezVousOuvert();
 		$rendezVous_termine= $this->activite->RendezVousTermine();
-		$liens = lienRapide::All();
+		$liens = lienRapide::where('employee_id', '=', $employe->id)->get();
+		$clients = clients::where('employee_id', '=', $employe->id)->get();
 		$new_client = $this->clients->newClient();
 		$new_clients = $this->clients->newClients();
+		$new_prospect = $this->prospect->newProspect();
+		$new_prospects = $this->prospect->newProspects();
 		$new_event = $this->evenement->newEvent();
 		$new_events = $this->evenement->newEvents();
 		$new_product = $this->produit->newProduct();
@@ -59,18 +68,22 @@ class AccueilController extends Controller
 		$birthday_today = $this->clients->isBirthday();
 		$birthday_clients = $this->clients->isBirthdayClients();
 		
-		return view('front_office.accueil.CRMaccueil', compact('activites', 'email_ouvert', 'email_termine', 'appel_ouvert', 'appel_termine', 'rendezVous_ouvert', 'rendezVous_termine', 'liens', 'new_client', 'new_clients',  'new_event', 'new_events', 'new_product', 'new_products', 'new_promo', 'new_promos', 'new_reclam', 'new_reclams', 'birthday_today', 'birthday_clients'));
+		return view('front_office.accueil.CRMaccueil', compact('activites', 'email_ouvert', 'email_termine', 'appel_ouvert', 'appel_termine', 'rendezVous_ouvert', 'rendezVous_termine', 'liens', 'new_client', 'new_clients',  'new_event', 'new_events', 'new_product', 'new_products', 'new_promo', 'new_promos', 'new_reclam', 'new_reclams', 'birthday_today', 'birthday_clients', 'new_prospect', 'new_prospects'));
 	}
 	
 	public function ajaxModifier(Activite $activite)
 	{
-		$clients = clients::All();
+		$employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
+		$clients = clients::where('employee_id', '=', $employe->id);
 		return view('front_office.accueil.modifier_activite', compact('activite', 'clients'));
 	}
 
  
   public function storeActivite(AjouterActiviteRequest $request)
   {
+	$employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
 	$type = $request->get('type');
 	$titre = $request->get('titre');
 	$date = $request->get('date');
@@ -86,7 +99,7 @@ class AccueilController extends Controller
 	$activite->titre = $titre;
 	$activite->type_activite = $type;
 	$activite->date_act = $date_tt;
-	$activite->employee_id = 1;
+	$activite->employee_id = $employe->id;
 	$activite->clients_id = $client_id;
 	$activite->description = $description;
 	$activite->save();
@@ -95,6 +108,7 @@ class AccueilController extends Controller
 
   public function storeLien(AjouterLienRequest $request)
   {
+	$employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
 
     $titre = $request->get('titre');
     $url = $request->get('url');
@@ -102,7 +116,7 @@ class AccueilController extends Controller
     $lien = new lienRapide();
     $lien->titre = $titre;
 	$lien->lien = $url;
-	$lien->employee_id = 1;
+	$lien->employee_id = $employe->id;
 	
 	$lien->save();
 	return redirect()->back()->with("ok", "Le lien " . $lien->titre . " a bien été créé.");
@@ -125,7 +139,6 @@ class AccueilController extends Controller
 		$activite->titre = $titre;
 		$activite->type_activite = $type;
 		$activite->date_act = $date_tt;
-		$activite->employee_id = 1;
 		$activite->clients_id = $client_id;
 		$activite->description = $description;
 		$activite->save();

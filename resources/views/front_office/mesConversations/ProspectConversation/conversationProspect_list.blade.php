@@ -6,7 +6,7 @@
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 @endsection
-@section('titre', 'Mes conversation client')
+@section('titre', 'Mes conversations prospect')
 @section('contenu')
 <div class="main-content-inner">
 @if(session()->has('ok'))
@@ -24,16 +24,16 @@
                 <table class="dbkit-table" >
                     <tbody id="body">
                     <?php $error = 'aucune conversation trouvée'; ?>
-                    @if (!empty($destination_client))
-                        @foreach ( $destination_client as $destination_cl )
-                            @if ( $destination_cl->destination !== 'tout_le_monde' and $destination_cl !== 'tout_les_clients' and $destination_cl !== 'tout_les_prospects')
-                            <?php $client = App\models\clients::where('email', '=', $destination_cl->destination )->first();
-                              if ($client !== NULL){
+                    @if (!empty($destination_prospect))
+                        @foreach ( $destination_prospect as $destination_pr )
+                            @if ( $destination_pr->destination !== 'tout_le_monde' and $destination_pr !== 'tout_les_clients' and $destination_pr !== 'tout_les_prospects')
+                            <?php $prospect = App\models\Prospect::where('email', '=', $destination_pr->destination )->first();
+                              if ($prospect !== NULL){
                                  
-                            $nom_complet = $client->nom.' '.$client->prenom; ?>
+                            $nom_complet = $prospect->nom.' '.$prospect->prenom; ?>
                             <tr class="heading-tr mt-1" style="background-color :rgba(145, 13, 233, 0.075); height: 50px;">
-                                <td><a href="{{ route('conversation.client', ['client' => $client]) }}">{{ $nom_complet }} <br><cite><small>{{ $client->email }}</small></cite></a></td>
-                                <td><a href="{{ route('conversation.supprimer', ['email_destroy' => $destination_cl->destination]) }}"><i class="fa fa-trash-o right"></i></a></td>  
+                                <td><a href="{{ route('conversation.prospect', ['prospect' => $prospect]) }}">{{ $nom_complet }} <br><cite><small>{{ $prospect->email }}</small></cite></a></td>
+                                <td><a href=""><i class="fa fa-trash-o right"></i></a></td>  
                             </tr>
                               <?php } ?>
                             @endif

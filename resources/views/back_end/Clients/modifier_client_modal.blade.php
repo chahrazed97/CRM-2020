@@ -83,6 +83,19 @@
                                 {!! $errors->first('metier', '<small class="help-block">:message</small>') !!}
                             </div>
 
+                            <div class="form-group has-error">
+                            <label class="col-form-label">Suivi par</label>
+                            <div class="form-group {{ $errors->has('employe') ? 'has-error' : '' }}">   
+                            <select class="custom-select" name="employe">
+                                <option selected="selected">{{ $client->Employees->nom.' '.$client->Employees->prenom }}</option>
+                                @foreach($employes as $employe)
+                                <option value="{{ $employe->id }}">{{ $employe->nom.' '.$employe->prenom }}</option>
+                                @endforeach
+                            </select>
+                           {!! $errors->first('employe', '<small class="help-block">:message</small>') !!}
+                            </div>
+                           </div>
+
                             <div class="modal-footer">
                                 <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>
                                 <button type="submit" class="btn btn-rounded btn- btn-sm right">Modifier</buttom>

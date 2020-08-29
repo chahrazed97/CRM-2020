@@ -9,24 +9,34 @@ use App\Http\Controllers\Controller;
 use App\models\messageEmp;
 use App\models\Employees; 
 use DB;
+use Auth;
 
 class equipeConversationController extends Controller
 {
     public function index()
     {
-        $sender_emp = DB::table('messagesempl')
-        ->select('send_emp_id', DB::raw('count(id) as empl_count'))
-        ->where('receiv_emp_id', '=', 1)
-        ->groupBy('send_emp_id')
-        ->get();
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
+        $tt_msgs = messageEmp::where('send_emp_id', '=', $employe->id)->orwhere('receiv_emp_id', '=', $employe->id)->get();
+        $membre_equipe_id = array();
+        foreach($tt_msgs as $msg){
+            if($msg->send_emp_id == $employe->id){
+             $membre_equipe_id[] = $msg->receiv_emp_id;
+            }else{
+                $membre_equipe_id[] = $msg->send_emp_id;
+            }
+        }
+        $sender_emp = array_count_values($membre_equipe_id);
         return view('front_office.mesConversations.EquipeConversation.equipeConversation_list', compact('sender_emp'));
     }
 
     
     public function conversationEmploye(Employees $employe)
     {
-        $msg_envoye = messageEmp::where('send_emp_id', '=', 1 );
-        $msg_recu = messageEmp::where('receiv_emp_id', '=', 1 );
+        $employe_user= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
+        $msg_envoye = messageEmp::where('send_emp_id', '=', $employe_user->id )->where('receiv_emp_id', '=', $employe->id);
+        $msg_recu = messageEmp::where('receiv_emp_id', '=', $employe_user->id )->where('send_emp_id', '=', $employe->id);
 
         $msg_all = $msg_envoye->unionAll($msg_recu)->latest()->get();
         return view('front_office.mesConversations.EquipeConversation.conversation_employe', compact('msg_all'));
@@ -34,7 +44,9 @@ class equipeConversationController extends Controller
 
     public function destroy(Employees $employe)
     {
-        $msg_emp = messageEmp::where('send_emp_id', '=', $employe->id)->where('receiv_emp_id','=',1)->get();   
+        $employe_user= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
+        $msg_emp = messageEmp::where('send_emp_id', '=', $employe->id)->where('receiv_emp_id','=', $employe_user->id)->get();   
         foreach ( $msg_emp as $msg ){
             $msg->delete();
         }

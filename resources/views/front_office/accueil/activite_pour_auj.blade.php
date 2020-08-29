@@ -1,4 +1,4 @@
-<div class="col-xl-8 col-lg-7 col-md-12 mt-5">
+
     <div id="ajaxdiv" class="card rad">
         <div class="card-body">
 
@@ -40,7 +40,7 @@
                                         <div class="col-sm-6 col-md-1">
                                             <div class="row">
                                             @if ( $activite->type_activite == 'e-mail' )
-                                                <a class="lien-ch" href="{{ route('index.emails', ['client_id' => 0,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => $activite->id, 'type' => 'activites']) }}" data-toggle="tooltip" data-placement="left" title="Effectuer l'activité"><button class="btn btn-rounded btn- btn-sm"><i class="fa fa-send"></i></button></a>
+                                                <a class="lien-ch" href="{{ route('index.emails', ['client_id' => 0, 'prospect_id' => 0,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => $activite->id, 'type' => 'activites']) }}" data-toggle="tooltip" data-placement="left" title="Effectuer l'activité"><button class="btn btn-rounded btn- btn-sm"><i class="fa fa-send"></i></button></a>
                                             @endif
                                                 <a class="lien-ch" href="{{ route('accueil.activite.terminer', ['activite' => $activite]) }}" title="Marquer comme terminé" ><button class="btn btn-rounded btn- btn-sm" onclick= "return confirm('Etes vous sur de vouloir marquer cet activité comme terminée?')" ><i class="fa fa-check-square-o"></i></button></a>
                                                 <a class="lien-ch"><button id="modif{{ $activite->id }}" class="btn btn-rounded btn- btn-sm" title="modifier l'activité"><i class="fa fa-pencil-square-o"></i></button></a>
@@ -70,7 +70,7 @@
         </ul>
     </div>
     
-</div>
+
 @section('ajax2')
 @foreach ( $activites as $activite )
     <script>

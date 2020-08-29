@@ -22,8 +22,10 @@ class CreateProspectTable extends Migration
             $table->text('code_postal');
             $table->date('date_naissance');
             $table->text('pays');
-            $table->string('status');
+            $table->string('status')->default('non_active');
+            $table->unsignedInteger('employee_id')->nullable()->default(0);
             $table->unsignedInteger('admin_id');
+            $table->foreign('employee_id')->references('id')->on('employees');
             $table->foreign('admin_id')->references('id')->on('users')->nullable()->default(1);
             $table->timestamps();
             $table->dateTime('deleted_at')->nullable();
@@ -37,6 +39,10 @@ class CreateProspectTable extends Migration
      */
     public function down()
     {
+        Schema::table('Prospect', function(Blueprint $table) {
+           
+			$table->dropForeign('Prospect_employee_id_foreign');
+		});
         Schema::dropIfExists('Prospect');
     }
 }

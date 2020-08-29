@@ -64,7 +64,7 @@
                                        <span class="fa fa-star"></span>
                                        @endfor
                                     </td>
-                                    <td><a class="lien-client" href="#"  title="voir l'historique de ce prospect"><i class="fa fa-database"></i></a></td>
+                                    <td><a class="lien-client" href="{{ route('historique.prospect', ['prospect' => $prospect]) }}"  title="voir l'historique de ce prospect"><i class="fa fa-database"></i></a></td>
                                     
                                 </tr>
                                 @endforeach

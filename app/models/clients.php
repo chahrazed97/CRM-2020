@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Messg;
 use DB;
+use Auth;
 
 class clients extends Model
 {
@@ -45,30 +46,36 @@ class clients extends Model
     
     public function Employees() 
 	{
-		return $this->belongsTo('App\models\Employees');
+		return $this->belongsTo('App\models\Employees', 'employee_id');
     }
     
     public function newClient()
     {
-        $newClient = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_active')->count();
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
+        $newClient = self::where('employee_id', '=', $employe->id)->whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_active')->count();
         return $newClient;
     }
 
     public function newClients()
     {
-        $newClient = self::whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_active')->get();
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
+        $newClient = self::where('employee_id', '=', $employe->id)->whereDate('created_at', '=', Carbon::today())->where('status', '=', 'non_active')->get();
         return $newClient;
     }
 
 
     public function isBirthday()
     {
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
         $date = Carbon::now(); 
         $jour= $date->format("d");
         $mois = $date->format("m");
         
         $non_envoye = 0;
-        $is_birthday = self::whereDay('date_naissance', '=', $jour)->whereMonth('date_naissance', '=', $mois)->get();
+        $is_birthday = self::where('employee_id', '=', $employe->id)->whereDay('date_naissance', '=', $jour)->whereMonth('date_naissance', '=', $mois)->get();
         foreach( $is_birthday as $birthday){
             $mssgs = Messg::where('table_id', '=', $birthday->id)->where('destination', '=', $birthday->email)->where('table', '=', 'clients_anniv')->whereDate('created_at', '=', Carbon::today() )->count();
             if( $mssgs == 0 ){
@@ -84,13 +91,15 @@ class clients extends Model
 
     public function isBirthdayClients()
     {
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
         $date = Carbon::today(); 
         $jour= $date->format("d");
         $mois = $date->format("m");
         
         $tt_nn_envoye = array();
         $non_envoye_id = array();
-        $is_birthday = self::whereDay('date_naissance', '=', $jour)->whereMonth('date_naissance', '=', $mois)->get();
+        $is_birthday = self::where('employee_id', '=', $employe->id)->whereDay('date_naissance', '=', $jour)->whereMonth('date_naissance', '=', $mois)->get();
         foreach( $is_birthday as $birthday){
             $mssgs = Messg::where('table_id', '=', $birthday->id)->where('destination', '=', $birthday->email)->where('table', '=', 'clients_anniv')->whereDate('created_at', '=', Carbon::today() )->count();
             if( $mssgs == 0 ){

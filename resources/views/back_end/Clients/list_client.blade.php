@@ -44,6 +44,7 @@
                                     <th>Code postale</th>
                                     <th>métier</th>
                                     <th>Score</th>
+                                    <th>Suivi par</th>
                                     <th></th>
                                     <th></th>
                                     
@@ -80,6 +81,7 @@
                                        <span class="fa fa-star"></span>
                                        @endfor
                                     </td>
+                                    <td>{{ $client->Employees->nom.' '.$client->Employees->prenom }}</td>
                                     <td><a class="lien-client" href="{{ route('admin.historique.client', ['client' => $client , 'scorecheck' => $scorecheck, 'scoreNocheck' => $scoreNocheck]) }}"  title="voir l'historique de ce client"><i class="fa fa-database"></i></a></td>
                                     <!-- start dropdawn buttons -->
                                     

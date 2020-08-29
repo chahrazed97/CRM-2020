@@ -11,6 +11,7 @@ use App\models\messageEmp;
 use App\models\messageAdmin;
 use Carbon\Carbon;
 use App\User;
+use Auth;
 
 class OurTeamController extends Controller
 {
@@ -22,8 +23,10 @@ class OurTeamController extends Controller
 
     public function index()
     {
-      $employee = Employees::select('id', 'nom', 'prenom', 'email', 'phone', 'role');
-      $admin = User::select('id', 'nom', 'prenom', 'email', 'phone', 'role');
+      $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
+      $employee = Employees::where('id', '!=', $employe->id)->select('id', 'nom', 'prenom', 'email', 'phone', 'role');
+      $admin = User::where('id', '=', 1)->select('id', 'nom', 'prenom', 'email', 'phone', 'role');
       $membres = $admin->union($employee)->get();
       
       return view('front_office.Our_team.membres_equipe', compact('membres'));
@@ -31,11 +34,13 @@ class OurTeamController extends Controller
 
     public function EnvoyerMsg($id, $role)
     {
+      $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
       if ( $role !== 'admin'){
           $msgEmp = new messageEmp();
           $msgEmp->message = $_POST['msg'];
           $msgEmp->date_msg = Carbon::now();
-          $msgEmp->send_emp_id = 1;
+          $msgEmp->send_emp_id = $employe->id;
           $msgEmp->receiv_emp_id = $id;
           $msgEmp->save();
         
@@ -43,7 +48,7 @@ class OurTeamController extends Controller
           $msgAdmin = new messageAdmin();
           $msgAdmin->message = $_POST['msg'];
           $msgAdmin->date_msg = Carbon::now();
-          $msgAdmin->send_emp_id = 1;
+          $msgAdmin->send_emp_id = $employe->id;
           $msgAdmin->receiv_admin_id = $id;
           $msgAdmin->save();
       }
