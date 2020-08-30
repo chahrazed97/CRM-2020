@@ -43,7 +43,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="assets/images/icon/logo.png" alt="logo"></a>
+                    <a href="index.html"><img src="{{ asset('assets/images/icon/logo.png')}}" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -101,86 +101,75 @@
                             </form>
                         </div>
                     </div>
-                    <!-- profile info & task notification -->
+                    <!-- profile info & task notification  ti-bell dropdown-toggle-->
                     <div class="col-md-6 col-sm-4 clearfix">
                         <ul class="notification-area pull-right">
                             <li id="full-view"><i class="ti-fullscreen"></i></li>
                             <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                             <li class="dropdown">
-                                <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
-                                    <span>4</span>
-                                </i>
-                                <div class="dropdown-menu bell-notify-box notify-box">
-                                    <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
+                            <?php  
+                                $nbr_clients = Session::get('nbrClient');
+                                $nbr_prospects = Session::get('nbrProspect');
+                                        
+                                $nbr_totale = $nbr_clients + $nbr_prospects;
+                            ?>
+                                <i class="ti-bell dropdown-toggle" data-toggle="dropdown"><span>{{ $nbr_totale }}</span></i>
+                                <div class="dropdown-menu notify-box nt-enveloper-box">
+                                    <span class="notify-title">Vous avez {{ $nbr_totale }} e-mail(s)</span>
                                     <div class="nofity-list">
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
+                                    @if (Session::has('msgClient')){
+                                      <?php $msg_clients = Session::get('msgClient'); ?>
+                                      @foreach( $msg_clients as $msg_client)
+                                        <a href="{{ route('conversation.client', [ 'client' => $msg_client->clients ]) }}" class="notify-item">
+                                        <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
                                             <div class="notify-text">
-                                                <p>You have Changed Your Password</p>
-                                                <span>Just Now</span>
+                                                <p>De: {{ $msg_client->clients->nom.' '.$msg_client->clients->prenom }}</p>
+                                                <span class="msg">{{ $msg_client->subject }}</span>
+                                                <span>{{ $msg_client->created_at }}</span>
                                             </div>
                                         </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
+                                    @endforeach 
+                                    @endif
+                                    
+                                    @if (Session::has('msgProspect'))
+                                      <?php $msg_prospects = Session::get('msgProspect'); ?>
+                                    
+                                      @foreach( $msg_prospects as $msg_prospect)
+                                        <a href="{{ route('conversation.prospect', ['prospect' => $msg_prospect->Prospect]) }}" class="notify-item">
+                                        <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
                                             <div class="notify-text">
-                                                <p>New Commetns On Post</p>
-                                                <span>30 Seconds ago</span>
+                                                <p>De: {{ $msg_prospect->Prospect->nom.' '.$msg_prospect->Prospect->prenom }}</p>
+                                                <span class="msg">{{ $msg_prospect->subject }}</span>
+                                                <span>{{ $msg_prospect->created_at }}</span>
                                             </div>
                                         </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                            <div class="notify-text">
-                                                <p>Some special like you</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
-                                            <div class="notify-text">
-                                                <p>New Commetns On Post</p>
-                                                <span>30 Seconds ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                            <div class="notify-text">
-                                                <p>Some special like you</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                            <div class="notify-text">
-                                                <p>You have Changed Your Password</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                            <div class="notify-text">
-                                                <p>You have Changed Your Password</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
+                                    @endforeach   
+                                    @endif
                                     </div>
                                 </div>
                             </li>
+                            <?php  
+                                $nbr_emps = Session::get('nbrEmp');
+                            ?>
                             <li class="dropdown">
-                                <i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span>3</span></i>
+                                <i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span>{{ $nbr_emps }}</span></i>
                                 <div class="dropdown-menu notify-box nt-enveloper-box">
-                                    <span class="notify-title">You have 3 new notifications</span>
+                                    <span class="notify-title">Vous avez {{ $nbr_emps }} message(s)</span>
                                     <div class="nofity-list">
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb">
-                                                <img src="{{asset('assets/images/author/author-img1.jpg')}}" alt="image">
-                                            </div>
+                                    @if (Session::has('msgEmp')){
+                                    <?php $msg_Emps = Session::get('msgEmp'); ?>  
+                                    @foreach( $msg_Emps as $msg_Emp)
+                                    <?php $employe = App\models\Employees::where('id', '=', $msg_Emp->send_emp_id)->first();  ?>
+                                        <a href="{{ route('conversation.employe', ['employe' => $employe]) }}" class="notify-item">
+                                        <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
                                             <div class="notify-text">
-                                                <p>Aglae Mayer</p>
-                                                <span class="msg">Hey I am waiting for you...</span>
-                                                <span>3:15 PM</span>
+                                                <p>De: {{ $employe->nom.' '.$employe->prenom }}</p>
+                                                <span class="msg">{{ $msg_Emp->msg }}</span>
+                                                <span>{{ $msg_Emp->created_at }}</span>
                                             </div>
                                         </a>
-                                        
+                                    @endforeach
+                                   @endif 
                                     </div>
                                 </div>
                             </li>

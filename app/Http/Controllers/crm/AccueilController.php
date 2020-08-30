@@ -18,6 +18,10 @@ use App\models\Produit;
 use App\models\Reclamation;
 use App\models\Employees;
 use App\models\Prospect;
+use App\models\MessgClient;
+use App\models\MessgProspect;
+use App\models\messageEmp;
+use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use DB;
 use Auth;
@@ -37,6 +41,9 @@ class AccueilController extends Controller
 	$this->produit = new Produit();
 	$this->reclamation = new Reclamation();
 	$this->prospect = new Prospect();
+	$this->mssgClient = new MessgClient();
+	$this->mssgProspect = new MessgProspect();
+	$this->mssgEmp = new messageEmp();
 		
 	}
 
@@ -53,6 +60,7 @@ class AccueilController extends Controller
 		$rendezVous_termine= $this->activite->RendezVousTermine();
 		$liens = lienRapide::where('employee_id', '=', $employe->id)->get();
 		$clients = clients::where('employee_id', '=', $employe->id)->get();
+		//notification
 		$new_client = $this->clients->newClient();
 		$new_clients = $this->clients->newClients();
 		$new_prospect = $this->prospect->newProspect();
@@ -67,6 +75,30 @@ class AccueilController extends Controller
 		$new_reclams = $this->reclamation->newReclamations();
 		$birthday_today = $this->clients->isBirthday();
 		$birthday_clients = $this->clients->isBirthdayClients();
+
+		//notification menu bar
+		 $new_msgClient = $this->mssgClient->newMessagClients();
+		 $nbr_msgClient = $this->mssgClient->newMessagClient();
+		 $new_msgProspect = $this->mssgProspect->newMessagProspects();
+		 $nbr_msgProspect = $this->mssgProspect->newMessagProspect();
+		 $new_msgEmp = $this->mssgEmp->newMsgEmps();
+		 $nbr_msgEmp = $this->mssgEmp->newMsgEmp();
+        
+		 if ($nbr_msgClient !== 0){
+		 Session::put('msgClient', $new_msgClient);
+		 } 
+		 Session::put('nbrClient', $nbr_msgClient);
+		 
+		 if ($nbr_msgProspect !== 0){
+		 Session::put('msgProspect', $new_msgProspect);
+		 }
+		 Session::put('nbrProspect', $nbr_msgProspect);
+
+		 if ($nbr_msgEmp !== 0){
+			Session::put('msgEmp', $new_msgEmp);
+		}
+			Session::put('nbrEmp', $nbr_msgEmp);
+		 
 		
 		return view('front_office.accueil.CRMaccueil', compact('activites', 'email_ouvert', 'email_termine', 'appel_ouvert', 'appel_termine', 'rendezVous_ouvert', 'rendezVous_termine', 'liens', 'new_client', 'new_clients',  'new_event', 'new_events', 'new_product', 'new_products', 'new_promo', 'new_promos', 'new_reclam', 'new_reclams', 'birthday_today', 'birthday_clients', 'new_prospect', 'new_prospects'));
 	}

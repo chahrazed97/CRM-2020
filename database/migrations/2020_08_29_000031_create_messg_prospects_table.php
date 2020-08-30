@@ -17,6 +17,7 @@ class CreateMessgProspectsTable extends Migration
             $table->string('destination');
             $table->string('subject');
             $table->longtext('msg');
+            $table->string('answered')->nullable()->default('no');
             $table->unsignedInteger('prospect_id');
             $table->foreign('prospect_id')->references('id')->on('prospect')->nullable()->default(0);
             $table->timestamps();

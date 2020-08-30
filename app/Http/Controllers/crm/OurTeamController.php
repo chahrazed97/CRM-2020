@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\models\Employees;
 use App\models\messageEmp;
 use App\models\messageAdmin;
+use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use App\User;
 use Auth;
@@ -43,6 +44,14 @@ class OurTeamController extends Controller
           $msgEmp->send_emp_id = $employe->id;
           $msgEmp->receiv_emp_id = $id;
           $msgEmp->save();
+          if (Session::has('msgEmp')){
+            $msgs_des_emp =  Session::get('msgEmp');
+            foreach ($msgs_des_emp as $msg_emp){
+               $msg_emp->answered = "yes";
+               $msg_emp->save();
+            }
+            Session::forget('msgEmp');
+          }
         
       }else{
           $msgAdmin = new messageAdmin();

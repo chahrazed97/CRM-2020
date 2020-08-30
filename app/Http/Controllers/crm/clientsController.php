@@ -34,7 +34,7 @@ class clientsController extends Controller
     {
       $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
 
-      $clients = clients::where('employee_id', '=', $employe->id);
+      $clients = clients::where('employee_id', '=', $employe->id)->get();
       
       return view('front_office.MesClients.list_clients', compact('clients'));
     }

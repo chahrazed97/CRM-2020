@@ -17,6 +17,7 @@ class CreateMessgClientsTable extends Migration
             $table->string('destination');
             $table->string('subject');
             $table->longtext('msg');
+            $table->string('answered')->nullable()->default('no');
             $table->unsignedInteger('clients_id');
             $table->foreign('clients_id')->references('id')->on('clients')->nullable()->default(0);
             $table->timestamps();

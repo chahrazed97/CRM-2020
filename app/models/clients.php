@@ -304,8 +304,13 @@ class clients extends Model
         }
         
         $prod_occ= array_count_values($produits); //compter le nbr d'occurence de chaque element du tableau 'produit'
+        if(!empty($prod_occ)){
         $top_produit = array_keys($prod_occ,max($prod_occ)); //récupere la clé de la valeur la plus grande
+        }else{
+            $top_produit = '/';
+        }
         return $top_produit;
+
         
     }
 

@@ -1,4 +1,4 @@
-@extends('layouts.squelette')
+@extends('layouts.squelette_admin')
 @section('CRMaccueil_CSS')
 <link rel="stylesheet" href="{{asset('CSS_bootsnipp/timeline.css')}}">
 <link rel="stylesheet" href="{{asset('CSS_bootsnipp/activite_dashboard.css')}}">

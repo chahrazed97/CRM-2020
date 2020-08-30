@@ -26,7 +26,7 @@ class mesActivitesController extends Controller
         $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
 
         $events = [];
-        $activites = activite::where('employee_id', '=', $employe->id);
+        $activites = activite::where('employee_id', '=', $employe->id)->get();
         if($activites->count()) {
             foreach ($activites as $key => $value) {
                 $events[] = Calendar::event(

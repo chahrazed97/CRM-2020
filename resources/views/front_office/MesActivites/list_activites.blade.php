@@ -39,7 +39,9 @@
                                     <i class="fa fa-angle-double-down"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="lien-ch" href="{{ route('accueil.activite.terminer', ['activite' => $activite]) }}" data-toggle="tooltip" data-placement="left" title="Effectuer l'activité"><button class="btn btn-rounded btn- btn-xs"><i class="fa fa-send"></i></button></a>
+                                @if ( $activite->type_activite == 'e-mail' )
+                                                <a class="lien-ch" href="{{ route('index.emails', ['client_id' => 0, 'prospect_id' => 0,  'produit_id' => 0, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => $activite->id, 'type' => 'activites']) }}" data-toggle="tooltip" data-placement="left" title="Effectuer l'activité"><button class="btn btn-rounded btn- btn-sm"><i class="fa fa-send"></i></button></a>
+                                            @endif
                                     <a class="lien-ch" href="{{ route('accueil.activite.terminer', ['activite' => $activite]) }}" title="Marquer comme terminé" ><button class="btn btn-rounded btn- btn-xs" onclick= "return confirm('Etes vous sur de vouloir marquer cet activité comme terminée?')" ><i class="fa fa-check-square-o"></i></button></a>
                                     <a class="lien-ch"><button type="button" class="btn btn-rounded btn- btn-xs" title="modifier l'activité" data-toggle="modal" data-target="#ModalLong{{ $activite->id }}"><i class="fa fa-pencil-square-o"></i></button></a>
                                     <a class="lien-ch" href="{{ route('accueil.activite.annuler', ['activite' => $activite]) }}" title="Annuler l'activité"><button class="btn btn-rounded btn- btn-xs" onclick= "return confirm('Etes vous sur de vouloir supprimer cet activité ?')"><i class="fa fa-trash-o"></i></button></a>         

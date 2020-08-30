@@ -16,6 +16,7 @@ class CreateMessagesEmplTable extends Migration
             $table->increments('id');
             $table->date('date_msg');
             $table->text('message');
+            $table->string('answered')->nullable()->default('no');
             $table->unsignedInteger('send_emp_id');
             $table->unsignedInteger('receiv_emp_id');
             $table->foreign('send_emp_id')->references('id')->on('employees');

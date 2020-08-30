@@ -47,7 +47,7 @@
                                 @foreach($produits as $produit)
                                 <tr>
                                     <td>{{ $produit->ref_prod }}</td>
-                                    <td>{{ ' ' }}</td>
+                                    <td>{{ $produit->nom }}</td>
                                     <td>{{ $produit->type }}</td>
                                     <td>{{ $produit->prix }}</td>
                                     <td>{{ $produit->taux_tva }}</td>
