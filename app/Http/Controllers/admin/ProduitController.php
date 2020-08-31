@@ -10,6 +10,10 @@ use App\models\Produit;
 
 class ProduitController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $produits = Produit::All();      

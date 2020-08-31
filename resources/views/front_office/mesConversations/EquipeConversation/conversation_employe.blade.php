@@ -18,8 +18,10 @@
         @foreach ( $msg_all as $msg )
         <?php $i = $i + 1; 
             $employe = App\models\Employees::where('id', '=', $msg->send_emp_id)->first();
+            $employe_user= App\models\Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->select('id')->first();
+
         ?>
-            @if ( $msg->send_emp_id !== 1)
+            @if ( $msg->send_emp_id !== $employe_user->id)
             <?php $inverted = "timeline-inverted";
                   $emetteur = $employe->nom.' '.$employe->prenom. ':'; ?>
             @else

@@ -17,10 +17,10 @@ use Auth;
 class OurTeamController extends Controller
 {
    
-    public function __construct()
-    {
-      
-    }
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
 
     public function index()
     {
@@ -44,13 +44,16 @@ class OurTeamController extends Controller
           $msgEmp->send_emp_id = $employe->id;
           $msgEmp->receiv_emp_id = $id;
           $msgEmp->save();
-          if (Session::has('msgEmp')){
-            $msgs_des_emp =  Session::get('msgEmp');
-            foreach ($msgs_des_emp as $msg_emp){
-               $msg_emp->answered = "yes";
-               $msg_emp->save();
+
+          if (Session::get('nbrEmp') !== 0){
+            $nbrEmp = Session::get('nbrEmp');
+            for($i = 0; $i < $nbrEmp; $i++){
+                $msg_emp = Session::get('msgEmp'.$i);
+                if($msg_emp->send_emp_id == $id)
+                $msg_emp->answered = "yes";
+                $msg_emp->save(); 
+                Session::forget('msgEmp'.$i);
             }
-            Session::forget('msgEmp');
           }
         
       }else{

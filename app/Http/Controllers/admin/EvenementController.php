@@ -12,6 +12,10 @@ use App\models\Evenement;
 
 class EvenementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $evenements = Evenement::All();     

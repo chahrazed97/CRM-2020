@@ -28,8 +28,9 @@ class clientsController extends Controller
     {
       $this->commande = new Commande(); 
       $this->client = new clients();
+      $this->middleware('auth');
     }
-
+   
     public function index()
     {
       $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();

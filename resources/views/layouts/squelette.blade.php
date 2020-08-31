@@ -117,9 +117,9 @@
                                 <div class="dropdown-menu notify-box nt-enveloper-box">
                                     <span class="notify-title">Vous avez {{ $nbr_totale }} e-mail(s)</span>
                                     <div class="nofity-list">
-                                    @if (Session::has('msgClient')){
-                                      <?php $msg_clients = Session::get('msgClient'); ?>
-                                      @foreach( $msg_clients as $msg_client)
+                                    @for ($i=0; $i< $nbr_clients; $i++)
+                                     @if (Session::has('msgClient'.$i)){
+                                      <?php $msg_client = Session::get('msgClient'.$i); ?>
                                         <a href="{{ route('conversation.client', [ 'client' => $msg_client->clients ]) }}" class="notify-item">
                                         <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
                                             <div class="notify-text">
@@ -128,14 +128,14 @@
                                                 <span>{{ $msg_client->created_at }}</span>
                                             </div>
                                         </a>
-                                    @endforeach 
-                                    @endif
+                                     
+                                      @endif
+                                    @endfor
                                     
-                                    @if (Session::has('msgProspect'))
-                                      <?php $msg_prospects = Session::get('msgProspect'); ?>
-                                    
-                                      @foreach( $msg_prospects as $msg_prospect)
-                                        <a href="{{ route('conversation.prospect', ['prospect' => $msg_prospect->Prospect]) }}" class="notify-item">
+                                    @for ($i=0; $i< $nbr_prospects; $i++)
+                                     @if (Session::has('msgProspect'.$i)){
+                                      <?php $msg_prospect = Session::get('msgProspect'.$i); ?>
+                                        <a href="{{ route('conversation.prospect', [ 'prospect' => $msg_prospect->Prospect ]) }}" class="notify-item">
                                         <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
                                             <div class="notify-text">
                                                 <p>De: {{ $msg_prospect->Prospect->nom.' '.$msg_prospect->Prospect->prenom }}</p>
@@ -143,8 +143,9 @@
                                                 <span>{{ $msg_prospect->created_at }}</span>
                                             </div>
                                         </a>
-                                    @endforeach   
-                                    @endif
+                                     
+                                      @endif
+                                    @endfor
                                     </div>
                                 </div>
                             </li>
@@ -156,10 +157,10 @@
                                 <div class="dropdown-menu notify-box nt-enveloper-box">
                                     <span class="notify-title">Vous avez {{ $nbr_emps }} message(s)</span>
                                     <div class="nofity-list">
-                                    @if (Session::has('msgEmp')){
-                                    <?php $msg_Emps = Session::get('msgEmp'); ?>  
-                                    @foreach( $msg_Emps as $msg_Emp)
-                                    <?php $employe = App\models\Employees::where('id', '=', $msg_Emp->send_emp_id)->first();  ?>
+                                    @for ($i = 0; $i<$nbr_emps; $i++)
+                                      @if (Session::has('msgEmp'.$i)){ 
+                                        <?php $msg_Emp = Session::get('msgEmp'.$i);
+                                              $employe = App\models\Employees::where('id', '=', $msg_Emp->send_emp_id)->first();  ?>
                                         <a href="{{ route('conversation.employe', ['employe' => $employe]) }}" class="notify-item">
                                         <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
                                             <div class="notify-text">
@@ -168,8 +169,8 @@
                                                 <span>{{ $msg_Emp->created_at }}</span>
                                             </div>
                                         </a>
-                                    @endforeach
-                                   @endif 
+                                      @endif 
+                                    @endfor
                                     </div>
                                 </div>
                             </li>

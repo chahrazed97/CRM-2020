@@ -11,6 +11,10 @@ use App\models\actionMarketing;
 
 class actionMarketingController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
     public function index()
     {
       $action_marketing = actionMarketing::All();

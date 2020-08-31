@@ -44,7 +44,7 @@ class AccueilController extends Controller
 	$this->mssgClient = new MessgClient();
 	$this->mssgProspect = new MessgProspect();
 	$this->mssgEmp = new messageEmp();
-		
+	$this->middleware('auth');
 	}
 
 	public function index()
@@ -85,19 +85,32 @@ class AccueilController extends Controller
 		 $nbr_msgEmp = $this->mssgEmp->newMsgEmp();
         
 		 if ($nbr_msgClient !== 0){
-		 Session::put('msgClient', $new_msgClient);
+			 $i = 0;
+			 foreach ($new_msgClient as $msgClient){
+				 Session::put('msgClient'.$i, $msgClient);
+				 $i = $i+1;
+			 }
 		 } 
 		 Session::put('nbrClient', $nbr_msgClient);
-		 
+
 		 if ($nbr_msgProspect !== 0){
-		 Session::put('msgProspect', $new_msgProspect);
-		 }
+			$i = 0;
+			foreach ($new_msgProspect as $msgProspect){
+				Session::put('msgProspect'.$i, $msgProspect);
+				$i = $i+1;
+			}
+		} 
 		 Session::put('nbrProspect', $nbr_msgProspect);
 
+		 
 		 if ($nbr_msgEmp !== 0){
-			Session::put('msgEmp', $new_msgEmp);
-		}
-			Session::put('nbrEmp', $nbr_msgEmp);
+			$i = 0;
+			foreach ($new_msgEmp as $msgEmp){
+				Session::put('msgEmp'.$i, $msgEmp);
+				$i = $i+1;
+			}
+		} 
+		 Session::put('nbrEmp', $nbr_msgEmp);
 		 
 		
 		return view('front_office.accueil.CRMaccueil', compact('activites', 'email_ouvert', 'email_termine', 'appel_ouvert', 'appel_termine', 'rendezVous_ouvert', 'rendezVous_termine', 'liens', 'new_client', 'new_clients',  'new_event', 'new_events', 'new_product', 'new_products', 'new_promo', 'new_promos', 'new_reclam', 'new_reclams', 'birthday_today', 'birthday_clients', 'new_prospect', 'new_prospects'));

@@ -181,7 +181,7 @@
                             <ul class="list-group">
                                 @for ($i = 0; $i < count($birthday_clients) ; $i++)
                                 <?php
-                                    echo $birthday_clients[$i];
+                                    
                                     $b_client = App\models\clients::where('id', '=', $birthday_clients[$i])->first();
                                     if ($b_client->scoreClient() !== 0)
                                     {

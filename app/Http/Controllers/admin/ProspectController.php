@@ -12,6 +12,10 @@ use App\models\Prospect;
 
 class ProspectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $prospects = Prospect::All();

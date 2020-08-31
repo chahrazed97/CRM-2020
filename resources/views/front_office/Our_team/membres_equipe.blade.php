@@ -18,7 +18,7 @@
     <!-- Team -->
         <section id="team" class="col-12 mt-4">
             <div class=" col-lg-12 mt-2">
-                <h6 class="section-title h1">notre équipe</h6>
+                <h6 class="section-title h1">mon équipe</h6>
                 <div class="row">
                 @foreach ( $membres as $membre)
                 <!-- Team member -->

@@ -17,9 +17,11 @@ use Auth;
 class ProspectsController extends Controller
 {
   protected $prospect;
+ 
     public function __construct()
     {
      $this->prospect = new Prospect(); 
+     $this->middleware('auth');
     }
 
     public function index()

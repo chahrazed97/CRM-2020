@@ -17,6 +17,7 @@ use App\models\Reclamation;
 use App\models\Activite;
 use App\models\Employees;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Carbon\carbon;
 use DB;
 use Auth;
@@ -26,9 +27,9 @@ class sendEmailController extends Controller
     protected $messg;
     public function __construct()
     {
+        $this->middleware('auth');
         $this->messg = new Messg();
     }
-    
 
     public function index($client_id, $prospect_id, $produit_id, $promo_id, $event_id, $reclam_id, $activite_id, $type)
     {
@@ -224,16 +225,40 @@ class sendEmailController extends Controller
                     $activite->clients_id = $dernier_msg->table_id;
 
                     $activite->save();
+
+                    if (Session::get('nbrClient') !== 0){
+                        $nbrClient = Session::get('nbrClient');
+                        for($i = 0; $i < $nbrClient; $i++){
+                            $msg_client = Session::get('msgClient'.$i);
+                            if($msg_client->clients_id == $dernier_msg->table_id){
+                            $msg_client->answered = "yes";
+                            $msg_client->save(); 
+                            Session::forget('msgClient'.$i);
+                        }
+                    }
+                    }
                     return redirect()->back()->with("ok", "Envoyé avec succès!");
                 }
 
                 if ($dernier_msg->table == 'prospect_contact')
                 {
+                    if (Session::get('nbrProspect') !== 0){
+                        $nbrProspect = Session::get('nbrProspect');
+                        for($i = 0; $i < $nbrProspect; $i++){
+                            $msg_prospect = Session::get('msgProspect'.$i);
+                            if($msg_prospect->prospect_id == $dernier_msg->table_id){
+                            $msg_prospect->answered = "yes";
+                            $msg_prospect->save(); 
+                            Session::forget('msgProspect'.$i);
+                        }
+                    }
+                    }
                     return redirect()->back()->with("ok", "Envoyé avec succès!");
                 }
                
                    return redirect('/')->with("ok", "Envoyé avec succès!");
                 
             }
-    }
+        }
 }
+

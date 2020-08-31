@@ -23,6 +23,7 @@ class ClientController extends Controller
 
     public function __construct()
     {
+         $this->middleware('auth');
       $this->commande = new Commande(); 
       $this->client = new clients();
     }
