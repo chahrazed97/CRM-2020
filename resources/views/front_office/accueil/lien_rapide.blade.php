@@ -4,7 +4,7 @@
             <button class="btn btn-rounded btn- btn-xs right" type="button" data-toggle="dropdown">
                 <i class="fa fa-plus"></i>
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu" id="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 @include('front_office.accueil.ajouter_lien')
             </div>
         

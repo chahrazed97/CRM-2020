@@ -1,5 +1,5 @@
 <div class="col-12">
-    <form class="card" action="{{ route('accueil.activite.ajouter') }}" method="post">
+    <form id="ajouterActivite" class="card" action="{{ url('accueil/creer') }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="card-body">
             <div class="modal-header">
@@ -20,40 +20,40 @@
                 <label class="custom-control-label" for="customRadio6">Rendez-vous</label>
             </div>
 
-            <div class="form-group has-error">
+            <div class="form-group">
                 <label for="example-text-input" class="col-form-label">Titre</label>
-                <div class="form-group {!! $errors->has('titre') ? 'has-error' : '' !!}">
+                <div class="form-group">
                     <input class="form-control" type="text" name="titre" placeholder="Ajouter un titre" id="example-text-input" value="{{ old('titre') }}">
-                    {!! $errors->first('titre', '<small class="help-block">:message</small>') !!}
+                    <small class="help-block" style="color : red;"></small>
                 </div>
 	
             </div>
             <div class="row">
                 <div class="col-6">
-                    <div class="form-group has-error">
+                    <div class="form-group">
                         <label for="example-date-input" class="col-form-label">Date</label>
-                        <div class="form-group {!! $errors->has('date') ? 'has-error' : '' !!}">
+                        <div class="form-group">
                             <input class="form-control" type="date" name="date" placeholder="Ajouter une date" id="example-date-input"  value="{{ old('date') }}">
-                            {!! $errors->first('date', '<small class="help-block">:message</small>') !!}
+                            <small class="help-block" style="color : red;"></small>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-6">
-                    <div class="form-group has-error">
+                    <div class="form-group">
                         <label for="example-time-input" class="col-form-label">Heure</label>
-                        <div class="form-group {{ $errors->has('heure') ? 'has-error' : '' }}">
+                        <div class="form-group">
                             <input class="form-control" type="time" name="heure" placeholder="Donner l'horaire" id="example-time-input"  value="{{ old('heure') }}">
-                            {!! $errors->first('heure', '<small class="help-block">:message</small>') !!}
+                            <small class="help-block" style="color : red;"></small>
                         </div>
 	
                     </div>
                 </div>
             </div>
 
-            <div class="form-group has-error">
+            <div class="form-group">
                 <label class="col-form-label">Selection client</label>
-                <div class="form-group {{ $errors->has('client') ? 'has-error' : '' }}">   
+                <div class="form-group">   
                 <select class="custom-select" name="client">
                     <option selected="selected">Ajouter un client</option>
                     <?php 
@@ -66,18 +66,21 @@
                     @endforeach
                 
                 </select>
-                {!! $errors->first('client', '<small class="help-block">:message</small>') !!}
+                <small class="help-block"></small>
                 </div>
             </div>
 
-            <div class="form-group has-error">
+            <div class="form-group">
                 <label for="example-text-input-lg" class="col-form-label" >Description</label>
                 <input class="form-control form-control-lg" type="text" name="description" placeholder="Ajouter une description"  value="{{ old('description') }}" id="example-text-input-lg">
+                <small class="help-block"></small>
             </div>
             <div class="modal-footer">
                 <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>
-                <button type="submit" class="btn btn-rounded btn- btn-sm right">Créer</buttom>
+                <button type="submit" id="sub" class="btn btn-rounded btn- btn-sm right">Créer</buttom>
             </div>
         </div>
     </form>
 </div>
+
+

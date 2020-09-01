@@ -135,7 +135,9 @@
     /*================================
     slider-area background setting
     ==================================*/
-    $('.settings-btn, .offset-close').on('click', function() {
+   
+
+    $('.settings-btn, .offset2').on('click', function() {
         $('.offset-area').toggleClass('show_hide');
         $('.settings-btn').toggleClass('active');
     });

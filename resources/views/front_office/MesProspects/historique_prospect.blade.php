@@ -110,7 +110,7 @@
                 <textarea type="text" class="form-control" rows="5" name="comment" placeholder="Commenter ce prospect" required></textarea>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Envoyer</button>
+                <button type="submit" class="btn btn-primary">Commenter</button>
             </div>
             </div> 
         </form>

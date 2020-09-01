@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\changerParametreRequest;
 use App\services\AdminService;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
+use App\models\Employees;
 use View;
 use Auth;
 
@@ -64,5 +67,39 @@ class AdminController extends Controller
         Auth::logout();
         return Redirect::to('login');
     }
+    
+    public function changerParametres(changerParametreRequest $request)
+    {
+        $employe_user = Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom)->where('phone', '=', Auth::user()->phone)->where('email', '=', Auth::user()->email)->where('role', '=',Auth::user()->role)->first();
 
+        $phone = $request->get('phone');
+        $email = $request->get('email');
+        $old_psw = $request->get('old_psw');
+        $new_psw = $request->get('new_psw');
+        $confirm_new_psw = $request->get('confirm_new_psw');
+
+        Auth::user()->phone = $phone;
+        $employe_user->phone = $phone;
+        Auth::user()->email = $email;
+        $employe_user->email = $email;
+        Auth::user()->save();
+        $employe_user->save();
+        if(isset($old_psw)){
+            if(Hash::check($old_psw, Auth::user()->password)){
+                if (isset($new_psw) and isset($confirm_psw)){
+                   if($new_psw == $confirm_psw){
+                      Auth::user()->password = Hash::make($new_psw);
+                      Auth::user()->save();
+                      return Redirect::back()->with("ok", "vos modifications ont bien été modifiés");
+                   }else{
+                    return Redirect::back()->with("ok","Confirmation du mot do passe incorrete");
+                   }
+                }
+
+            }else{
+                return Redirect::back()->with("ok","mot de passe incorrercte");
+            }
+        }
+
+    }
 }

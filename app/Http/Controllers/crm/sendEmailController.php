@@ -173,7 +173,7 @@ class sendEmailController extends Controller
             }
         }
         //envoyer a tout les clients
-        if ( $dernier_msg->destination == 'tout_les_clients' ){
+        elseif ( $dernier_msg->destination == 'tout_les_clients' ){
             $destination = $clients_email->get();
             foreach($destination as $dest){
                 Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($dest) {
@@ -184,7 +184,7 @@ class sendEmailController extends Controller
             }
         }
          //envoyer a tout les prospect
-         if ( $dernier_msg->destination == 'tout_les_prospects' ){
+         elseif ( $dernier_msg->destination == 'tout_les_prospects' ){
             $destination = $prospects_email->get();
             foreach($destination as $dest){
                 Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($dest) {

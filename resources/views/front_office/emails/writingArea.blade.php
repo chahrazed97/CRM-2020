@@ -84,7 +84,7 @@
    <b>date début :</b> {{ $promo->start_date }}</br>
    <b>date fin : </b>{{ $promo->end_date }}</br>
    <b>Produit concerné : </b>{{ $promo->Produit->nom }}</br>
-   <b>Pourcentage de réduction : </b>{{ '-'.$promo->pourcetage }}
+   <b>Pourcentage de réduction : </b>-{{ $promo->pourcetage_promo }}%
    @endif
 
    @if ( $type == 'evenement')
@@ -166,7 +166,6 @@
 <input name="envoyer" class="btn btn-rounded btn-secondary mb-3 mt-2 mr-2 right" onclick="myFunction()" type="submit" value="Envoyer à tout le monde">
 <input name="envoyer" class="btn btn-rounded btn-secondary mb-3 mt-2 mr-2 right" onclick="myFunction()" type="submit" value="Envoyer à tout les clients">
 <input name="envoyer" class="btn btn-rounded btn-secondary mb-3 mt-2 mr-2 right" onclick="myFunction()" type="submit" value="Envoyer à tout les prospects">
-
 @endif
 <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>
 

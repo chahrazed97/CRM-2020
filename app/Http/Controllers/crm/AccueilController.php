@@ -148,6 +148,7 @@ class AccueilController extends Controller
 	$activite->clients_id = $client_id;
 	$activite->description = $description;
 	$activite->save();
+	//return response()->json(['ok'=>'Data is successfully added']);
 	return redirect()->back()->with("ok", "L'activité " . $activite->titre . " a bien été créée.");
   }
 
@@ -176,6 +177,7 @@ class AccueilController extends Controller
 		$time = $request->get('heure');
 		$client_id = $request->get('client');
 		$description = $request->get('description');
+		$status = $request->get('status');
 		$date_tt= $date.' '.$time;
 		if(!isset($titre)){
 			$titre= $type;
@@ -186,6 +188,7 @@ class AccueilController extends Controller
 		$activite->date_act = $date_tt;
 		$activite->clients_id = $client_id;
 		$activite->description = $description;
+		$activite->status = $status;
 		$activite->save();
 		return redirect()->back()->with("ok", "L'activité " . $activite->titre . " a bien été modifiée.");
 

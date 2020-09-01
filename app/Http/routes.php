@@ -90,7 +90,7 @@ LOGIN
 Route::get('login', 'CRM\AdminController@showLoginForm')->name('login');
 Route::post('login/process', 'CRM\AdminController@processLoginAdmin')->name('login/process');
 Route::get('logout', 'CRM\AdminController@logout')->name('logout');
-Route::get('/hom', 'DashboardController@index')->name('home');
+Route::post('login/update', 'CRM\AdminController@changerParametres')->name('login.update');
 
 /*
 -----BACK_END---------

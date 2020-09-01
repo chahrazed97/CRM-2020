@@ -35,7 +35,7 @@
             <div class="form-group">
                 <label for="example-text-input" class="col-form-label">Titre</label>
                 <input class="form-control" type="text" name="titre" value="{{ $activite->titre }}" id="example-text-input">
-                {!! $errors->first('titre', '<small class="help-block">:message</small>') !!}
+                <small class="help-block" style="color : red;"></small>
 	
             </div>
             <div class="row">
@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label for="example-date-input" class="col-form-label">Date</label>
                         <input class="form-control" type="date" name="date" value="{{ (new Carbon\Carbon($activite->date_act))->format('Y-m-d') }}" id="example-date-input">
-                        {!! $errors->first('date', '<small class="help-block">:message</small>') !!}
+                        <small class="help-block" style="color : red;"></small>
 	
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label for="example-time-input" class="col-form-label">Heure</label>
                         <input class="form-control" type="time" name="heure" value="{{ (new Carbon\Carbon($activite->date_act))->format('H:i') }}" id="example-time-input">
-                        {!! $errors->first('heure', '<small class="help-block">:message</small>') !!}
+                        <small class="help-block" style="color : red;"></small>
 	
                     </div>
                 </div>
@@ -67,14 +67,25 @@
                     @endforeach
                 
                 </select>
+                <small class="help-block" style="color : red;"></small>
                 
             </div>
 
             <div class="form-group">
                 <label for="example-text-input-lg" class="col-form-label">Description</label>
                 <input class="form-control form-control-lg" type="text" name="description" value="{{ $activite->description }}" id="example-text-input-lg">
-                {!! $errors->first('description', '<small class="help-block">:message</small>') !!}
+                <small class="help-block" style="color : red;"></small>
 	
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Status</label>   
+                <select class="custom-select" name="status">
+                    <option value="{{ $activite->status }}" selected="selected">{{ $activite->status }}</option>
+                    <option value="planifié">Planifié</option>
+                    <option value="terminé">Terminé</option>
+                </select>
+                <small class="help-block" style="color : red;"></small>
             </div>
             <div class="modal-footer">
                 <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>

@@ -42,6 +42,7 @@
                                     <th>Pays</th>
                                     <th>Code postale</th>
                                     <th>Score</th>
+                                    <th>Suivi par</th>
                                     <th></th>
                                     
                                 </tr>
@@ -65,6 +66,7 @@
                                        <span class="fa fa-star"></span>
                                        @endfor
                                     </td>
+                                    </td>{{ $prospect->Employees->nom.' '.$prospect->Employees->prenom }}</td>
                                     <!-- start dropdawn buttons -->
                                     
                                     <td> <button class="btn btn-rounded btn- btn-xs" type="button" data-toggle="dropdown">

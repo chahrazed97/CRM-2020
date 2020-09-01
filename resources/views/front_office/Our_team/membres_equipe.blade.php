@@ -22,7 +22,7 @@
                 <div class="row">
                 @foreach ( $membres as $membre)
                 <!-- Team member -->
-                    <div class="col-4" mt-5">
+                    <div class="col-4 xs-12" mt-5">
                         <div class="image-flip" >
                             <div class="mainflip flip-0">
                                 <div class="frontside">
@@ -31,7 +31,7 @@
                                             <p><img class=" img-fluid" src="{{ asset('img/employe.png') }}"></p>
                                             <h4 class="card-title">{{ $membre->nom.' '.$membre->prenom }}</h4>
                                             <p class="card-text">{{ $membre->role }}</p>
-                                            <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                            <a href="" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                                         </div>
                                     </div>
                                 </div>
