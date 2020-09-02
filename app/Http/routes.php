@@ -15,7 +15,7 @@
 test route
 */
 Route::get('ajax', function () {
-    return view('front_office.mesConversations.tester-search');
+    return view('front_office.mesActivites.test_ajax');
 })->name('ajax_route');
 
 

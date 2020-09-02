@@ -336,11 +336,11 @@
     <script src="{{asset('assets/js/jquery.slimscroll.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.slicknav.min.js')}}"></script>
     @yield('script')
-
     <!-- others plugins -->
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
   @yield('scriptCalendar')
+  @yield('scripts')
 </body>
 
 </html>

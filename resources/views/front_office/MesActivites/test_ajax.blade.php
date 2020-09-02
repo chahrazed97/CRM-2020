@@ -1,6 +1,33 @@
-<div class="col-12">
+@extends('layouts.squelette')
+@section('CRMaccueil_CSS')
+<link rel="stylesheet" href="{{asset('CSS_bootsnipp/activite_dashboard.css')}}">
+ 
+@endsection
+@section('titre', 'Mes activités')
 
-    <form id="ajouterActivite" class="card" action="{{ route('accueil.activite.ajouter') }}" method="post"> 
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<!-- Start datatable js -->
+
+@endsection
+
+@section('contenu')
+<div class="main-content-inner">
+@if(session()->has('ok'))
+	<div class="alert alert-success alert-dismissible">{!! session()->get('ok') !!}</div>
+@endif
+<div class="alert alert-success alert-dismissible hidden">
+                You are now registered, you can login.
+</div>
+    <div class="row">
+<button type="button" class="btn btn-rounded btn- btn-xs right" data-toggle="modal" data-target="#exampleModalLong">Ajouter une activité</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            <form id="ajouterActivite" action="{{ url('accueil/creer') }}" method="post" class="card">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="card-body">
             <div class="modal-header">
@@ -51,38 +78,49 @@
                     </div>
                 </div>
             </div>
-
-           <div class="form-group">
-                <label class="col-form-label">Selection client</label>
-                <div class="form-group">   
-                <select class="custom-select" name="client">
-                    <option selected="selected">Ajouter un client</option>
-                    <?php 
-                    
-                    $employe= App\models\Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
-                    $clients = App\models\clients::where('employee_id', '=', $employe->id)->get();
-                    ?>
-                    @foreach($clients as $client)
-                    <option value="{{ $client->id }}">{{ $client->nom.' '.$client->prenom }}</option>
-                    @endforeach
-                
-                </select>
-                <small class="help-block"></small>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="example-text-input-lg" class="col-form-label" >Description</label>
-                <input class="form-control form-control-lg" type="text" name="description" placeholder="Ajouter une description"  value="{{ old('description') }}" id="example-text-input-lg">
-                <small class="help-block"></small>
-            </div>
-            <div class="modal-footer">
-                <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>
-                <button type="submit" id="sub" class="btn btn-rounded btn- btn-sm right">Créer</buttom>
+            <button type="submit" id="ok">Envoyer</button>
+            </form>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
+<script>
 
+$(function(){
 
+$('#ok').click(function() {
+    $('#exampleModalLong').modal();
+});
+
+$(document).on('submit', '#ajouterActivite', function(e) {  
+    e.preventDefault();
+     
+    $('input+small').text('');
+    $('input').parent().removeClass('has-error');
+     
+    $.ajax({
+        method: $(this).attr('method'),
+        url: $(this).attr('action'),
+        data: $(this).serialize(),
+        dataType: "json"
+    })
+    .done(function(data) {
+        $('.alert-success').removeClass('hidden');
+        $('#exampleModalLong').modal('hide');
+    })
+    .fail(function(data) {
+        $.each(data.responseJSON, function (key, value) {
+            var input = '#ajouterActivite input[name=' + key + ']';
+            $(input + '+small').text(value);
+            $(input).parent().addClass('has-error');
+        });
+    });
+});
+
+})
+
+</script>
+</div>
+</div>
+@endsection

@@ -25,6 +25,7 @@
 @if(session()->has('ok'))
 	<div class="alert alert-success alert-dismissible">{!! session()->get('ok') !!}</div>
 @endif
+
     <div class="row">
      
     <!-- start mes activite calender + list -->
@@ -74,42 +75,34 @@
 
     </div>
 </div>
-<script>
 
-$(function(){
-
-    $(document).on('submit', '#ajouterActivite', function(e) {  
-        e.preventDefault();
-         
-        $('input+small').text('');
-        $('input').parent().removeClass('has-error');
-         
-        $.ajax({
-            method: $(this).attr('method'),
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            dataType: "json"
-        })
-        .done(function(data) {
-            $.ajax({
-                url: "{{ url('accueil/creer') }}",
-                method: 'post',
-            });
-        })
-        .fail(function(data) {
-            $.each(data.responseJSON, function (key, value) {
-                var input = '#ajouterActivite input[name=' + key + ']';
-                $(input + '+small').text(value);
-                $(input).parent().addClass('has-error');
-            });
-        });
-    });
-
-})
-
-</script>
 
 @endsection
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#ajouterActivite').on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "accueil/creer",
+            data: $('#ajouterActivite').serialize(),
+            success: function (response) {
+                console.log(response)
+                $('#exampleModalLong').modal('hide')
+                alert("Data saved");
+                location.reload();
+            },
+            error: function(error){
+                console.log(error)
+                alert('data not saved');
+            }
+        });
+    });
+});
+</script>
+
 @section('scriptCalendar')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
