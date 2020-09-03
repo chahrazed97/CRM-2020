@@ -30,9 +30,10 @@ class ClientSeeder extends Seeder
                 'metier' => 'metier'.$i,
                 'code_postal' => '150014',
                 'date_naissance' => $date,
-                'pays' => 'Algeria',
-                'employee_id' =>1,
-                'admin_id' => 1,
+                'pays' => 'Algérie',
+                'employee_id' => 1,
+                'admin_id' => 5,
+                'pays_id' => 1,
                 'created_at' => $date,
 				'updated_at' => $date
 			]);

@@ -31,8 +31,8 @@ class ProspectSeeder extends Seeder
                 'code_postal' => '150014',
                 'date_naissance' => $date,
                 'pays' => 'Algeria',
-                'employee_id' => 31,
-                'admin_id' => 1,
+                'employee_id' => 30,
+                'admin_id' => 5,
                 'created_at' => $date,
 				'updated_at' => $date
 			]);

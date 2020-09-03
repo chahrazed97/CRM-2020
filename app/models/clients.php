@@ -43,6 +43,10 @@ class clients extends Model
 	{
 		return $this->belongsTo('App\User');
     }
+    public function Pays() 
+	{
+		return $this->belongsTo('App\models\Pays');
+    }
     
     public function Employees() 
 	{

@@ -15,6 +15,7 @@ use App\models\HistoriqueClient;
 use App\models\Activite;
 use App\models\Commentaire;
 use App\models\actionMarketing;
+use App\models\Pays;
 
 class ClientController extends Controller
 {
@@ -71,6 +72,7 @@ class ClientController extends Controller
         $code_postal = $request->get('code_postal');
         $metier = $request->get('metier');
         $employe_id = $request->get('employe');
+        $pays_id = Pays::where('pays', '=', $pays)->select('id')->first();
 
         $client = new clients();
         $client->nom = $nom;
@@ -85,6 +87,7 @@ class ClientController extends Controller
         $client->admin_id = 1;
         $client->employee_id = $employe_id;
         $client->status = 'active';
+        $client->pays_id = $pays_id->id;
             
         $client->save();
         return redirect()->back()->with("ok", "Le client " . $client->nom.' '.$client->prenom . " a bien été créé.");

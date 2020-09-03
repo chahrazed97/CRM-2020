@@ -24,10 +24,10 @@ class dashboardController extends Controller
     public function index()
     {
         $nbr_client = clients::All()->count();
+        $clients =clients::All();
         $nbr_prospect = Prospect::All()->count();
         $promo_enCours = Promotion::where('start_date', '<', Carbon::today())->where('end_date', '>', Carbon::today())->count();
         $action_marketing = actionMarketing::All();
-        $clients_location = clients::select('pays')->get();
         //top 10 produits
         $produits = Produit::All();
         $produit_nbrvent = array();
@@ -45,6 +45,6 @@ class dashboardController extends Controller
         }
         arsort($promo_nbrvent);// Tri du tableau par valeur
         $dix_top_promo = array_slice($promo_nbrvent, 0, 10);
-        return view('back_end.index.index', compact('action_marketing', 'dix_top_produit', 'dix_top_promo', 'clients_location', 'nbr_client', 'nbr_prospect', 'promo_enCours'));
+        return view('back_end.index.index', compact('action_marketing', 'dix_top_produit', 'dix_top_promo', 'nbr_client', 'nbr_prospect', 'promo_enCours', 'clients'));
     }
 }

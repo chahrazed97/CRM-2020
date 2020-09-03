@@ -26,8 +26,10 @@ class CreateClientsTable extends Migration
             $table->string('status')->default('non_active');
             $table->unsignedInteger('employee_id')->nullable()->default(0);
             $table->unsignedInteger('admin_id');
+            $table->unsignedInteger('pays_id');
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->foreign('admin_id')->references('id')->on('users')->nullable()->default(1);
+            $table->foreign('pays_id')->references('id')->on('pays');
             $table->timestamps();
             $table->dateTime('deleted_at')->nullable();
         });
