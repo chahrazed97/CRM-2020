@@ -86,18 +86,18 @@ class AdminController extends Controller
         $employe_user->save();
         if(isset($old_psw)){
             if(Hash::check($old_psw, Auth::user()->password)){
-                if (isset($new_psw) and isset($confirm_psw)){
-                   if($new_psw == $confirm_psw){
+                if (isset($new_psw) and isset($confirm_new_psw)){
+                   if($new_psw == $confirm_new_psw){
                       Auth::user()->password = Hash::make($new_psw);
                       Auth::user()->save();
-                      return Redirect::back()->with("ok", "vos modifications ont bien été modifiés");
+                      return Redirect::to('/')->with("ok", "vos modifications ont bien été modifiés");
                    }else{
-                    return Redirect::back()->with("ok","Confirmation du mot do passe incorrete");
+                    return Redirect::to('/')->with("ok","Confirmation du mot do passe incorrete");
                    }
                 }
 
             }else{
-                return Redirect::back()->with("ok","mot de passe incorrercte");
+                return Redirect::to('/')->with("ok","mot de passe incorrercte");
             }
         }
 

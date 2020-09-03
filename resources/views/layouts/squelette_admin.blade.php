@@ -475,12 +475,13 @@
     <script src="{{asset('assets/js/metisMenu.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.slimscroll.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.slicknav.min.js')}}"></script>
+    @yield('chart')
     @yield('script')
 
     <!-- others plugins -->
     <script src="{{asset('assets/js/plugins.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
-  @yield('scriptCalendar')
+
 </body>
 
 </html>

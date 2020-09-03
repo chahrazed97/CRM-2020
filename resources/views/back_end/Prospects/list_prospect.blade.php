@@ -66,7 +66,7 @@
                                        <span class="fa fa-star"></span>
                                        @endfor
                                     </td>
-                                    </td>{{ $prospect->Employees->nom.' '.$prospect->Employees->prenom }}</td>
+                                    <td>{{ $prospect->Employees->nom.' '.$prospect->Employees->prenom }}</td>
                                     <!-- start dropdawn buttons -->
                                     
                                     <td> <button class="btn btn-rounded btn- btn-xs" type="button" data-toggle="dropdown">

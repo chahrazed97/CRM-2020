@@ -97,9 +97,7 @@ Route::post('login/update', 'CRM\AdminController@changerParametres')->name('logi
 */
 
 /* index */
-Route::get('admin/home', function () {
-    return view('back_end.index.index');
-})->name('admin.home');
+Route::get('admin/home', 'admin\dashboardController@index')->name('admin.home');
 
 /* Employes */
 Route::get('employes', 'admin\EmployeController@index')->name('Employees');
