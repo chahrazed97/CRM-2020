@@ -31,7 +31,7 @@ class EmployeController extends Controller
 
     public function update(EmployeUpdateRequest $request,Employees $employe)
     {
-       
+        $employe_user = User::where('nom', '=', $employe->nom)->where('prenom', '=', $employe->prenom)->where('phone', '=', $employe->phone)->where('email', '=', $employe->email)->where('role', '=', $employe->role)->first();
         $nom = $request->get('nom');
         $prenom = $request->get('prenom');
         $phone = $request->get('phone');
@@ -43,9 +43,7 @@ class EmployeController extends Controller
         $employe->phone = $phone;
         $employe->email = $email;
         $employe->role = $role;
-            
-
-        $employe_user = User::where('nom', '=', $employe->nom)->where('prenom', '=', $employe->prenom)->where('phone', '=', $employe->phone)->where('email', '=', $employe->email)->where('role', '=', $employe->role)->first();
+        
         $employe_user->nom = $nom;
         $employe_user->prenom = $prenom;
         $employe_user->email = $email;

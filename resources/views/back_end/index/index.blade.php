@@ -190,6 +190,11 @@ if ($('#ambarchart2').length) {
         "categoryAxis": {
             "gridPosition": "start"
         },
+        "categoryField": "country",
+        "categoryAxis": {
+            "gridPosition": "start",
+            "labelRotation": 45
+        },
         "export": {
             "enabled": false
         }

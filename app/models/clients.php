@@ -323,10 +323,16 @@ class clients extends Model
         $commandes = Commande::where('clients_id', '=', $id)->get();
         $mode_payements = array();
         foreach ( $commandes as $commande ){
+            if($commande->facture !== NULL){
             $mode_payements[]= $commande->facture->mode_payement;
+            }
         }
+        if (!empty($mode_payements)){
         $mod_pay_occ = array_count_values($mode_payements);
         $top_mod_pay = array_keys($mod_pay_occ,max($mod_pay_occ));
+        }else{
+            $top_mod_pay = '/';
+        }
         return $top_mod_pay;
     }
 

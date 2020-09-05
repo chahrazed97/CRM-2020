@@ -24,7 +24,7 @@ class dashboardController extends Controller
     public function index()
     {
         $nbr_client = clients::All()->count();
-        $clients =clients::All();
+        $clients =clients::paginate(15);
         $nbr_prospect = Prospect::All()->count();
         $promo_enCours = Promotion::where('start_date', '<', Carbon::today())->where('end_date', '>', Carbon::today())->count();
         $action_marketing = actionMarketing::All();

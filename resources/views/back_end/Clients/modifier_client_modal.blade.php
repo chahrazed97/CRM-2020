@@ -67,7 +67,7 @@
                                         <label class="col-form-label">Pays</label>
                                         <div class="form-group">   
                                             <select class="custom-select" name="pays">
-                                                <option value="{{ $client->Pays->id }}" selected="selected">{{ $client->pays }}</option>
+                                                <option value="{{ $client->pays_id }}" selected="selected">{{ $client->pays }}</option>
                                                 @foreach($tt_pays as $pays_cl)
                                                 <option value="{{ $pays_cl->id }}">{{ $pays_cl->pays}}</option>
                                                 @endforeach

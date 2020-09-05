@@ -52,7 +52,7 @@
                                     <td>{{ $promotion->start_date }}</td>
                                     <td>{{ $promotion->end_date }}</td>
                                     <td>{{ $promotion->pourcetage_promo }}</td>
-                                    <td>{{ $promotion->Produit->type }}</td>
+                                    <td>{{ $promotion->Produit->nom }}</td>
                                     <td>{{ $promotion->StatusPromo() }}</td>
                                     @if ( $promotion->StatusPromo() !== "Planifiée"  )
                                     <td>{{ $promotion->nbrVente() }}</td>

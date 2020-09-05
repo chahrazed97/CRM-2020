@@ -43,7 +43,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <h4><a href="{{ route('admin.home') }}">CRM 2020</a></h4>
+                    <h4><a href="{{ route('admin.home') }}" style="color: white;">CRM Solution</a></h4>
                 </div>
             </div>
             <div class="main-menu">

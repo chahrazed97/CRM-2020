@@ -22,7 +22,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="example-date-input" class="col-form-label">Start date</label>
-                                        <input class="form-control" type="date" name="start_date" value="{{ $promotion->end_date }}" id="example-date-input">
+                                        <input class="form-control" type="date" name="start_date" value="{{ $promotion->start_date }}" id="example-date-input">
                                         {!! $errors->first('start_date', '<small class="help-block">:message</small>') !!}
                                     </div>
                                 </div>
