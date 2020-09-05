@@ -64,10 +64,23 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
+                                        <label class="col-form-label">Pays</label>
+                                        <div class="form-group">   
+                                            <select class="custom-select" name="pays">
+                                                <option selected="selected">Selectionner un pays</option>
+                                                @foreach($tt_pays as $pays)
+                                                <option value="{{ $pays->id }}">{{ $pays->pays}}</option>
+                                                @endforeach
+                
+                                            </select>
+                                            <small class="help-block"></small>
+                                        </div>
+                                    </div>
+                                    <!--<div class="form-group">
                                         <label for="example-time-input" class="col-form-label">Pays</label>
                                         <input class="form-control" type="text" name="pays" placeholder="entrez le pays" id="example-time-input">
                                         {!! $errors->first('pays', '<small class="help-block">:message</small>') !!}
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
 

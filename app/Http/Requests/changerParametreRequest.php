@@ -26,8 +26,8 @@ class changerParametreRequest extends Request
         return [
             'phone' => 'required',
             'email' => 'required|email|unique:users',
-            'old_psw' => '',
-            'new_psw' => 'string|min:6|confirmed',
+            'old_psw' => 'string',
+            'new_psw' => 'string|min:6',
             'confirm_new_psw' => 'string|min:6|same:new_psw'
         ];
     }

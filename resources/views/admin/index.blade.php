@@ -37,7 +37,7 @@
                 </div>
             @endif
             <form method="POST" action="{{ route('login/process') }}" class="col-12">
-            {{ csrf_field() }}
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                   
                    <input type="email" name="email" class="form-control" placeholder="Entrez votre e-mail">

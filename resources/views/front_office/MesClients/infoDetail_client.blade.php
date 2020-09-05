@@ -1,9 +1,9 @@
 <!-- Custom Content start -->
-
+<div class="card">
     <div class="card-body">
-        <h4 class="header-title"><i class="fa fa-puzzle-piece"></i>Informations détaillées</h4>
+        <h4 class="card-title"><i class="fa fa-puzzle-piece"></i>Informations détaillées</h4>
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <a class="list-group-item list-group-item-action flex-column align-items-start" style="background-color: #9c9ffd44;">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{ $client->nom.' '.$client->prenom }}</h5>
                     </div>
@@ -15,7 +15,7 @@
                     </p>    
                     
                 </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <a class="list-group-item list-group-item-action flex-column align-items-start mt-2" style="background-color: #ffcdf45d;">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">
                         @for ($i = 0; $i < $scorecheck ; $i++)
@@ -26,27 +26,28 @@
                         @endfor
                         </h5>
                     </div>
-                    <p class="mb-1"><b>{{$action_marketing->titre}}</b></br>
+                    <p class="mb-1 text-center"><b>{{$action_marketing->titre}}</b></br>
                                        {{ $action_marketing->description }}</br>
-                                       <b>Action Marketing:</b> </br>
+                                       <b><i class="ti-target mr-2"></i> Action Marketing:</b> </br>
                                        {{ $action_marketing->action_marketing }}
                     </p>
                     
                 </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <p class="mb-1"><b>Produit préféré :</b></br>
+                <a class="list-group-item list-group-item-action flex-column align-items-start mt-2" style="background-color:rgba(0, 0, 255, 0.048); ">
+                    <p class="mb-1"><b><i class="ti-package mr-2"></i>Produit préféré :</b></br>
                                      @foreach ( $top_produit as $top_prod )
                                      {{ $top_prod }}</br>
                                      @endforeach
-                                    <b>Mode de payement préféré :</b></br>
+                                    <b><i class="fa fa-credit-card mr-2"></i> Mode de payement préféré :</b></br>
                                     @foreach ( $top_modePayement as $top_pay  )
                                     {{ $top_pay }}</br>
                                     @endforeach
-                                    <b>Panier moyen : </b> {{ $panier_moyen. ' DA' }}</br>
-                                    <b>nombre de participation aux promo</b> : {{ $client->NbrReponsePromo() }} fois
+                                    <b><i class="ti-shopping-cart"></i>Panier moyen : </b> {{ $panier_moyen. ' DA' }}</br>
+                                    <b><i class="fa fa-bullhorn mr-2"></i> nombre de participation aux promo</b> : {{ $client->NbrReponsePromo() }} fois
                     </p>
                 </a>
             </div>
     </div>
+</div>
 
 <!-- Custom Content end -->

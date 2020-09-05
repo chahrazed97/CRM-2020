@@ -23,7 +23,7 @@
                         <div class="table-responsive">
                             <table class="dbkit-table" >
                                 <tbody id="body">
-                                  
+                                @if(!empty($sender_emp))
                                  @foreach($sender_emp as $key => $value)
                                  
                                      <?php $employe = App\models\Employees::where('id', '=', $key )->first();
@@ -33,6 +33,9 @@
                                         <td><a href="{{ route('conversation.supprimer', ['employe' => $employe]) }}"><i class="fa fa-trash-o right"></i></a></td>  
                                     </tr>
                                 @endforeach
+                                @else
+                                  <span class="text-center">aucune conversation trouvée</span>
+                                @endif
                                 </tbody>
                             </table>
                         </div>

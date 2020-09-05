@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use App\models\Employees;
+use App\User;
 use View;
 use Auth;
 
@@ -68,38 +69,35 @@ class AdminController extends Controller
         return Redirect::to('login');
     }
     
-    public function changerParametres(changerParametreRequest $request)
+    public function changerParametres()
     {
         $employe_user = Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom)->where('phone', '=', Auth::user()->phone)->where('email', '=', Auth::user()->email)->where('role', '=',Auth::user()->role)->first();
-
-        $phone = $request->get('phone');
-        $email = $request->get('email');
-        $old_psw = $request->get('old_psw');
-        $new_psw = $request->get('new_psw');
-        $confirm_new_psw = $request->get('confirm_new_psw');
+        //$user = User::where('id', '=', Auth::user()->id)->first();
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
+        $old_psw = $_POST['old_psw'];
+        $new_psw = $_POST['new_psw'];
+        $confirm_new_psw = $_POST['confirm_new_psw'];
 
         Auth::user()->phone = $phone;
-        $employe_user->phone = $phone;
         Auth::user()->email = $email;
-        $employe_user->email = $email;
-        Auth::user()->save();
+        if ($employe_user !== NULL){
+        $employe_user->phone = $phone;
+        $employe_user->email = $email; 
         $employe_user->save();
-        if(isset($old_psw)){
-            if(Hash::check($old_psw, Auth::user()->password)){
-                if (isset($new_psw) and isset($confirm_new_psw)){
-                   if($new_psw == $confirm_new_psw){
-                      Auth::user()->password = Hash::make($new_psw);
-                      Auth::user()->save();
-                      return Redirect::to('/')->with("ok", "vos modifications ont bien été modifiés");
-                   }else{
-                    return Redirect::to('/')->with("ok","Confirmation du mot do passe incorrete");
-                   }
-                }
-
-            }else{
-                return Redirect::to('/')->with("ok","mot de passe incorrercte");
-            }
         }
-
+        
+        if(isset($old_psw) and isset($new_psw) and isset($confirm_new_psw)){
+            if(bcrypt($old_psw) == Auth::user()->password){
+            Auth::user()->password =  bcrypt($new_psw);
+            }else{
+                return redirect()->back()->with('ok','Mot de passe incorrecte!');
+            }
+          
+        }
+      
+        Auth::user()->save();
+       
+        return redirect()->back()->with('ok','Modifications enregistrées!');
     }
 }

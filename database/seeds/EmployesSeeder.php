@@ -28,7 +28,7 @@ class EmployesSeeder extends Seeder
                 'phone' => '0000000' . $i,
                 'email' => 'email' . $i . '@blop.fr',
                 'role' => 'role' .$i,
-                'admin_id' => 5,
+                'admin_id' => 1,
                 'created_at' => $date,
                 'updated_at' => $date
                 

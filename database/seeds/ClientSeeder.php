@@ -32,8 +32,8 @@ class ClientSeeder extends Seeder
                 'date_naissance' => $date,
                 'pays' => 'Algérie',
                 'employee_id' => 1,
-                'admin_id' => 5,
-                'pays_id' => 1,
+                'admin_id' => 1,
+                'pays_id' => 3,
                 'created_at' => $date,
 				'updated_at' => $date
 			]);

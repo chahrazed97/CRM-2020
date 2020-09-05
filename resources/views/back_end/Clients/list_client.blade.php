@@ -20,7 +20,7 @@
 @endsection
 
 @section('contenu')
-<div class="main-content-inner">
+
 @if(session()->has('ok'))
 	<div class="alert alert-success alert-dismissible">{!! session()->get('ok') !!}</div>
 @endif
@@ -32,10 +32,10 @@
                 <a class=" right" title="Ajouter un client"><button class="btn btn-rounded btn- btn-xs" data-toggle="modal" data-target="#ModalLong">Ajouter Client</button></a>
                 @include('back_end.Clients.Ajouter_client_modal')
                     <div class="data-tables datatable-primary">
-                        <table id="dataTable2" class="text-center">
+                        <table id="dataTable2" class="">
                             <thead class="text-capitalize">
                                 <tr>
-                                    <th>Nom complet</th>
+                                    <th data-priority="1">Nom complet</th>
                                     <th>Date naissance</th>
                                     <th>Téléphone</th>
                                     <th>E-mail</th>
@@ -43,10 +43,10 @@
                                     <th>Pays</th>
                                     <th>Code postale</th>
                                     <th>métier</th>
-                                    <th>Score</th>
-                                    <th>Suivi par</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th data-priority="4">Score</th>
+                                    <th data-priority="5">Suivi par</th>
+                                    <th data-priority="2"></th>
+                                    <th data-priority="3"></th>
                                     
                                     
                                 </tr>
@@ -118,5 +118,4 @@
         <!-- end list clients -->
 
     </div>
-</div>
 @endsection

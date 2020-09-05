@@ -3,17 +3,17 @@
         <div class="card-body">
 
             <div class="d-flex justify-content-between mb-4">
-                <h4 class="header-title mb-0">Mes activités pour aujourd'hui</h4>
+                <h4 class="card-title text-center mb-0">Mes activités pour aujourd'hui</h4>
                 
                 <a class="lien-ch"><button id="B1" class="btn btn-rounded btn- btn-xs"><i class="fa fa-plus"></i></button></a>
             </div>
 
             <div id="accordion5" class="according accordion-s2 gradiant-bg">
            
-            @if ( $activites !== NULL)
+            @if ( !empty($activites) )
                 @foreach ( $activites as $activite )
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header" >
                         <a class="collapsed card-link" data-toggle="collapse" href="#{{ $activite->id }}">{{ $activite->titre }}<small><cite>{{ $activite->type_activite.', '.$activite->date_act }}</cite></small></a>  
                     </div>
                     <div id="{{ $activite->id }}" class="collapse modif{{ $activite->id }}" data-parent="#accordion5">
@@ -58,7 +58,7 @@
                 
                 @endforeach
             @else
-            <small>Vous avez aucune activité pour aujourd'hui</small>
+            <span class="text-center">Vous avez aucune activité pour aujourd'hui</span>
             @endif
             </div>
         </div>

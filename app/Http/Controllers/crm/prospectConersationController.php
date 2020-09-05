@@ -43,4 +43,15 @@ class prospectConersationController extends Controller
         return view('front_office.mesConversations.ProspectConversation.conversation_prospect', compact('activite_all', 'prospect'));
 
     }
+
+    public function suppConversation($email_destroy)
+    {
+        $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
+
+        $msg_emp = Messg::where('employee_id', '=', $employe->id)->where('destination', '=', $email_destroy)->get();   
+        foreach ( $msg_emp as $msg ){
+            $msg->delete();
+        }
+		return redirect()->back()->with('ok', '1 conversation supprimée !');
+    }
 }

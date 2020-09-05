@@ -2,7 +2,7 @@
 @if ( $new_product !== 0)
 <div class="col-md-4 mt-2 mb-3">
     <div class="card">
-        <div class="seo-fact sbg1">
+        <div class="seo-fact sbg1" style="border-radius: 15px;">
         <span class="badge badge-pill badge-danger">Nouveau</span>
             <div class="p-4 d-flex justify-content-between align-items-center">
                 <div class="seofct-icon">
@@ -53,7 +53,7 @@
 @if ( $new_client !== 0)
 <div class="col-md-4 mt-2 mb-3">
     <div class="card">
-        <div class="seo-fact sbg2">
+        <div class="seo-fact sbg2" style="border-radius: 15px;">
         <span class="badge badge-pill badge-danger">Nouveau</span>
             <div class="p-4 d-flex justify-content-between align-items-center">
                 <div class="seofct-icon">
@@ -103,7 +103,7 @@
 @if ( $new_prospect !== 0)
 <div class="col-md-4 mt-2 mb-3">
     <div class="card">
-        <div class="seo-fact sbg3">
+        <div class="seo-fact sbg3" style="border-radius: 15px;">
         <span class="badge badge-pill badge-danger">Nouveau</span>
             <div class="p-4 d-flex justify-content-between align-items-center">
                 <div class="seofct-icon">
@@ -153,7 +153,7 @@
 @if ( $birthday_today !== 0)
 <div class="col-md-4 mt-2 mb-3">
     <div class="card">
-        <div class="seo-fact sbg1">
+        <div class="seo-fact sbg1" style="border-radius: 15px;">
         <span class="badge badge-pill badge-danger">Nouveau</span>
             <div class="p-4 d-flex justify-content-between align-items-center">
                 <div class="seofct-icon">
@@ -217,7 +217,7 @@
 @if ( $new_promo !== 0)
 <div class="col-md-4 mt-2 mb-3">
     <div class="card">
-        <div class="seo-fact sbg4">
+        <div class="seo-fact sbg4" style="border-radius: 15px;">
         <span class="badge badge-pill badge-danger">Nouveau</span>
             <div class="p-4 d-flex justify-content-between align-items-center">
                 <div class="seofct-icon">
@@ -274,7 +274,7 @@
 @if ( $new_event !== 0)
 <div class="col-md-4 mt-2 mb-3">
     <div class="card">
-        <div class="seo-fact sbg2">
+        <div class="seo-fact sbg2" style="border-radius: 15px;">
         <span class="badge badge-pill badge-danger">Nouveau</span>
             <div class="p-4 d-flex justify-content-between align-items-center">
                 <div class="seofct-icon">
@@ -329,7 +329,7 @@
 @if ( $new_reclam !== 0)
 <div class="col-md-4 mt-2 mb-3">
     <div class="card">
-        <div class="seo-fact sbg3">
+        <div class="seo-fact sbg3" style="border-radius: 15px;">
         <span class="badge badge-pill badge-danger">Nouveau</span>
             <div class="p-4 d-flex justify-content-between align-items-center">
                 <div class="seofct-icon">

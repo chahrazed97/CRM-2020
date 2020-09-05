@@ -10,6 +10,7 @@
 
 @section('contenu')
 <div class="main-content-inner">
+
 @if(session()->has('ok'))
 	<div class="alert alert-success alert-dismissible">{!! session()->get('ok') !!}</div>
 @endif

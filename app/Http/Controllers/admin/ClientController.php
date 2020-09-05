@@ -33,8 +33,9 @@ class ClientController extends Controller
     {
       $clients = clients::All();
       $employes = Employees::All();
+      $tt_pays = Pays::All();
       
-      return view('back_end.Clients.list_client', compact('clients', 'employes'));
+      return view('back_end.Clients.list_client', compact('clients', 'employes', 'tt_pays'));
     }
 
     public function HistoriqueClient(clients $client, $scorecheck, $scoreNocheck)
@@ -68,11 +69,11 @@ class ClientController extends Controller
         $email = $request->get('email');
         $date_naissance = $request->get('date_naissance');
         $adresse = $request->get('adresse');
-        $pays = $request->get('pays');
+        $id_pays = $request->get('pays');
         $code_postal = $request->get('code_postal');
         $metier = $request->get('metier');
         $employe_id = $request->get('employe');
-        $pays_id = Pays::where('pays', '=', $pays)->select('id')->first();
+        $pays = Pays::where('id', '=', $id_pays)->first();
 
         $client = new clients();
         $client->nom = $nom;
@@ -81,13 +82,13 @@ class ClientController extends Controller
         $client->email = $email;
         $client->date_naissance = $date_naissance;
         $client->adresse = $code_postal;
-        $client->pays = $pays;
+        $client->pays = $pays->pays;
         $client->code_postal = $code_postal;
         $client->metier = $metier;
         $client->admin_id = 1;
         $client->employee_id = $employe_id;
         $client->status = 'active';
-        $client->pays_id = $pays_id->id;
+        $client->pays_id = $id_pays;
             
         $client->save();
         return redirect()->back()->with("ok", "Le client " . $client->nom.' '.$client->prenom . " a bien été créé.");
@@ -107,10 +108,12 @@ class ClientController extends Controller
         $email = $request->get('email');
         $date_naissance = $request->get('date_naissance');
         $adresse = $request->get('adresse');
-        $pays = $request->get('pays');
+        $id_pays = $request->get('pays');
         $code_postal = $request->get('code_postal');
         $metier = $request->get('metier');
         $employe_id =  $request->get('employe');
+        $pays = Pays::where('id', '=', $id_pays)->first();
+        
 
         $client->nom = $nom;
         $client->prenom = $prenom;
@@ -118,10 +121,12 @@ class ClientController extends Controller
         $client->email = $email;
         $client->date_naissance = $date_naissance;
         $client->adresse = $code_postal;
-        $client->pays = $pays;
+        $client->pays = $pays->pays;
         $client->code_postal = $code_postal;
         $client->metier = $metier;
         $client->employee_id = $employe_id;
+        $client->pays_id = $id_pays;
+
         
         $client->save();
         return redirect()->back()->with("ok", "Le client " . $client->nom.' '.$client->prenom . " a bien été modifié.");

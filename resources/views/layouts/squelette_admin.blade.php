@@ -43,7 +43,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="{{ asset('assets/images/icon/logo.png')}}" alt="logo"></a>
+                    <h4><a href="{{ route('admin.home') }}">CRM 2020</a></h4>
                 </div>
             </div>
             <div class="main-menu">
@@ -51,28 +51,28 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li class="active">
-                                <a href="{{ route('admin.home') }}" aria-expanded="true"><i class="fa fa-home"></i><span>Home</span></a>
+                                <a href="{{ route('admin.home') }}" aria-expanded="true"><i class="ti-dashboard"></i><span>Tableau de bord</span></a>
                                 
                             </li>
                             <li>
-                                <a href="{{ route('list.clients') }}" aria-expanded="true"><i class="fa fa-calendar-check-o"></i><span>Clients</span></a>
+                                <a href="{{ route('list.clients') }}" aria-expanded="true"><i class="fa fa-user-plus"></i><span>Clients</span></a>
                             </li>
                             <li>
-                                <a href="{{ route('list.prospects') }}" aria-expanded="true"><i class="fa fa-user-plus"></i><span>Prospects</span></a>
+                                <a href="{{ route('list.prospects') }}" aria-expanded="true"><i class="fa fa-user"></i><span>Prospects</span></a>
                             </li>
                             <li>
-                                <a href="{{ route('Employees') }}" aria-expanded="true"><i class="fa fa-user"></i><span>Employes</span></a> 
+                                <a href="{{ route('Employees') }}" aria-expanded="true"><i class="fa fa-users"></i><span>Employes</span></a> 
                             </li>
                             <li>
-                                <a href="{{ route('list.produits') }}" aria-expanded="true"><i class="fa fa-comments-o"></i><span>Produits</span></a>
+                                <a href="{{ route('list.produits') }}" aria-expanded="true"><i class="fa fa-cubes"></i><span>Produits</span></a>
                             </li>
                             <li>
-                                <a href="{{ route('list.promotions') }}" aria-expanded="true"><i class="fa fa-users"></i><span>Promotions</span></a>
+                                <a href="{{ route('list.promotions') }}" aria-expanded="true"><i class="fa fa-bullhorn"></i><span>Promotions</span></a>
                             </li>
                             <li><a href="{{ route('list.evenements') }}"><i class="fa fa-object-group"></i> <span>Evénements</span></a></li>
-                            <li><a href="{{ route('list.actionMarketing') }}"><i class="fa fa-cogs"></i> <span>Actions marketings</span></a></li>
+                            <li><a href="{{ route('list.actionMarketing') }}"><i class="ti-target"></i> <span>Actions marketings</span></a></li>
                             <li>
-                                <a href="{{ route('list.actionMarketing') }}" aria-expanded="true"><i class="ti-layers-alt"></i> <span>Paramètre compte</span></a>
+                            <li><a href="javascript:void(0)" class="offset2"  aria-expanded="true"><i class="fa fa-cogs"></i><span >Paramétres compte</span></a></li>
                             </li>
                         </ul>
                     </nav>
@@ -104,66 +104,8 @@
                         <ul class="notification-area pull-right">
                             <li id="full-view"><i class="ti-fullscreen"></i></li>
                             <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
-                            <li class="dropdown">
-                                <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
-                                    <span>4</span>
-                                </i>
-                                <div class="dropdown-menu bell-notify-box notify-box">
-                                    <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
-                                    <div class="nofity-list">
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                            <div class="notify-text">
-                                                <p>You have Changed Your Password</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
-                                            <div class="notify-text">
-                                                <p>New Commetns On Post</p>
-                                                <span>30 Seconds ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                            <div class="notify-text">
-                                                <p>Some special like you</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
-                                            <div class="notify-text">
-                                                <p>New Commetns On Post</p>
-                                                <span>30 Seconds ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                            <div class="notify-text">
-                                                <p>Some special like you</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                            <div class="notify-text">
-                                                <p>You have Changed Your Password</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="notify-item">
-                                            <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                            <div class="notify-text">
-                                                <p>You have Changed Your Password</p>
-                                                <span>Just Now</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="dropdown">
+                            
+                           <!-- <li class="dropdown">
                                 <i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span>3</span></i>
                                 <div class="dropdown-menu notify-box nt-enveloper-box">
                                     <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
@@ -240,7 +182,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                             <li class="settings-btn">
                                 <i class="ti-settings"></i>
                             </li>
@@ -262,9 +204,7 @@
                             <img class="avatar user-thumb" src="{{ asset('assets/images/author/avatar.png') }}" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->nom.' '.Auth::user()->prenom }}<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Message</a>
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}">Log Out</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}">Déconnecter</a>
                             </div>
                         </div>
                     </div>
@@ -289,176 +229,104 @@
     <!-- page container area end -->
     <!-- offset area start -->
     <div class="offset-area">
-        <div class="offset-close"><i class="ti-close"></i></div>
+        <div class="offset2 offset-close"><i class="ti-close"></i></div>
         <ul class="nav offset-menu-tab">
-            <li><a class="active" data-toggle="tab" href="#activity">Activity</a></li>
-            <li><a data-toggle="tab" href="#settings">Settings</a></li>
+            <li><a class="active" data-toggle="tab" href="#activity">Profile</a></li>
+            <li><a data-toggle="tab" href="#settings">Paramétres</a></li>
         </ul>
         <div class="offset-content tab-content">
             <div id="activity" class="tab-pane fade in show active">
                 <div class="recent-activity">
-                    <div class="timeline-task">
-                        <div class="icon bg1">
-                            <i class="fa fa-envelope"></i>
-                        </div>
-                        <div class="tm-title">
-                            <h4>Rashed sent you an email</h4>
-                            <span class="time"><i class="ti-time"></i>09:35</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                        </p>
-                    </div>
-                    <div class="timeline-task">
-                        <div class="icon bg2">
-                            <i class="fa fa-check"></i>
-                        </div>
-                        <div class="tm-title">
-                            <h4>Added</h4>
-                            <span class="time"><i class="ti-time"></i>7 Minutes Ago</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur.
-                        </p>
-                    </div>
-                    <div class="timeline-task">
-                        <div class="icon bg2">
-                            <i class="fa fa-exclamation-triangle"></i>
-                        </div>
-                        <div class="tm-title">
-                            <h4>You missed you Password!</h4>
-                            <span class="time"><i class="ti-time"></i>09:20 Am</span>
-                        </div>
-                    </div>
-                    <div class="timeline-task">
-                        <div class="icon bg3">
-                            <i class="fa fa-bomb"></i>
-                        </div>
-                        <div class="tm-title">
-                            <h4>Member waiting for you Attention</h4>
-                            <span class="time"><i class="ti-time"></i>09:35</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                        </p>
-                    </div>
-                    <div class="timeline-task">
-                        <div class="icon bg3">
-                            <i class="ti-signal"></i>
-                        </div>
-                        <div class="tm-title">
-                            <h4>You Added Kaji Patha few minutes ago</h4>
-                            <span class="time"><i class="ti-time"></i>01 minutes ago</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                        </p>
-                    </div>
-                    <div class="timeline-task">
-                        <div class="icon bg1">
-                            <i class="fa fa-envelope"></i>
-                        </div>
-                        <div class="tm-title">
-                            <h4>Ratul Hamba sent you an email</h4>
-                            <span class="time"><i class="ti-time"></i>09:35</span>
-                        </div>
-                        <p>Hello sir , where are you, i am egerly waiting for you.
-                        </p>
-                    </div>
-                    <div class="timeline-task">
-                        <div class="icon bg2">
-                            <i class="fa fa-exclamation-triangle"></i>
-                        </div>
-                        <div class="tm-title">
-                            <h4>Rashed sent you an email</h4>
-                            <span class="time"><i class="ti-time"></i>09:35</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                        </p>
-                    </div>
-                    <div class="timeline-task">
-                        <div class="icon bg2">
-                            <i class="fa fa-exclamation-triangle"></i>
-                        </div>
-                        <div class="tm-title">
-                            <h4>Rashed sent you an email</h4>
-                            <span class="time"><i class="ti-time"></i>09:35</span>
-                        </div>
-                    </div>
-                    <div class="timeline-task">
-                        <div class="icon bg3">
-                            <i class="fa fa-bomb"></i>
-                        </div>
-                        <div class="tm-title">
-                            <h4>Rashed sent you an email</h4>
-                            <span class="time"><i class="ti-time"></i>09:35</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                        </p>
-                    </div>
-                    <div class="timeline-task">
-                        <div class="icon bg3">
-                            <i class="ti-signal"></i>
-                        </div>
-                        <div class="tm-title">
-                            <h4>Rashed sent you an email</h4>
-                            <span class="time"><i class="ti-time"></i>09:35</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                        </p>
-                    </div>
+                    <!-- profile -->
+                    <div class="card-body text-center">
+                        <p><img class=" img-fluid" src="{{ asset('img/employe.png') }}"></p>
+                        <h4 class="card-title">{{ Auth::user()->nom.' '.Auth::user()->prenom }}</h4>
+                
+                    <p class="card-text"><b>Mon e-mail :</b> {{ Auth::user()->email }}</p>
+                    <p class="card-text"><b>Mon numéro :</b> {{ Auth::user()->phone }}</p>
+                    <p class="card-text"><b>Ma fonction :</b> {{ Auth::user()->role }}</p>
+                </div>
+                    <!-- end profile -->
                 </div>
             </div>
             <div id="settings" class="tab-pane fade">
                 <div class="offset-settings">
-                    <h4>General Settings</h4>
+                    <h4>Paramétre général</h4>
                     <div class="settings-list">
-                        <div class="s-settings">
-                            <div class="s-sw-title">
-                                <h5>Notifications</h5>
-                                <div class="s-swtich">
-                                    <input type="checkbox" id="switch1" />
-                                    <label for="switch1">Toggle</label>
+                       <!-- parametre -->
+                       <form class="card-body" action="{{ route('login.update') }}" method="post">
+                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class="col-12">
+                                <div class="form-group ">
+                                    <label for="example-date-input" class="col-form-label">changer numéro de téléphone</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="fa fa-phone"></i></div>
+                                            </div>
+                                            <input class="form-control" type="text" name="phone" placeholder="" value="{{ Auth::user()->phone }}" id="example-date-input" required>
+                                        </div>
+                                    </div>
                                 </div>
+                                <small class="help-block" style="color : red;"></small>
                             </div>
-                            <p>Keep it 'On' When you want to get all the notification.</p>
-                        </div>
-                        <div class="s-settings">
-                            <div class="s-sw-title">
-                                <h5>Show recent activity</h5>
-                                <div class="s-swtich">
-                                    <input type="checkbox" id="switch2" />
-                                    <label for="switch2">Toggle</label>
+                            <div class="col-12">
+                                <div class="form-group ">
+                                    <label for="example-date-input" class="col-form-label">changer e-mail</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="fa fa-envelope"></i></div>
+                                            </div>
+                                            <input class="form-control" type="text" name="email" placeholder="" value="{{ Auth::user()->email }}" id="example-date-input" required>
+                                        </div>
+                                    </div>
                                 </div>
+                                <small class="help-block" style="color : red;"></small>
                             </div>
-                            <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                        </div>
-                        <div class="s-settings">
-                            <div class="s-sw-title">
-                                <h5>Show your emails</h5>
-                                <div class="s-swtich">
-                                    <input type="checkbox" id="switch3" />
-                                    <label for="switch3">Toggle</label>
+                            <div class="col-12">
+                                <div class="form-group ">
+                                    <label for="example-date-input" class="col-form-label">changer mot de passe</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="fa fa-unlock-alt"></i></div>
+                                            </div>
+                                            <input class="form-control" type="password" name="old_psw" placeholder="mot de passe actuelle" value="" id="example-date-input">
+                                        </div>
+                                    </div>
                                 </div>
+                                <small class="help-block" style="color : red;"></small>
                             </div>
-                            <p>Show email so that easily find you.</p>
-                        </div>
-                        <div class="s-settings">
-                            <div class="s-sw-title">
-                                <h5>Show Task statistics</h5>
-                                <div class="s-swtich">
-                                    <input type="checkbox" id="switch4" />
-                                    <label for="switch4">Toggle</label>
+                            <div class="col-12">
+                                <div class="form-group ">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="fa fa-unlock-alt"></i></div>
+                                            </div>
+                                            <input class="form-control" type="password" name="new_psw" placeholder="nouveau mot de passe" value="" id="example-date-input" >
+                                        </div>
+                                    </div>
                                 </div>
+                                <small class="help-block" style="color : red;"></small>
                             </div>
-                            <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                        </div>
-                        <div class="s-settings">
-                            <div class="s-sw-title">
-                                <h5>Notifications</h5>
-                                <div class="s-swtich">
-                                    <input type="checkbox" id="switch5" />
-                                    <label for="switch5">Toggle</label>
+                            <div class="col-12">
+                                <div class="form-group ">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="fa fa-unlock-alt"></i></div>
+                                            </div>
+                                            <input class="form-control" type="password" name="confirm_new_psw" placeholder="confirmer nouveau mot de passe" value="" id="example-date-input" >
+                                        </div>
+                                    </div>
                                 </div>
+                                <small class="help-block" style="color : red;"></small>
                             </div>
-                            <p>Use checkboxes when looking for yes or no answers.</p>
-                        </div>
+                            <button type="submit" class="btn btn-rounded btn- btn-sm right">Changer</buttom>
+                        </form>
+                       <!-- fin parametre -->
                     </div>
                 </div>
             </div>

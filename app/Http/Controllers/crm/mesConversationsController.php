@@ -43,11 +43,11 @@ class mesConversationsController extends Controller
         return view('front_office.mesConversations.conversation_client', compact('activite_all', 'client'));
     }
 
-    public function destroy($email_destroy)
+    public function suppConversation($email_destroy)
     {
         $employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
 
-        $msg_emp = Messg::where('employee_id', '=', $employe->id)->where('destination', '=', $email_destroy)->get;   
+        $msg_emp = Messg::where('employee_id', '=', $employe->id)->where('destination', '=', $email_destroy)->get();   
         foreach ( $msg_emp as $msg ){
             $msg->delete();
         }

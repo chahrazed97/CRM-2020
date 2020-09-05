@@ -47,7 +47,7 @@ class equipeConversationController extends Controller
         return view('front_office.mesConversations.EquipeConversation.conversation_employe', compact('msg_all'));
     }
 
-    public function destroy(Employees $employe)
+    public function suppConversation(Employees $employe)
     {
         $employe_user= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
 

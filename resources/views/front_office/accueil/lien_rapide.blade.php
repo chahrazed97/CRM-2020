@@ -1,5 +1,5 @@
 <div class=" bell-notify-box lien-box">
-    <span class="notify-title">Liens rapides
+    <span class="notify-title" style="background-color: #843df9;">Liens rapides
         
             <button class="btn btn-rounded btn- btn-xs right" type="button" data-toggle="dropdown">
                 <i class="fa fa-plus"></i>

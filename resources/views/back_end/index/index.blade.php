@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="seo-fact sbg2">
                         <div class="p-4 d-flex justify-content-between align-items-center">
-                            <div class="seofct-icon"><i class="fa fa-user"></i>Nombre clients</div>
+                            <div class="seofct-icon"><i class="fa fa-user-plus"></i>Nombre clients</div>
                             <h2>{{ $nbr_client }}</h2>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                 <div class="card mt-2">
                     <div class="seo-fact sbg3">
                         <div class="p-4 d-flex justify-content-between align-items-center">
-                            <div class="seofct-icon"><i class="fa fa-user-plus"></i>Nombre prospects</div>
+                            <div class="seofct-icon"><i class="fa fa-user"></i>Nombre prospects</div>
                             <h2>{{ $nbr_prospect }}</h2>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                 <div class="card mt-2">
                     <div class="seo-fact sbg4">
                         <div class="p-4 d-flex justify-content-between align-items-center">
-                            <div class="seofct-icon"><i class="fa fa-heart"></i>Promo en cours</div>
+                            <div class="seofct-icon"><i class="fa fa-bullhorn"></i>Promo en cours</div>
                             <h2>{{ $promo_enCours }}</h2>
                         </div>
                     </div>
@@ -291,7 +291,7 @@ var map = AmCharts.makeChart("seomap", {
             "title": "{{ $client->pays }}",
             "latitude": {{ $client->Pays->latitude }},
             "longitude": {{ $client->Pays->longitude }}
-        },<?php } ?>]
+        },<?php } ?> ]
     }
 });
 

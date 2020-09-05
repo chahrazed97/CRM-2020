@@ -33,7 +33,7 @@
                             $nom_complet = $client->nom.' '.$client->prenom; ?>
                             <tr class="heading-tr mt-1" style="background-color :rgba(145, 13, 233, 0.075); height: 50px;">
                                 <td><a href="{{ route('conversation.client', ['client' => $client]) }}">{{ $nom_complet }} <br><cite><small>{{ $client->email }}</small></cite></a></td>
-                                <td><a href="{{ route('conversation.supprimer', ['email_destroy' => $destination_cl->destination]) }}"><i class="fa fa-trash-o right"></i></a></td>  
+                                <td><a href="{{ route('conversation.client.supprimer', ['email_destroy' => $destination_cl->destination]) }}"><i class="fa fa-trash-o right"></i></a></td>  
                             </tr>
                               <?php } ?>
                             @endif

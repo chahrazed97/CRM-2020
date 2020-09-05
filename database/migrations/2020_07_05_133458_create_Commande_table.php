@@ -31,10 +31,11 @@ class CreateCommandeTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('Commande');
         Schema::table('Commande', function(Blueprint $table) {
             $table->dropForeign('Commande_clients_id_foreign');
 			
 		});
-        Schema::dropIfExists('Commande');
+        
     }
 }

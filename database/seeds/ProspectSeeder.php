@@ -32,7 +32,7 @@ class ProspectSeeder extends Seeder
                 'date_naissance' => $date,
                 'pays' => 'Algeria',
                 'employee_id' => 30,
-                'admin_id' => 5,
+                'admin_id' => 1,
                 'created_at' => $date,
 				'updated_at' => $date
 			]);

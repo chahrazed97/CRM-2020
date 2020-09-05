@@ -33,7 +33,7 @@
                         <table id="dataTable2" class="text-center">
                             <thead class="text-capitalize">
                                 <tr>
-                                    <th>Nom complet</th>
+                                    <th data-priority="1">Nom complet</th>
                                     <th>Date naissance</th>
                                     <th>Téléphone</th>
                                     <th>E-mail</th>
@@ -41,8 +41,8 @@
                                     <th>Pays</th>
                                     <th>Code postale</th>
                                     <th>métier</th>
-                                    <th>Score</th>
-                                    <th></th>
+                                    <th data-priority="3">Score</th>
+                                    <th data-priority="2"></th>
                                     
                                 </tr>
                             </thead>

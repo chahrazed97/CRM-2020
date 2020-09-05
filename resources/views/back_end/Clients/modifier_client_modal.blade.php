@@ -64,10 +64,23 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
+                                        <label class="col-form-label">Pays</label>
+                                        <div class="form-group">   
+                                            <select class="custom-select" name="pays">
+                                                <option value="{{ $client->Pays->id }}" selected="selected">{{ $client->pays }}</option>
+                                                @foreach($tt_pays as $pays_cl)
+                                                <option value="{{ $pays_cl->id }}">{{ $pays_cl->pays}}</option>
+                                                @endforeach
+                
+                                            </select>
+                                            <small class="help-block"></small>
+                                        </div>
+                                    </div>
+                                    <!--<div class="form-group">
                                         <label for="example-time-input" class="col-form-label">Pays</label>
                                         <input class="form-control" type="text" name="pays" value="{{ $client->pays }}" id="example-time-input">
                                         {!! $errors->first('pays', '<small class="help-block">:message</small>') !!}
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
 
@@ -87,7 +100,7 @@
                             <label class="col-form-label">Suivi par</label>
                             <div class="form-group {{ $errors->has('employe') ? 'has-error' : '' }}">   
                             <select class="custom-select" name="employe">
-                                <option selected="selected">{{ $client->Employees->nom.' '.$client->Employees->prenom }}</option>
+                                <option value="{{ $client->Employees->id }}" selected="selected">{{ $client->Employees->nom.' '.$client->Employees->prenom }}</option>
                                 @foreach($employes as $employe)
                                 <option value="{{ $employe->id }}">{{ $employe->nom.' '.$employe->prenom }}</option>
                                 @endforeach

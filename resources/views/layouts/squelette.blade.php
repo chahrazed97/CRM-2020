@@ -67,7 +67,7 @@
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-comments-o"></i><span>Mes conversations</span></a>
                                 <ul class="collapse">
-                                    <li><a href="{{ route('mesConversation') }}">Concersations client</a></li>
+                                    <li><a href="{{ route('mesConversation') }}">Conversations client</a></li>
                                     <li><a href="{{ route('Conversation.prospect') }}">conversations prospect</a></li>
                                     <li><a href="{{ route('Conversation.equipe') }}">conversations équipe</a></li>
                                 </ul>
@@ -113,9 +113,9 @@
                                         
                                 $nbr_totale = $nbr_clients + $nbr_prospects;
                             ?>
-                                <i class="ti-bell dropdown-toggle" data-toggle="dropdown"><span>{{ $nbr_totale }}</span></i>
+                                <i class="ti-bell dropdown-toggle" data-toggle="dropdown"><span style="background-color: #843df9;">{{ $nbr_totale }}</span></i>
                                 <div class="dropdown-menu notify-box nt-enveloper-box">
-                                    <span class="notify-title">Vous avez {{ $nbr_totale }} e-mail(s)</span>
+                                    <span class="notify-title" style="background-color: #843df9;">Vous avez {{ $nbr_totale }} e-mail(s)</span>
                                     <div class="nofity-list">
                                     @for ($i=0; $i< $nbr_clients; $i++)
                                      @if (Session::has('msgClient'.$i)){
@@ -153,9 +153,9 @@
                                 $nbr_emps = Session::get('nbrEmp');
                             ?>
                             <li class="dropdown">
-                                <i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span>{{ $nbr_emps }}</span></i>
+                                <i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span style="background-color: #843df9;">{{ $nbr_emps }}</span></i>
                                 <div class="dropdown-menu notify-box nt-enveloper-box">
-                                    <span class="notify-title">Vous avez {{ $nbr_emps }} message(s)</span>
+                                    <span class="notify-title" style="background-color: #843df9;">Vous avez {{ $nbr_emps }} message(s)</span>
                                     <div class="nofity-list">
                                     @for ($i = 0; $i<$nbr_emps; $i++)
                                       @if (Session::has('msgEmp'.$i)){ 
