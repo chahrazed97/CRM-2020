@@ -43,7 +43,7 @@
                                         <select class="custom-select" name="produit">
                                             <option selected="selected">Choisir un produit</option>
                                             @foreach($produits as $produit)
-                                            <option value="{{ $produit->id }}">{{ $produit->type }}</option>
+                                            <option value="{{ $produit->id }}">{{ $produit->nom }}</option>
                                             @endforeach
                                          </select>
                                         {!! $errors->first('produit', '<small class="help-block">:message</small>') !!}

@@ -17,11 +17,11 @@
                         <td><span class="badge badge-primary badge-pill" style="background-color: #843df9;">{{ $email_termine }}</span></td>
                     </tr>
 
-                    <tr>
+                    <!--<tr>
                         <th scope="row">Appel</th>
                         <td><span class="badge badge-primary badge-pill" style="background-color: #843df9;">{{ $appel_ouvert }}</span></td>
                         <td><span class="badge badge-primary badge-pill" style="background-color: #843df9;">{{ $appel_termine }}</span></td>
-                    </tr>
+                    </tr>-->
 
                     <tr>
                         <th scope="row">Rendez-vous</th>

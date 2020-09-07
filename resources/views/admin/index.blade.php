@@ -59,10 +59,10 @@
                 </button>
             </form>
             
-            <div class="col-12 forgot">
+            <!--<div class="col-12 forgot">
                 <a href="#">Forgot Password?</a>
                 
-            </div>
+            </div>-->
             
              
          </div> <!---end of modal content --->

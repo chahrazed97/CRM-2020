@@ -1,6 +1,6 @@
 @if ( $promo !== 0 )
 <?php $nom = $promo->titre;
-	  $pourcentage = $promo->pourcetage;
+	  $pourcentage = $promo->pourcetage_promo;
 	  $nom_produit = $promo->Produit->nom;
 	  $prix_nrml = $promo->Produit->prix;
 	  $prix_promo = $prix_nrml - ( ($prix_nrml * $pourcentage)/ 100);

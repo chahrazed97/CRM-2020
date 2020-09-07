@@ -101,15 +101,15 @@ Licensed under MIT
             <td align="center" valign="middle" style="font-size: 12px; line-height: 22px;">
             	<font face="Tahoma, Arial, Helvetica, sans-serif" size="2" color="#282f37" style="font-size: 12px;">
 								<span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #5b9bd1;">
-		              <a href="#PRODUCTS" target="_blank" style="color: #5b9bd1; text-decoration: none;">PRODUCTS</a>
-		                  <img src="http://artloglab.com/metromail/images/dot.gif" alt="|" width="9" height="9" class="mob_display_none" />    
-		              <a href="#FEATURES" target="_blank" style="color: #5b9bd1; text-decoration: none;">FEATURES</a>
-		                  <img src="http://artloglab.com/metromail/images/dot.gif" alt="|" width="9" height="9" class="mob_display_none" />    
-		              <a href="#LAYOUTS" target="_blank" style="color: #5b9bd1; text-decoration: none;">LAYOUTS</a>
-		                  <img src="http://artloglab.com/metromail/images/dot.gif" alt="|" width="9" height="9" class="mob_display_none" />    
-		              <a href="#SUPPORT" target="_blank" style="color: #5b9bd1; text-decoration: none;">SUPPORT</a>
-		                  <img src="http://artloglab.com/metromail/images/dot.gif" alt="|" width="9" height="9" class="mob_display_none" />    
-		              <a href="#DISCOVER" target="_blank" style="color: #5b9bd1; text-decoration: none;">DISCOVER</a>
+		              <a href="#PRODUCTS" target="_blank" style="color: #5b9bd1; text-decoration: none;">facebook</a>
+		                  <img src="{{ asset('img/fb_icon.png') }}" alt="|" width="30" height="30" class="mob_display_none" />    
+		              <a href="#FEATURES" target="_blank" style="color: #5b9bd1; text-decoration: none;">twitter</a>
+		                  <img src="{{ asset('img/twitter_icon.png') }}" alt="|" width="30" height="30" class="mob_display_none" />    
+		              <a href="#LAYOUTS" target="_blank" style="color: #5b9bd1; text-decoration: none;">instagramm</a>
+		                  <img src="{{ asset('img/insta_icon.jpg') }}" alt="|" width="30" height="30" class="mob_display_none" />    
+		              <a href="#SUPPORT" target="_blank" style="color: #5b9bd1; text-decoration: none;">whatsapp</a>
+		                  <img src="{{ asset('img/whatsapp_icon.png') }}" alt="|" width="30" height="30" class="mob_display_none" />    
+		              
               </span></font>
             </td>
           </tr>                                        

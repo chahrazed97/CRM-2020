@@ -233,7 +233,7 @@
                 </div>
                
             </div>
-            <a data-toggle="modal" data-target="#Modalpromo"><cite>Plus d'informations ici</cite></a>
+            <a data-toggle="modal" data-target="#Modalpromo"><i class="fa fa-angle-double-right right"></i><cite class="right">Plus d'informations ici</cite></a>
                <!-- Modal -->
                <div class="modal fade" id="Modalpromo">
                 <div class="modal-dialog">
@@ -289,7 +289,7 @@
                 @endif
                 </div>
             </div>
-            <a data-toggle="modal" data-target="#Modalevent"><cite>Plus d'information ici</cite></a>
+            <a data-toggle="modal" data-target="#Modalevent"><i class="fa fa-angle-double-right right"></i><cite class="right">Plus d'information ici</cite></a>
                <!-- Modal -->
                <div class="modal fade" id="Modalevent">
                 <div class="modal-dialog">
@@ -345,7 +345,7 @@
                 </div>
                 
             </div>
-            <a data-toggle="modal" data-target="#Modalreclam"><cite>Plus d'informations ici</cite>
+            <a data-toggle="modal" data-target="#Modalreclam"><i class="fa fa-angle-double-right right"></i><cite class="right">Plus d'informations ici</cite>
             <!-- Modal -->
             <div class="modal fade" id="Modalreclam">
                 <div class="modal-dialog">

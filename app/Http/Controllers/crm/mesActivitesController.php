@@ -37,7 +37,7 @@ class mesActivitesController extends Controller
                     null,
                     // Add color and link on event
 	                [
-	                    'color' => 'blueviolet',
+	                    'color' => 'lightpink',
 	                   // 'url' => url('MesActivites/#'.$value->id),
                     ]
                    
@@ -55,7 +55,7 @@ class mesActivitesController extends Controller
                     null,
                     // Add color and link on event
 	                [
-	                    'color' => '#f05050',
+	                    'color' => 'mediumorchid',
 	                   // 'url' => url('MesActivites/#'.$value->id),
                     ]
                    
@@ -74,7 +74,7 @@ class mesActivitesController extends Controller
                     null,
                     // Add color and link on event
 	                [
-	                    'color' => 'yellow',
+	                    'color' => 'rgba(173, 216, 230, 0.774)',
 	                   // 'url' => url('MesActivites/#'.$value->id),
                     ]
                    

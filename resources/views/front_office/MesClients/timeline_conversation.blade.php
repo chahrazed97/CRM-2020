@@ -2,7 +2,7 @@
 <div class="page-header">
     <a class="lien-ch mr-2" data-toggle="tooltip" data-placement="left" title="Programmer une activité avec ce client"><button class="btn btn-rounded btn- btn-xs" type="button" data-toggle="modal" data-target="#ModalLong">Programmer une activité</button></a>
     <a class="lien-ch mr-2" href="{{ route('index.emails', [ 'client_id' => $client->id, 'prospect_id' => 0, 'produit_id' => 0, 'promo_id' => 0, 'event_id' => 0, 'reclam_id' => 0, 'activite_id' => 0, 'type' => 'clients_contact' ]) }}" data-toggle="tooltip" data-placement="left" title="Envoyer e-mail"><button class="btn btn-rounded btn- btn-xs"><i class="fa fa-envelope"></i></button></a>
-    <a class="lien-ch " href="" data-toggle="tooltip" data-placement="left" title="effectuer un appel"><button class="btn btn-rounded btn- btn-xs"><i class="fa fa-phone"></i></button></a>
+    <!--<a class="lien-ch " href="" data-toggle="tooltip" data-placement="left" title="effectuer un appel"><button class="btn btn-rounded btn- btn-xs"><i class="fa fa-phone"></i></button></a>-->
 </div>
 @include('front_office.MesClients.ajouterActiviteClient_modal')
 @if($activite_all !== NULL )

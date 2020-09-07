@@ -12,10 +12,10 @@
                 <input type="radio" checked id="customRadio4" name="type" value="e-mail" class="custom-control-input">
                 <label class="custom-control-label" for="customRadio4">E-mail</label>
             </div>
-            <div class="custom-control custom-radio custom-control-inline">
+            <!--<div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" id="customRadio5" name="type" value="appel" class="custom-control-input">
                 <label class="custom-control-label" for="customRadio5">Appel téléphonique</label>
-            </div>
+            </div>-->
             <div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" id="customRadio6" name="type" value="rendez-vous" class="custom-control-input">
                 <label class="custom-control-label" for="customRadio6">Rendez-vous</label>
