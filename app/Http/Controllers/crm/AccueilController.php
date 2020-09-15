@@ -45,6 +45,7 @@ class AccueilController extends Controller
 	$this->mssgProspect = new MessgProspect();
 	$this->mssgEmp = new messageEmp();
 	$this->middleware('auth');
+	$this->middleware('ajax', ['only' => 'test']);
 	}
 
 	public function index()
@@ -125,7 +126,7 @@ class AccueilController extends Controller
 	}
 
  
-  public function storeActivite(AjouterActiviteRequest $request)
+  public function storeActivite(Request $request)
   {
 	$employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
 
@@ -148,6 +149,8 @@ class AccueilController extends Controller
 	$activite->clients_id = $client_id;
 	$activite->description = $description;
 	$activite->save();
+	//return response()->json()->withCallback();
+
 	//return response()->json(['ok'=>'Data is successfully added']);
 	return redirect()->back()->with("ok", "L'activité " . $activite->titre . " a bien été créée.");
   }
@@ -212,4 +215,5 @@ class AccueilController extends Controller
 		$lien->delete();
 		return redirect()->back()->with('ok', 'Le lien a bien été supprimé !');
 	}
+
 }

@@ -15,14 +15,14 @@
                 @endif
                 <label class="custom-control-label" for="customRadio4">E-mail</label>
             </div>
-            <div class="custom-control custom-radio custom-control-inline">
+            <!--<div class="custom-control custom-radio custom-control-inline">
                 @if($activite->type_activite == 'appel')
                 <input type="radio" id="customRadio5" name="type" value="appel" class="custom-control-input" checked>
                 @else
                 <input type="radio" id="customRadio5" name="type" value="appel" class="custom-control-input">
                 @endif
                 <label class="custom-control-label" for="customRadio5">Appel téléphonique</label>
-            </div>
+            </div>-->
             <div class="custom-control custom-radio custom-control-inline">
                 @if($activite->type_activite == 'rendez_vous')
                 <input type="radio" id="customRadio6" name="type" value="rendez-vous" class="custom-control-input" checked>
@@ -34,7 +34,7 @@
 
             <div class="form-group">
                 <label for="example-text-input" class="col-form-label">Titre</label>
-                <input class="form-control" type="text" name="titre" value="{{ $activite->titre }}" id="example-text-input">
+                <input class="form-control" type="text" name="titre" value="{{ $activite->titre }}" id="example-text-input" pattern="[-a-zA-Z0-9 \S]+" max="50" min="3">
                 <small class="help-block" style="color : red;"></small>
 	
             </div>
@@ -42,7 +42,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="example-date-input" class="col-form-label">Date</label>
-                        <input class="form-control" type="date" name="date" value="{{ (new Carbon\Carbon($activite->date_act))->format('Y-m-d') }}" id="example-date-input">
+                        <input class="form-control" type="date" name="date" value="{{ (new Carbon\Carbon($activite->date_act))->format('Y-m-d') }}" id="example-date-input" required>
                         <small class="help-block" style="color : red;"></small>
 	
                     </div>
@@ -51,7 +51,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="example-time-input" class="col-form-label">Heure</label>
-                        <input class="form-control" type="time" name="heure" value="{{ (new Carbon\Carbon($activite->date_act))->format('H:i') }}" id="example-time-input">
+                        <input class="form-control" type="time" name="heure" value="{{ (new Carbon\Carbon($activite->date_act))->format('H:i') }}" id="example-time-input" required>
                         <small class="help-block" style="color : red;"></small>
 	
                     </div>
@@ -60,7 +60,7 @@
 
             <div class="form-group">
                 <label class="col-form-label">Selection client</label>   
-                <select class="custom-select" name="client">
+                <select class="custom-select" name="client" required>
                     <option value="{{ $activite->clients->id }}" selected="selected">{{ $activite->clients->nom.' '.$activite->clients->prenom }}</option>
                     @foreach($clients as $client)
                     <option value="{{ $client->id }}">{{ $client->nom.' '.$client->prenom }}</option>
@@ -73,7 +73,7 @@
 
             <div class="form-group">
                 <label for="example-text-input-lg" class="col-form-label">Description</label>
-                <input class="form-control form-control-lg" type="text" name="description" value="{{ $activite->description }}" id="example-text-input-lg">
+                <input class="form-control form-control-lg" type="text" name="description" value="{{ $activite->description }}" id="example-text-input-lg" min="3">
                 <small class="help-block" style="color : red;"></small>
 	
             </div>

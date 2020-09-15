@@ -6,7 +6,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Ajouter une activité</h5>   
             </div>
-            
+           
             <b class="text-muted mb-3 mt-4 d-block">Type d'activité:</b>
             <div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" checked id="customRadio4" name="type" value="e-mail" class="custom-control-input">
@@ -24,8 +24,8 @@
             <div class="form-group">
                 <label for="example-text-input" class="col-form-label">Titre</label>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="titre" placeholder="Ajouter un titre" id="example-text-input" value="{{ old('titre') }}">
-                    <small class="help-block" style="color : red;"></small>
+                    <input class="form-control" type="text" name="titre" placeholder="Ajouter un titre" id="titre" max="50" min="3" value="{{ old('titre') }}" pattern="[-a-zA-Z0-9 \S]+" >
+                    <small class="help-block" id="titre_err" style="color : red;"></small>
                 </div>
 	
             </div>
@@ -34,8 +34,8 @@
                     <div class="form-group">
                         <label for="example-date-input" class="col-form-label">Date</label>
                         <div class="form-group">
-                            <input class="form-control" type="date" name="date" placeholder="Ajouter une date" id="example-date-input"  value="{{ old('date') }}">
-                            <small class="help-block" style="color : red;"></small>
+                            <input class="form-control" type="date" name="date" placeholder="Ajouter une date" id="date"  value="{{ old('date') }}" required>
+                            <small class="help-block" id="date_err" style="color : red;"></small>
                         </div>
                     </div>
                 </div>
@@ -44,8 +44,8 @@
                     <div class="form-group">
                         <label for="example-time-input" class="col-form-label">Heure</label>
                         <div class="form-group">
-                            <input class="form-control" type="time" name="heure" placeholder="Donner l'horaire" id="example-time-input"  value="{{ old('heure') }}">
-                            <small class="help-block" style="color : red;"></small>
+                            <input class="form-control" type="time" name="heure" placeholder="Donner l'horaire" id="heure"  value="{{ old('heure') }}" required>
+                            <small class="help-block" id="heure_err" style="color : red;"></small>
                         </div>
 	
                     </div>
@@ -55,7 +55,7 @@
            <div class="form-group">
                 <label class="col-form-label">Selection client</label>
                 <div class="form-group">   
-                <select class="custom-select" name="client">
+                <select class="custom-select" id="client" name="client" required>
                     <option selected="selected">Ajouter un client</option>
                     <?php 
                     
@@ -67,22 +67,48 @@
                     @endforeach
                 
                 </select>
-                <small class="help-block"></small>
+                <small id="client_err" class="help-block"></small>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="example-text-input-lg" class="col-form-label" >Description</label>
-                <input class="form-control form-control-lg" type="text" name="description" placeholder="Ajouter une description"  value="{{ old('description') }}" id="example-text-input-lg">
-                <small class="help-block"></small>
+                <input class="form-control form-control-lg" type="text" name="description" id="description" placeholder="Ajouter une description"  value="{{ old('description') }}" min="3" id="example-text-input-lg">
+                <small id="description_err" class="help-block"></small>
             </div>
             <div class="modal-footer">
                 <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>
-                <button type="submit" id="sub" class="btn btn-rounded btn- btn-sm right">Créer</buttom>
+                <button type="" id="sub" onclick="myFunction()" class="btn btn-rounded btn- btn-sm right">Créer</buttom>
             </div>
         </div>
     </form>
 </div>
 
-
-
+<script>
+function myFunction() {
+  var titre = document.getElementById('titre');
+  var date = document.getElementById("date");
+  var heure = document.getElementById("heure");
+  var client = document.getElementById("client");
+  var description = document.getElementById("description");
+  
+  if (!titre.checkValidity()) {
+    document.getElementById("titre_err").innerHTML = titre.validationMessage;
+  }
+  if (!date.checkValidity()) {
+    document.getElementById("date_err").innerHTML = date.validationMessage;
+  } 
+  
+  if (!heure.checkValidity()) {
+    document.getElementById("heure_err").innerHTML = heure.validationMessage;
+  }
+  if (!client.checkValidity()) {
+    document.getElementById("client_err").innerHTML = client.validationMessage;
+  }
+  if (!description.checkValidity()) {
+    document.getElementById("description_err").innerHTML = description.validationMessage;
+  } else{
+    document.getElementById("sub").type = "submit";
+  } 
+} 
+</script>

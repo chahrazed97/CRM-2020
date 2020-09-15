@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/slicknav.min.css')}}">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+
     @yield('CRMaccueil_CSS')
     <!-- others css -->
     <link rel="stylesheet" href="{{asset('assets/css/typography.css')}}">
@@ -24,6 +25,7 @@
     <!-- modernizr css -->
     <script src="{{asset('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
     @yield('ajax') 
     @yield('ajax2')
 </head>
@@ -208,6 +210,7 @@
                 <!-- contenu ici -->
                  @yield('contenu')
                 <!-- end contenu -->
+                 <!-- JavaScripts -->
            
         </div>
         <!-- footer area start-->
@@ -325,7 +328,7 @@
             <!-- fin test contenu -->
         </div>  
     </div>    
-
+    
      <!-- jquery latest version -->
     <script src="{{asset('assets/js/vendor/jquery-2.2.4.min.js')}}"></script>
     <!-- bootstrap 4 js -->
@@ -343,7 +346,7 @@
     <script src="{{asset('assets/js/scripts.js')}}"></script>
 
   @yield('scriptCalendar')
-  @yield('scripts')
+
 
 </body>
 

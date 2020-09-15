@@ -15,7 +15,7 @@
             <li class="list-group-item">
                 <div class="row">
                     <div class="col-7">
-                        <a href="{{ $lien->lien }}"><i class="fa fa-tag" ></i>{{ $lien->titre }}<small><cite>{{ $lien->lien }}</cite></small></a>
+                        <a href="{{ $lien->lien }}" target="_blank"><i class="fa fa-tag" ></i>{{ $lien->titre }}<small><cite>{{ $lien->lien }}</cite></small></a>
                     </div>
                     <div class="col-4">
                         <a href="{{ route('accueil.lien.annuler', ['lien' => $lien]) }}" class="lien-ch"><button class="btn btn-rounded btn- btn-xs right" onclick= "return confirm('Etes vous sur de vouloir supprimer ce lien ?')"><i class="fa fa-trash"></i></button></a>

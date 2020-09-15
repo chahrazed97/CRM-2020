@@ -10,7 +10,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fa fa-tag"></i></div>
                             </div>
-                            <input class="form-control" type="text" name="titre" placeholder="ajouter un titre au lien" value="{{ old('titre') }}" id="example-date-input">
+                            <input class="form-control" type="text" name="titre" placeholder="ajouter un titre au lien" value="{{ old('titre') }}" id="example-date-input" min="3">
                            
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fa fa-globe"></i></div>
                             </div>
-                            <input class="form-control" type="text" name="url" placeholder="https://example.com" value="{{ old('url') }}" id="example-date-input" required>
+                            <input class="form-control" type="text" name="url" placeholder="https://example.com" value="{{ old('url') }}" id="example-date-input" pattern="" required>
                             
                         </div>
                     </div>

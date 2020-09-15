@@ -25,7 +25,7 @@ class AjouterActiviteRequest extends Request
     {
         return [
             
-            'titre' => 'max:255',
+            'titre' => 'required|max:255',
             'date' => 'required|date|after:yesterday',
             'heure' => 'required',
             
