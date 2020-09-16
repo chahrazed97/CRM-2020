@@ -67,14 +67,14 @@
                     @endforeach
                 
                 </select>
-                <small id="client_err" class="help-block"></small>
+                <small id="client_err" class="help-block" style="color : red;"></small>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="example-text-input-lg" class="col-form-label" >Description</label>
                 <input class="form-control form-control-lg" type="text" name="description" id="description" placeholder="Ajouter une description"  value="{{ old('description') }}" min="3" id="example-text-input-lg">
-                <small id="description_err" class="help-block"></small>
+                <small id="description_err" class="help-block" style="color : red;"></small>
             </div>
             <div class="modal-footer">
                 <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>

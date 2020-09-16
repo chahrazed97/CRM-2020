@@ -166,7 +166,7 @@ class sendEmailController extends Controller
             $destination = $emails;
             foreach($destination as $dest){
                 Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($dest) {
-                    $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
+                    //$m->from('khoudichahrazed@gmail.com', 'CRM 2020');
                
                     $m->to($dest->email);
                 });
@@ -177,7 +177,7 @@ class sendEmailController extends Controller
             $destination = $clients_email->get();
             foreach($destination as $dest){
                 Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($dest) {
-                    $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
+                    //$m->from('khoudichahrazed@gmail.com', 'CRM 2020');
                
                     $m->to($dest->email);
                 });
@@ -188,7 +188,7 @@ class sendEmailController extends Controller
             $destination = $prospects_email->get();
             foreach($destination as $dest){
                 Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($dest) {
-                    $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
+                   // $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
                
                     $m->to($dest->email);
                 });
@@ -197,7 +197,7 @@ class sendEmailController extends Controller
         else{
             $destination = $dernier_msg->destination;
             Mail::send('front_office.emails.envoyerEmail', ['dernier_msg' => $dernier_msg], function ($m) use ($destination) {
-                $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
+               // $m->from('khoudichahrazed@gmail.com', 'CRM 2020');
            
                 $m->to($destination);
             });

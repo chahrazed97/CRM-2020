@@ -13,25 +13,25 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="example-text-input-lg" class="col-form-label">Titre</label>
-                                <input class="form-control form-control-lg" type="text" name="titre" placeholder="donner un titre" id="example-text-input-lg">
-                                {!! $errors->first('titre', '<small class="help-block">:message</small>') !!}
+                                <label for="titre" class="col-form-label">Titre</label>
+                                <input class="form-control form-control-lg" type="text" name="titre" placeholder="donner un titre" id="titre" min="3" pattern="[-a-zA-Z0-9 \S]+">
+                                <small class="help-block" id="titre_err" style="color : red;"></small>
                             </div>
 
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="example-date-input" class="col-form-label">Start date</label>
-                                        <input class="form-control" type="date" name="start_date" placeholder="entrer la date début" id="example-date-input">
-                                        {!! $errors->first('start_date', '<small class="help-block">:message</small>') !!}
+                                        <label for="start_date" class="col-form-label">Start date</label>
+                                        <input class="form-control" type="date" name="start_date" placeholder="entrer la date début" id="start_date" required>
+                                        <small class="help-block" id="start_err" style="color : red;"></small>
                                     </div>
                                 </div>
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="example-time-input" class="col-form-label">End date</label>
-                                        <input class="form-control" type="date" name="end_date" placeholder="entrer la date fin " id="example-time-input">
-                                        {!! $errors->first('end_date', '<small class="help-block">:message</small>') !!}
+                                        <label for="end_date" class="col-form-label">End date</label>
+                                        <input class="form-control" type="date" name="end_date" placeholder="entrer la date fin " id="end_date" required>
+                                        <small class="help-block" id="end_err" style="color : red;"></small>
                                     </div>
                                 </div>
                             </div>
@@ -39,29 +39,29 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="example-date-input" class="col-form-label">Produit de la promo</label>
-                                        <select class="custom-select" name="produit">
+                                        <label for="produit" class="col-form-label">Produit de la promo</label>
+                                        <select class="custom-select" id="produit" name="produit">
                                             <option selected="selected">Choisir un produit</option>
                                             @foreach($produits as $produit)
                                             <option value="{{ $produit->id }}">{{ $produit->nom }}</option>
                                             @endforeach
                                          </select>
-                                        {!! $errors->first('produit', '<small class="help-block">:message</small>') !!}
+                                         <small class="help-block" id="produit_err" style="color : red;"></small>
                                     </div>
                                 </div>
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="example-time-input" class="col-form-label">pourcentage</label>
-                                        <input class="form-control" type="number" name="pourcentage" placeholder=" donner un poucentage " id="example-time-input">
-                                        {!! $errors->first('pourcentage', '<small class="help-block">:message</small>') !!}
+                                        <label for="pourcentage" class="col-form-label">pourcentage</label>
+                                        <input class="form-control" type="number" name="pourcentage" placeholder=" donner un poucentage " id="pourcentage" required>
+                                        <small class="help-block" id="pourcentage_err" style="color : red;"></small>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="modal-footer">
                                 <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>
-                                <button type="submit" class="btn btn-rounded btn- btn-sm right">Ajouter</buttom>
+                                <button type="" id="sub_promo" onclick="myFunctionPromo()" class="btn btn-rounded btn- btn-sm right">Ajouter</buttom>
                             </div>
                         </div>
                     </form>
@@ -71,3 +71,30 @@
         </div>
     </div>
 </div>
+<script>
+function myFunctionPromo() {
+    var titre = document.getElementById('titre');
+    var start_date = document.getElementById("start_date");
+    var end_date = document.getElementById("end_date");
+    var produit = document.getElementById("produit");
+    var pourcentage = document.getElementById("pourcentage");
+  
+    if (!titre.checkValidity()) {
+        document.getElementById("titre_err").innerHTML = titre.validationMessage;
+    }
+    if (!start_date.checkValidity()) {
+        document.getElementById("start_err").innerHTML = start_date.validationMessage;
+    }
+    if (!end_date.checkValidity()) {
+        document.getElementById("end_err").innerHTML = end_date.validationMessage;
+    }
+    if (!produit.checkValidity()) {
+        document.getElementById("produit_err").innerHTML = produit.validationMessage;
+    }
+    if (!pourcentage.checkValidity()) {
+        document.getElementById("pourcentage_err").innerHTML = pourcentage.validationMessage;
+    }else{
+        document.getElementById("sub_promo").type = "submit";
+        } 
+    } 
+</script>

@@ -107,10 +107,11 @@
         <form class="modal-content" action="{{ route('prospect.ajouter.commentaire', ['prospect'=> $prospect]) }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-body">
-                <textarea type="text" class="form-control" rows="5" name="comment" placeholder="Commenter ce prospect" required></textarea>
+                <textarea type="text" class="form-control" rows="5" id="comment" name="comment" placeholder="Commenter ce prospect" min="3" required></textarea>
+                <small id="comment_err" class="help-block" style="color : red;"></small>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Commenter</button>
+                <button type="" id="sub_comnt" onclick="myFunction()" class="btn btn-primary">Commenter</button>
             </div>
             </div> 
         </form>
@@ -119,4 +120,15 @@
         </div>
     </div>
 </div>
+<script>
+function myFunction() {
+  var comment = document.getElementById('comment');
+
+  if (!comment.checkValidity()) {
+    document.getElementById("comment_err").innerHTML = date.validationMessage;
+  } else{
+    document.getElementById("sub_comnt").type = "submit";
+  } 
+} 
+</script>
 @endsection

@@ -1,2 +1,2 @@
 <?php $message->subject($dernier_msg->subject) ?>
-{{  $dernier_msg->msg }}
+<?php  echo $dernier_msg->msg; ?>

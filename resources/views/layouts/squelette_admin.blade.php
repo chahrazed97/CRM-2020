@@ -264,11 +264,11 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-phone"></i></div>
                                             </div>
-                                            <input class="form-control" type="text" name="phone" placeholder="" value="{{ Auth::user()->phone }}" id="example-date-input" required>
+                                            <input class="form-control" type="text"id="phone" name="phone" placeholder="" value="{{ Auth::user()->phone }}" id="example-date-input" min="9" max="11" required>
                                         </div>
                                     </div>
                                 </div>
-                                <small class="help-block" style="color : red;"></small>
+                                <small class="help-block" id="phone_err" style="color : red;"></small>
                             </div>
                             <div class="col-12">
                                 <div class="form-group ">
@@ -278,11 +278,11 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-envelope"></i></div>
                                             </div>
-                                            <input class="form-control" type="text" name="email" placeholder="" value="{{ Auth::user()->email }}" id="example-date-input" required>
+                                            <input class="form-control" type="text" id="email" name="email" placeholder="" value="{{ Auth::user()->email }}" id="example-date-input" required>
                                         </div>
                                     </div>
                                 </div>
-                                <small class="help-block" style="color : red;"></small>
+                                <small class="help-block" id="email_err" style="color : red;"></small>
                             </div>
                             <div class="col-12">
                                 <div class="form-group ">
@@ -292,11 +292,11 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-unlock-alt"></i></div>
                                             </div>
-                                            <input class="form-control" type="password" name="old_psw" placeholder="mot de passe actuelle" value="" id="example-date-input">
+                                            <input class="form-control" type="password" id="old_psw" name="old_psw" placeholder="mot de passe actuelle" value="" id="example-date-input">
                                         </div>
                                     </div>
                                 </div>
-                                <small class="help-block" style="color : red;"></small>
+                                <small class="help-block" id="old_err" style="color : red;"></small>
                             </div>
                             <div class="col-12">
                                 <div class="form-group ">
@@ -305,11 +305,11 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-unlock-alt"></i></div>
                                             </div>
-                                            <input class="form-control" type="password" name="new_psw" placeholder="nouveau mot de passe" value="" id="example-date-input" >
+                                            <input class="form-control" type="password" id="new_psw" name="new_psw" placeholder="nouveau mot de passe" value="" id="example-date-input" >
                                         </div>
                                     </div>
                                 </div>
-                                <small class="help-block" style="color : red;"></small>
+                                <small class="help-block" id="new_err" style="color : red;"></small>
                             </div>
                             <div class="col-12">
                                 <div class="form-group ">
@@ -318,13 +318,41 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-unlock-alt"></i></div>
                                             </div>
-                                            <input class="form-control" type="password" name="confirm_new_psw" placeholder="confirmer nouveau mot de passe" value="" id="example-date-input" >
+                                            <input class="form-control" type="password" id="confirm_new_psw" name="confirm_new_psw" placeholder="confirmer nouveau mot de passe" value="" id="example-date-input" >
                                         </div>
                                     </div>
                                 </div>
-                                <small class="help-block" style="color : red;"></small>
+                                <small class="help-block" id="confirm_err" style="color : red;"></small>
                             </div>
-                            <button type="submit" class="btn btn-rounded btn- btn-sm right">Changer</buttom>
+                            <button type="" id="sub_compte" onclick="myFunction()" class="btn btn-rounded btn- btn-sm right">Changer</buttom>
+                            <script>
+                            function myFunction() {
+                                var phone = document.getElementById('phone');
+                                var email = document.getElementById("email");
+                                var old_psw = document.getElementById("old_psw");
+                                var new_psw = document.getElementById("new_psw");
+                                var confirm_new_psw = document.getElementById("confirm_new_psw");
+ 
+  
+                                if (!phone.checkValidity()) {
+                                document.getElementById("phone_err").innerHTML = phone.validationMessage;
+                                }
+                                if (!email.checkValidity()) {
+                                document.getElementById("email_err").innerHTML = email.validationMessage;
+                                }
+                                if (!old_psw.checkValidity()) {
+                                document.getElementById("old_err").innerHTML = old_psw.validationMessage;
+                                }
+                                if (!new_psw.checkValidity()) {
+                                document.getElementById("new_err").innerHTML = new_psw.validationMessage;
+                                }
+                                if (!confirm_new_psw.checkValidity()) {
+                                document.getElementById("confirm_err").innerHTML = confirm_new_psw.validationMessage;
+                                } else{
+                                document.getElementById("sub_compte").type = "submit";
+                                } 
+                            } 
+                            </script>
                         </form>
                        <!-- fin parametre -->
                     </div>

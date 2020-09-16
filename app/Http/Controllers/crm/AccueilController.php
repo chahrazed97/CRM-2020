@@ -155,7 +155,7 @@ class AccueilController extends Controller
 	return redirect()->back()->with("ok", "L'activité " . $activite->titre . " a bien été créée.");
   }
 
-  public function storeLien(AjouterLienRequest $request)
+  public function storeLien(Request $request)
   {
 	$employe= Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom )->where('email', '=', Auth::user()->email )->where('phone', '=', Auth::user()->phone )->where('role', '=', Auth::user()->role )->first();
 
@@ -172,7 +172,7 @@ class AccueilController extends Controller
   }
 
  
-  public function updateActivite(ActiviteUpdateRequest $request, Activite $activite)
+  public function updateActivite(Request $request, Activite $activite)
 	{
 		$type = $request->get('type');
 		$titre = $request->get('titre');

@@ -34,16 +34,16 @@
 
             <div class="form-group">
                 <label for="example-text-input" class="col-form-label">Titre</label>
-                <input class="form-control" type="text" name="titre" value="{{ $activite->titre }}" id="example-text-input" pattern="[-a-zA-Z0-9 \S]+" max="50" min="3">
-                <small class="help-block" style="color : red;"></small>
+                <input class="form-control" type="text" id="titre_m" name="titre" value="{{ $activite->titre }}" id="example-text-input" pattern="[-a-zA-Z0-9 \S]+" max="50" min="3">
+                <small class="help-block" id="titreM_err" style="color : red;"></small>
 	
             </div>
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
                         <label for="example-date-input" class="col-form-label">Date</label>
-                        <input class="form-control" type="date" name="date" value="{{ (new Carbon\Carbon($activite->date_act))->format('Y-m-d') }}" id="example-date-input" required>
-                        <small class="help-block" style="color : red;"></small>
+                        <input class="form-control" type="date" id="date_m" name="date" value="{{ (new Carbon\Carbon($activite->date_act))->format('Y-m-d') }}" id="example-date-input" required>
+                        <small class="help-block" id="dateM_err" style="color : red;"></small>
 	
                     </div>
                 </div>
@@ -51,8 +51,8 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="example-time-input" class="col-form-label">Heure</label>
-                        <input class="form-control" type="time" name="heure" value="{{ (new Carbon\Carbon($activite->date_act))->format('H:i') }}" id="example-time-input" required>
-                        <small class="help-block" style="color : red;"></small>
+                        <input class="form-control" type="time" id="heure_m" name="heure" value="{{ (new Carbon\Carbon($activite->date_act))->format('H:i') }}" id="example-time-input" required>
+                        <small class="help-block" id="heureM_err" style="color : red;"></small>
 	
                     </div>
                 </div>
@@ -60,21 +60,21 @@
 
             <div class="form-group">
                 <label class="col-form-label">Selection client</label>   
-                <select class="custom-select" name="client" required>
+                <select class="custom-select" id="client_m" name="client" required>
                     <option value="{{ $activite->clients->id }}" selected="selected">{{ $activite->clients->nom.' '.$activite->clients->prenom }}</option>
                     @foreach($clients as $client)
                     <option value="{{ $client->id }}">{{ $client->nom.' '.$client->prenom }}</option>
                     @endforeach
                 
                 </select>
-                <small class="help-block" style="color : red;"></small>
+                <small class="help-block" id="clientM_err" style="color : red;"></small>
                 
             </div>
 
             <div class="form-group">
                 <label for="example-text-input-lg" class="col-form-label">Description</label>
-                <input class="form-control form-control-lg" type="text" name="description" value="{{ $activite->description }}" id="example-text-input-lg" min="3">
-                <small class="help-block" style="color : red;"></small>
+                <input class="form-control form-control-lg" type="text" name="description" id="description_m" value="{{ $activite->description }}" id="example-text-input-lg" min="3">
+                <small class="help-block" id="descriptionM_err" style="color : red;"></small>
 	
             </div>
 
@@ -89,8 +89,37 @@
             </div>
             <div class="modal-footer">
                 <a class="left" data-dismiss="modal" href="{{ URL::previous() }}"><i class="fa fa-hand-o-left"></i>Retour</a>
-                <button type="submit" class="btn btn-rounded btn- btn-sm right">Modifier</buttom>
+                <button type="" id="sub_mod" onclick="myFunction()" class="btn btn-rounded btn- btn-sm right">Modifier</buttom>
             </div>
         </div>
     </form>
 </div>
+
+<script>
+function myFunction() {
+  var titre = document.getElementById('titre_m');
+  var date = document.getElementById("date_m");
+  var heure = document.getElementById("heure_m");
+  var client = document.getElementById("client_m");
+  var description = document.getElementById("description_m");
+  
+  if (!titre.checkValidity()) {
+    document.getElementById("titreM_err").innerHTML = titre.validationMessage;
+  }
+  if (!date.checkValidity()) {
+    document.getElementById("dateM_err").innerHTML = date.validationMessage;
+  } 
+  
+  if (!heure.checkValidity()) {
+    document.getElementById("heureM_err").innerHTML = heure.validationMessage;
+  }
+  if (!client.checkValidity()) {
+    document.getElementById("clientM_err").innerHTML = client.validationMessage;
+  }
+  if (!description.checkValidity()) {
+    document.getElementById("descriptionM_err").innerHTML = description.validationMessage;
+  } else{
+    document.getElementById("sub_mod").type = "submit";
+  } 
+} 
+</script>

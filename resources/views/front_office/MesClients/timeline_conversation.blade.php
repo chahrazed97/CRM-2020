@@ -62,8 +62,9 @@
     <form class="" action="{{ route('Client.ajouter.commentaire', ['client'=> $client]) }}" method="post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="card-body">
-        <textarea type="text" class="form-control" rows="5" name="comment" placeholder=" commenter ce client" required ></textarea>
-        <button type="submit" class="btn btn-rounded btn- btn-sm right mt-1">Créer</buttom>
+        <textarea type="text" class="form-control" rows="5" id="comment" name="comment" placeholder=" commenter ce client" min="3" required ></textarea>
+        <small id="comment_err" class="help-block" style="color : red;"></small>
+        <button type="" id="sub_comnt" onclick="myFunction()" class="btn btn-rounded btn- btn-sm right mt-1">Créer</buttom>
       </div> 
     </form>
   </div>
@@ -79,3 +80,14 @@
     </div>
   </div>
 </div>
+<script>
+function myFunction() {
+  var comment = document.getElementById('comment');
+
+  if (!comment.checkValidity()) {
+    document.getElementById("comment_err").innerHTML = date.validationMessage;
+  } else{
+    document.getElementById("sub_comnt").type = "submit";
+  } 
+} 
+</script>

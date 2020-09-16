@@ -69,14 +69,26 @@
    <form  action="{{ route('Envoyer.msg', ['id' => $employe->id, 'role' => $employe->role]) }}"  method="post" class="modal-content">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="modal-body">
-            <textarea type="text" class="form-control" rows="5" name="msg" placeholder="{{ 'Envoyer à '.$employe->nom.' '.$employe->prenom.' un message...' }}" required></textarea>
+            <textarea type="text" class="form-control" rows="5" id="contacter" name="msg" placeholder="{{ 'Envoyer à '.$employe->nom.' '.$employe->prenom.' un message...' }}" required></textarea>
+            <small id="contacter_err" class="help-block" style="color : red;"></small>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Envoyer</button>
+            <button type="" id="sub_contact" class="btn btn-primary">Envoyer</button>
         </div>
     </form>
     <!-- fin msg -->
 </div>
 </div>
 </div>
+<script>
+function myFunction() {
+  var contacter = document.getElementById('contacter');
+
+  if (!contacter.checkValidity()) {
+    document.getElementById("contacter_err").innerHTML = date.validationMessage;
+  }else{
+    document.getElementById("sub_contact").type = "submit";
+  } 
+} 
+</script>
 @endsection
