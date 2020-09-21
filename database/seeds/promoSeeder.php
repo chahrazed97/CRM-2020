@@ -23,7 +23,7 @@ class promoSeeder extends Seeder
                 'titre' => 'Promo'.$i,
                 'start_date' => $date,
                 'end_date' => $date,
-                'produit_id' => rand(142,153),
+                'produit_id' => rand(1,12),
                 'pourcetage_promo' => rand(10, 60),
                 'created_at' => $date,
                 'updated_at' => $date

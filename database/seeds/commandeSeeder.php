@@ -20,7 +20,7 @@ public function run()
     {
     //DB::table('commande')->delete();
 
-    for($i = 0; $i < 70; ++$i)
+    for($i = 0; $i < 30; ++$i)
     {
         $mode_pay = array('paybal', 'dhahabia', 'visa', 'CIB');
         $randomElement = $mode_pay[array_Rand($mode_pay, 1)];
@@ -29,7 +29,7 @@ public function run()
             'num_comm' => 'COM/LPMO/0' . $i,
             'date_comm' => $date,
             'mode_payement' => $randomElement,
-            'clients_id' => rand(1,30),
+            'clients_id' => rand(2,11),
             'created_at' => $date,
             'updated_at' => $date
             ]);

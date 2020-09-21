@@ -12,6 +12,9 @@
 @if(session()->has('ok'))
 	<div class="alert alert-success alert-dismissible">{!! session()->get('ok') !!}</div>
 @endif
+@if(session()->has('err'))
+	<div class="alert alert-danger alert-dismissible">{!! session()->get('err') !!}</div>
+@endif
 
     <div class="row">
     <div class="col-4 mt-5">
@@ -156,7 +159,7 @@
         {{ $errors->first('objet', '<small class="help-block">:message</small>') }}
     </div>
 </div>
-<textarea class="form-control" id="summary-ckeditor" name="summary-ckeditor" required>
+<textarea class="form-control" id="summary-ckeditor" name="summary-ckeditor" minlength="5" required>
 @if(isset($_GET['bouton']))
 @include('front_office.emails.'.$_GET['bouton'])
 @endif

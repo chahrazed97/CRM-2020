@@ -24,7 +24,7 @@
             <div class="form-group">
                 <label for="example-text-input" class="col-form-label">Titre</label>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="titre" placeholder="Ajouter un titre" id="titre" max="50" min="3" value="{{ old('titre') }}" pattern="[-a-zA-Z0-9 \S]+" >
+                    <input class="form-control" type="text" name="titre" placeholder="Ajouter un titre" id="titre" maxlength="50" minlength="3" value="{{ old('titre') }}" pattern="[-a-zA-Z0-9 \S]+" >
                     <small class="help-block" id="titre_err" style="color : red;"></small>
                 </div>
 	
@@ -73,7 +73,7 @@
 
             <div class="form-group">
                 <label for="example-text-input-lg" class="col-form-label" >Description</label>
-                <input class="form-control form-control-lg" type="text" name="description" id="description" placeholder="Ajouter une description"  value="{{ old('description') }}" min="3" id="example-text-input-lg">
+                <input class="form-control form-control-lg" type="text" name="description" id="description" placeholder="Ajouter une description"  value="{{ old('description') }}" minlenght="3" id="example-text-input-lg">
                 <small id="description_err" class="help-block" style="color : red;"></small>
             </div>
             <div class="modal-footer">

@@ -19,18 +19,20 @@ class ClientSeeder extends Seeder
     {
         DB::table('clients')->delete();
 
-		for($i = 0; $i < 30; ++$i)
+		for($i = 0; $i < 10; ++$i)
 		{
+            $pays = array('Algérie', 'Allemagne', 'Égypte', 'France', 'Maroc', 'Tunisie', 'Turquie');
+            $randomElement = $pays[array_Rand($pays, 1)];
             $date = $this->randDate();
 			DB::table('clients')->insert([
                 'nom' => 'Nom' . $i,
                 'prenom' => 'prenom' . $i,
                 'phone' => '0000000' . $i,
-                'email' => 'email' . $i . '@blop.fr',
+                'email' => 'email' . $i . '@gmail.com',
                 'metier' => 'metier'.$i,
                 'code_postal' => '150014',
                 'date_naissance' => $date,
-                'pays' => 'Algérie',
+                'pays' => $randomElement,
                 'employee_id' => 1,
                 'admin_id' => 1,
                 'pays_id' => 3,

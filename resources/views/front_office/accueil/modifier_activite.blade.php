@@ -34,7 +34,7 @@
 
             <div class="form-group">
                 <label for="example-text-input" class="col-form-label">Titre</label>
-                <input class="form-control" type="text" id="titre_m" name="titre" value="{{ $activite->titre }}" id="example-text-input" pattern="[-a-zA-Z0-9 \S]+" max="50" min="3">
+                <input class="form-control" type="text" id="titre_m" name="titre" value="{{ $activite->titre }}" id="example-text-input" pattern="[-a-zA-Z0-9 \S]+" maxlength="50" minlength="3">
                 <small class="help-block" id="titreM_err" style="color : red;"></small>
 	
             </div>
@@ -73,7 +73,7 @@
 
             <div class="form-group">
                 <label for="example-text-input-lg" class="col-form-label">Description</label>
-                <input class="form-control form-control-lg" type="text" name="description" id="description_m" value="{{ $activite->description }}" id="example-text-input-lg" min="3">
+                <input class="form-control form-control-lg" type="text" name="description" id="description_m" value="{{ $activite->description }}" id="example-text-input-lg" minlength="3">
                 <small class="help-block" id="descriptionM_err" style="color : red;"></small>
 	
             </div>

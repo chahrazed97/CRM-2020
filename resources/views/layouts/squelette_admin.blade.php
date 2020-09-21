@@ -311,7 +311,7 @@
                                 </div>
                                 <small class="help-block" id="new_err" style="color : red;"></small>
                             </div>
-                            <div class="col-12">
+                            <!--<div class="col-12">
                                 <div class="form-group ">
                                     <div class="form-group">
                                         <div class="input-group">
@@ -323,7 +323,7 @@
                                     </div>
                                 </div>
                                 <small class="help-block" id="confirm_err" style="color : red;"></small>
-                            </div>
+                            </div> -->
                             <button type="" id="sub_compte" onclick="myFunction()" class="btn btn-rounded btn- btn-sm right">Changer</buttom>
                             <script>
                             function myFunction() {

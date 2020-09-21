@@ -28,8 +28,8 @@
         <div class="col-12 mt-1">
             <div class="card">
                 <div class="card-body">
-                    <a class=" right" title="Ajouter un prospect"><button class="btn btn-rounded btn- btn-xs" data-toggle="modal" data-target="#ModalLong">Ajouter Produit</button></a>
-                    @include('back_end.Prospects.Ajouter_prospect_modal')
+                    <!--<a class=" right" title="Ajouter un prospect"><button class="btn btn-rounded btn- btn-xs" data-toggle="modal" data-target="#ModalLong">Ajouter Produit</button></a>
+                    @include('back_end.Prospects.Ajouter_prospect_modal')-->
                     <div class="data-tables datatable-primary">
                         <table id="dataTable2" class="text-center">
                             <thead class="text-capitalize">

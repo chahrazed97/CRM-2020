@@ -207,7 +207,7 @@ class AccueilController extends Controller
     public function destroy(Activite $activite)
 	{
 		$activite->delete();
-		return redirect()->back()->with('ok', 'Cet activité a bien été supprimé !');
+		return redirect()->back()->with('ok', "L'activité a bien été supprimé !");
 	}
 
 	public function destroyLien(lienRapide $lien)

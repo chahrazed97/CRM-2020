@@ -22,16 +22,16 @@ public function run()
 
     for($i = 0; $i < 12; ++$i)
     {
-        $mode_pay = array('OPPO F7', 'SUMSUNG J7', 'CONDOR PLUME', 'HEUAWI F3', 'BRAUND');
+        $mode_pay = array('tablette F7', 'téléphone J7', 'climatiseur J24', 'frigo F89', 'cuisinière F45');
         $randomElement = $mode_pay[array_Rand($mode_pay, 1)];
         $date = $this->randDate();
         DB::table('produit')->insert([
             'ref_prod' => 'COM/LPMO/0' . $i,
             'nom' => $randomElement.$i,
             'type' => 'electronique',
-            'prix' => rand(1000, 100000),   
+            'prix' => rand(10000, 100000),   
             'taux_tva' => rand(10,30),
-            'commande_id' => rand(1, 70),
+            'commande_id' => rand(3, 32),
             'created_at' => $date,
             'updated_at' => $date
             ]);

@@ -33,7 +33,7 @@
                             $nom_complet = $prospect->nom.' '.$prospect->prenom; ?>
                             <tr class="heading-tr mt-1" style="background-color :rgba(145, 13, 233, 0.075); height: 50px;">
                                 <td><a href="{{ route('conversation.prospect', ['prospect' => $prospect]) }}">{{ $nom_complet }} <br><cite><small>{{ $prospect->email }}</small></cite></a></td>
-                                <td><a href="{{ route('conversation.prospect.supprimer', [ 'email_destroy' => $destination_pr->email]) }}"><i class="fa fa-trash-o right"></i></a></td>  
+                                <td><a href="{{ route('conversation.prospect.supprimer', [ 'email_destroy' => $destination_pr->destination]) }}"><i class="fa fa-trash-o right"></i></a></td>  
                             </tr>
                               <?php } ?>
                             @endif

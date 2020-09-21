@@ -14,7 +14,7 @@
 
                             <div class="form-group">
                                 <label for="titre" class="col-form-label">Titre</label>
-                                <input class="form-control form-control-lg" type="text" name="titre" placeholder="donner un titre" id="titre" min="3" pattern="[-a-zA-Z0-9 \S]+">
+                                <input class="form-control form-control-lg" type="text" name="titre" placeholder="donner un titre" id="titre" minlength="3" maxlength="50" pattern="[-a-zA-Z0-9 \S]+">
                                 <small class="help-block" id="titre_err" style="color : red;"></small>
                             </div>
 
@@ -38,7 +38,7 @@
 
                             <div class="form-group">
                                 <label for="description" class="col-form-label">Description</label>
-                                <input class="form-control form-control-lg" type="text" name="description" placeholder="donner une description" id="description" min="3">
+                                <input class="form-control form-control-lg" type="text" name="description" placeholder="donner une description" id="description" minlength="3">
                                 <small class="help-block" id="description_err" style="color : red;"></small>
                             </div>
 

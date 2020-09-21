@@ -30,7 +30,7 @@
                                            $nom_complet = $employe->nom.' '.$employe->prenom; ?>
                                     <tr class="heading-tr mt-1" style="background-color :rgba(145, 13, 233, 0.075); height: 50px;">
                                         <td><a href="{{ route('conversation.employe', ['employe' => $employe]) }}">{{ $nom_complet }} <br><cite><small>{{ $employe->role }}</small></cite></a></td>
-                                        <td><a href="{{ route('conversation.supprimer', ['employe' => $employe]) }}"><i class="fa fa-trash-o right"></i></a></td>  
+                                        <td><a href="{{ route('conversation.supprimer', ['email_destroy' => $employe->email]) }}"><i class="fa fa-trash-o right"></i></a></td>  
                                     </tr>
                                 @endforeach
                                 @else

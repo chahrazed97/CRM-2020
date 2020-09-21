@@ -259,7 +259,7 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-phone"></i></div>
                                             </div>
-                                            <input class="form-control" type="number" min="9" max="11" id="phone" name="phone" placeholder="" value="{{ Auth::user()->phone }}" id="example-date-input" required>
+                                            <input class="form-control" type="number" minlength="9" maxlength="11" id="phone" name="phone" placeholder="" value="{{ Auth::user()->phone }}" id="example-date-input" required>
                                         </div>
                                     </div>
                                 </div>
@@ -300,13 +300,13 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-unlock-alt"></i></div>
                                             </div>
-                                            <input class="form-control" type="password" id="new_psw" name="new_psw" placeholder="nouveau mot de passe" value="{{ old('new_psw') }}" id="example-date-input" >
+                                            <input class="form-control" type="password" id="new_psw" name="new_psw" placeholder="nouveau mot de passe" value="{{ old('new_psw') }}" minlength="6" maxlength="50" id="example-date-input" >
                                         </div>
                                     </div>
                                 </div>
                                 <small class="help-block" id="new_err" style="color : red;"></small>
                             </div>
-                            <div class="col-12">
+                            <!--<div class="col-12">
                                 <div class="form-group ">
                                     <div class="form-group">
                                         <div class="input-group">
@@ -318,7 +318,7 @@
                                     </div>
                                 </div>
                                 <small class="help-block" id="confirm_err" style="color : red;"></small>
-                            </div>
+                            </div> -->
                             <button type="" onclick="myFunction()" id="sub_compte" class="btn btn-rounded btn- btn-sm right">Changer</buttom>
                             <script>
                             function myFunction() {
@@ -326,7 +326,7 @@
                                 var email = document.getElementById("email");
                                 var old_psw = document.getElementById("old_psw");
                                 var new_psw = document.getElementById("new_psw");
-                                var confirm_new_psw = document.getElementById("confirm_new_psw");
+                               
  
   
                                 if (!phone.checkValidity()) {
@@ -340,9 +340,6 @@
                                 }
                                 if (!new_psw.checkValidity()) {
                                 document.getElementById("new_err").innerHTML = new_psw.validationMessage;
-                                }
-                                if (!confirm_new_psw.checkValidity()) {
-                                document.getElementById("confirm_err").innerHTML = confirm_new_psw.validationMessage;
                                 } else{
                                 document.getElementById("sub_compte").type = "submit";
                                 } 

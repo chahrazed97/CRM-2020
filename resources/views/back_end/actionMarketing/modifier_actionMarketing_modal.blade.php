@@ -14,7 +14,7 @@
 
                             <div class="form-group col-12">
                                 <label for="action" class="col-form-label">Action Marketing</label>
-                                <textarea id="action" name="action" cols="50" rows="10" tabindex="101" data-min-length="" min="" required>{{ $action->action_marketing }}</textarea>
+                                <textarea id="action" name="action" cols="50" rows="10" tabindex="101" data-min-length="" minlength="5" required>{{ $action->action_marketing }}</textarea>
                                 <small class="help-block" id="action_err" style="color : red;"></small>
                             </div>
 

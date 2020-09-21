@@ -15,7 +15,7 @@
 test route
 */
 Route::get('ajax', function () {
-    return view('front_office.mesActivites.test_ajax');
+    return view('front_office.MesActivites.test_ajax');
 })->name('ajax_route');
 
 
@@ -82,7 +82,7 @@ Mes conversations
 // 1- conversation client
 Route::get('mesConversations', 'crm\mesConversationsController@index')->name('mesConversation');
 Route::get('conversation/client/{client}', 'crm\mesConversationsController@conversationClient')->name('conversation.client');
-Route::get('conversation/supprimer/{email_destroy}', 'crm\mesConversationsController@suppConversation')->name('conversation.supprimer');
+Route::get('conversation/delete/{email_destroy}', 'crm\mesConversationsController@suppConversation')->name('conversation.supprimer');
 // 2- conversation equipe
 Route::get('ConversationsEquipe', 'crm\equipeConversationController@index')->name('Conversation.equipe');
 Route::get('conversation/employe/{employe}', 'crm\equipeConversationController@conversationEmploye')->name('conversation.employe');

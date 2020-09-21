@@ -15,7 +15,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="nom" class="col-form-label">Nom</label>
-                                        <input class="form-control" type="text" name="nom" placeholder="entrez le nom" id="nom" min="3" pattern="[a-zA-Z \s]+" required>
+                                        <input class="form-control" type="text" name="nom" placeholder="entrez le nom" id="nom" minlength="3" maxlength="50" pattern="[a-zA-Z \s]+" required>
                                         <small class="help-block" id="nom_err" style="color : red;"></small>
 
                                     </div>
@@ -24,7 +24,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="prenom" class="col-form-label">Prénom</label>
-                                        <input class="form-control" type="text" name="prenom" placeholder="entrez le prenom" id="prenom" min="3" pattern="[a-zA-Z \s]+" required>
+                                        <input class="form-control" type="text" name="prenom" placeholder="entrez le prenom" id="prenom" minlength="3" maxlength="50" pattern="[a-zA-Z \s]+" required>
                                         <small class="help-block" id="prenom_err" style="color : red;"></small>
 
                                     </div>
@@ -35,7 +35,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="phone" class="col-form-label">Téléphone</label>
-                                        <input class="form-control" type="number" name="phone" placeholder="entrez le numero du téléphone" id="phone" pattern="" required>
+                                        <input class="form-control" type="number" name="phone" placeholder="entrez le numero du téléphone" id="phone" minlength="9" maxlength="11" pattern="" required>
                                         <small class="help-block" id="phone_err" style="color : red;"></small>
 
                                     </div>
@@ -53,7 +53,7 @@
 
                             <div class="form-group">
                                 <label for="fonction" class="col-form-label">Fonction</label>
-                                <input class="form-control form-control-lg" type="text" name="role" placeholder="entrez la fonction du l'employe" id="fonction" min="3" pattern="[a-zA-Z \s]+" required>
+                                <input class="form-control form-control-lg" type="text" name="role" placeholder="entrez la fonction du l'employe" id="fonction" minlength="3" maxlength="100" pattern="[a-zA-Z \s]+" required>
                                 <small class="help-block" id="fonction_err" style="color : red;"></small>
 
                             </div>

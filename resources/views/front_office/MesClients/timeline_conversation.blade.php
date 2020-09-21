@@ -62,7 +62,7 @@
     <form class="" action="{{ route('Client.ajouter.commentaire', ['client'=> $client]) }}" method="post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="card-body">
-        <textarea type="text" class="form-control" rows="5" id="comment" name="comment" placeholder=" commenter ce client" min="3" required ></textarea>
+        <textarea type="text" class="form-control" rows="5" id="comment" name="comment" placeholder=" commenter ce client" minlength="3" required ></textarea>
         <small id="comment_err" class="help-block" style="color : red;"></small>
         <button type="" id="sub_comnt" onclick="myFunction()" class="btn btn-rounded btn- btn-sm right mt-1">Créer</buttom>
       </div> 

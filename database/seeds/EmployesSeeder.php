@@ -10,29 +10,17 @@ class EmployesSeeder extends Seeder
      *
      * @return void
      */
-
-    private function randDate()
-	{
-		return Carbon::createFromDate(null, rand(1, 12), rand(1, 28));
-	}
     public function run()
     {
-        DB::table('employees')->delete();
+        $employe = [
+            'nom' => 'ighil mellah',
+            'prenom' => 'thanina',
+            'email' => 'thanina@gmail.com',
+            'phone' => '0789037656',
+            'role' => 'commercial', // admin
+            'admin_id' => 1 
+            ];
 
-		for($i = 0; $i < 30; ++$i)
-		{
-            $date = $this->randDate();
-			DB::table('employees')->insert([
-                'nom' => 'Nom' . $i,
-                'prenom' => 'prenom' . $i,
-                'phone' => '0000000' . $i,
-                'email' => 'email' . $i . '@blop.fr',
-                'role' => 'role' .$i,
-                'admin_id' => 1,
-                'created_at' => $date,
-                'updated_at' => $date
-                
-			]);
-		}
+        DB::table('employees')->insert($employe);
     }
 }

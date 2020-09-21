@@ -344,7 +344,7 @@ class clients extends Model
         ->join('Commande', 'Facture.commande_id', '=', 'Commande.id')
         ->join('clients', 'clients.id', '=', 'Commande.clients_id' )
         ->where('clients.id', '=', $id)
-        ->where('date_fac', '>', $befor_3month)
+        //->where('date_fac', '>', $befor_3month)
         ->count();
 
         //calculer le montant
@@ -353,7 +353,7 @@ class clients extends Model
         ->join('Commande', 'Facture.commande_id', '=', 'Commande.id')
         ->join('clients', 'clients.id', '=', 'Commande.clients_id' )
         ->where('clients.id', '=', $id)
-        ->where('date_fac', '>', $befor_3month)
+        //->where('date_fac', '>', $befor_3month)
         ->get();
 
         foreach ($total_montant as $montant)

@@ -15,8 +15,8 @@ class comm_prodSeeder extends Seeder
         for($i = 0; $i < 70; ++$i)
         {
             DB::table('commande_produit')->insert([
-                'commande_id' => rand(1,70),
-                'produit_id' => rand(142,153)
+                'commande_id' => rand(3,32),
+                'produit_id' => rand(1,12)
             ]);
         }
     }

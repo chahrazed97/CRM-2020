@@ -72,32 +72,34 @@ class AdminController extends Controller
     public function changerParametres()
     {
         $employe_user = Employees::where('nom', '=', Auth::user()->nom)->where('prenom', '=', Auth::user()->prenom)->where('phone', '=', Auth::user()->phone)->where('email', '=', Auth::user()->email)->where('role', '=',Auth::user()->role)->first();
-        //$user = User::where('id', '=', Auth::user()->id)->first();
+        $user = User::where('id', '=', Auth::user()->id)->first();
         $phone = $_POST['phone'];
         $email = $_POST['email'];
         $old_psw = $_POST['old_psw'];
         $new_psw = $_POST['new_psw'];
-        $confirm_new_psw = $_POST['confirm_new_psw'];
+        
 
-        Auth::user()->phone = $phone;
-        Auth::user()->email = $email;
+        $user->phone = $phone;
+        $user->email = $email;
         if ($employe_user !== NULL){
         $employe_user->phone = $phone;
         $employe_user->email = $email; 
         $employe_user->save();
         }
         
-        if(isset($old_psw) and isset($new_psw) and isset($confirm_new_psw)){
-            if(bcrypt($old_psw) == Auth::user()->password){
-            Auth::user()->password =  bcrypt($new_psw);
+        if(isset($old_psw) and isset($new_psw)){
+            
+            if(Hash::check($old_psw, $user->password)){
+            $user->password =  Hash::make($new_psw);
             }else{
-                return redirect()->back()->with('ok','Mot de passe incorrecte!');
+                return redirect()->back()->with('err','Mot de passe incorrecte!');
             }
           
         }
       
-        Auth::user()->save();
+        $user->save();
        
-        return redirect()->back()->with('ok','Modifications enregistrées!');
+        return redirect()->back()->with('ok','Modifications enregistrées!'); 
+        }
     }
-}
+    

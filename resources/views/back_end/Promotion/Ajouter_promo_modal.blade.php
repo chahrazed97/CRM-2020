@@ -14,7 +14,7 @@
 
                             <div class="form-group">
                                 <label for="titre" class="col-form-label">Titre</label>
-                                <input class="form-control form-control-lg" type="text" name="titre" placeholder="donner un titre" id="titre" min="3" pattern="[-a-zA-Z0-9 \S]+">
+                                <input class="form-control form-control-lg" type="text" name="titre" placeholder="donner un titre" id="titre" minlength="3" pattern="[-a-zA-Z0-9 \S]+">
                                 <small class="help-block" id="titre_err" style="color : red;"></small>
                             </div>
 
@@ -53,7 +53,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="pourcentage" class="col-form-label">pourcentage</label>
-                                        <input class="form-control" type="number" name="pourcentage" placeholder=" donner un poucentage " id="pourcentage" required>
+                                        <input class="form-control" type="number" name="pourcentage" placeholder=" donner un poucentage " id="pourcentage" min="5" max="100" required>
                                         <small class="help-block" id="pourcentage_err" style="color : red;"></small>
                                     </div>
                                 </div>

@@ -20,7 +20,7 @@ class factureSeeder extends Seeder
         {
         DB::table('facture')->delete();
     
-        for($i = 0; $i < 70; ++$i)
+        for($i = 0; $i < 30; ++$i)
         {
             $mode_pay = array('paybal', 'dhahabia', 'visa', 'CIB');
             $randomElement = $mode_pay[array_Rand($mode_pay, 1)];
@@ -30,7 +30,7 @@ class factureSeeder extends Seeder
                 'date_fac' => $date,
                 'total' => rand(1000, 100000),
                 'mode_payement' => $randomElement,
-                'commande_id' => rand(1,70),
+                'commande_id' => rand(3,32),
                 'created_at' => $date,
                 'updated_at' => $date
                 ]);

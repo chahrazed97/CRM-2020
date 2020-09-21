@@ -9,6 +9,9 @@
 @if(session()->has('ok'))
 	<div class="alert alert-success alert-dismissible">{!! session()->get('ok') !!}</div>
 @endif
+@if(session()->has('err'))
+	<div class="alert alert-danger alert-dismissible">{!! session()->get('err') !!}</div>
+@endif
     <div class="row">
         <!-- start timeline-->
         <div class="col-xl-3 col-ml-8 col-lg-8 mt-5">

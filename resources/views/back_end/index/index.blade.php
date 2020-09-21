@@ -2,9 +2,12 @@
 @section('titre', 'Tableau de bord')
 @section('contenu')
     <div class="main-content-inner">
+    @if(session()->has('ok'))
+	<div class="alert alert-success alert-dismissible">{!! session()->get('ok') !!}</div>
+    @endif
         <!-- bar chart start -->
         <div class="row">
-            <div class="col-lg-7 mt-5">
+         <div class="col-lg-7 mt-5">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="header-title">localisation géographique de nos clients</h4>
