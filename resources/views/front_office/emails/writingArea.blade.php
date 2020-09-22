@@ -119,7 +119,7 @@
     @if ( $client !== 0 )
     <?php $email = $client->email; ?>
     @else
-    <?php $email = "A: "; ?>
+    <?php $email = "email0@gmail.com "; ?>
     @endif
     
     <div class="form-group {!! $errors->has('titre') ? 'has-error' : '' !!}">

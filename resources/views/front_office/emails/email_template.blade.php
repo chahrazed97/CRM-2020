@@ -49,42 +49,44 @@
 
 </head>
 
-<body style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background: #f1f1f1; font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 15px; line-height: 1.8; color: rgba(0,0,0,.4); mso-line-height-rule: exactly; background-color: #222222; margin: 0 auto; height: 100%; padding: 0; ">
-	<center style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; width: 100%; background-color: #f1f1f1;">
+<body style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 15px; line-height: 1.8; color: rgba(0,0,0,.4); mso-line-height-rule: exactly; margin: 0 auto; height: 100%; padding: 0; ">
+	<center style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; width: 100%;">
     <div style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; display: none; font-size: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
       &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
     </div>
     <div style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; max-width: 600px; margin: 0 auto;" class="email-container">
     	<!-- BEGIN BODY -->
       <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
-      	<tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; width: 100%;">
-          <td class="bg_white logo" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background: #ffffff; padding: 1em 2.5em; text-align: center; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="center">
-            <h1 style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: 'Playfair Display', serif; color: #000000; margin-top: 0; margin: 0;"><a href="#" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-decoration: none; color: #000; font-size: 20px; font-weight: 700; text-transform: uppercase; font-family: 'Montserrat', sans-serif;">ourCompany</a></h1>
+      	<tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; width: 100%; background-color: black; color: white;">
+          <td class="bg_white logo" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 1em 2.5em; text-align: center; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: black;" align="center">
+            <h1 style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: 'Playfair Display', serif; margin-top: 0; margin: 0;"></br><a href="#" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-decoration: none; color: white; background-color:black; font-size: 20px; font-weight: 700; text-transform: uppercase; font-family: 'Montserrat', sans-serif;">ourCompany</a></h1>
           </td>
 	      </tr><!-- end tr -->
 				<tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-          <td valign="middle" class="hero" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; position: relative; background-color: pink; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-		        <img src="{{ asset('img/login.jpg') }}" width="100%">
-            <table style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
-            	<tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-            		<td style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-            			<div class="text" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0 3em; text-align: center; color: black;">
-            				<h2 style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: 'Playfair Display', serif; margin-top: 0; font-size: 30px; margin-bottom: 0; color: black;">Créativité &amp; Contribution</h2>
+          <td valign="middle" class="hero" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+		        @yield('image')
+            <table style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; table-layout: fixed; margin: 0 auto; background-image: linear-gradient(rgba(176, 224, 230, 0.322), rgba(255, 228, 225, 0.295));">
+            	<tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; ">
+            		<td style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; ">
+            			<div class="text" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0 3em; text-align: center;">
+            				<h2 style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: 'Playfair Display', serif; margin-top: 0; font-size: 30px; margin-bottom: 0; color: black;">Particuliers &amp; Professionnels</h2>
             				<b style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">Nous vous invetons à vous indentifier sur notre site pour profiter d'une meilleur expérience chez nous</b>
-            				<p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><a href="#" class="btn btn-primary" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-decoration: none; padding: 10px 15px; border-radius: 30px; background: #f3a333; color: #ffffff;">Je me connecte!</a></p>
+            				<p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><a href="#" class="btn btn-primary" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-decoration: none; padding: 10px 15px; border-radius: 30px; background: crimson; color: #ffffff;">Je me connecte!</a></p>
             			</div>
             		</td>
             	</tr>
             </table>
           </td>
 	      </tr><!-- end tr -->
+        
 	      <tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; width: 100%;">
 		      <td class="bg_white" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background: #ffffff; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 		        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
 		         <!-- Email  -->
+             </br>
 				 @yield('email')
 				 <!-- fin Email -->
-		          <tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+		          <!--<tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
 		            <td class="bg_white email-section" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background: #ffffff; padding: 2.5em; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 		            	<div class="heading-section" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-align: center; padding: 0 30px;">
 		            		<span class="subheading" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; display: inline-block; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: rgba(0,0,0,.4); position: relative; margin-bottom: 20px;">Services</span>
@@ -126,7 +128,7 @@
                     </tr>
 		            	</table>
 		            </td>
-		          </tr><!-- end: tr -->
+		          </tr><-- end: tr ->
                   <tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
 		            <td class="bg_light email-section" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background: #fafafa; padding: 0; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
 		            	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
@@ -157,7 +159,7 @@
                     </tr>
 		            	</table>
 		            </td>
-		          </tr><!-- end: tr -->
+		          </tr><-- end: tr ->
 		          <tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
 		            <td class="bg_light email-section" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background: #fafafa; padding: 0; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
 		            	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
@@ -188,7 +190,7 @@
                     </tr>
 		            	</table>
 		            </td>
-		          </tr><!-- end: tr -->
+		          </tr><-- end: tr ->
 		          <tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
 		            <td class="bg_light email-section" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background: #fafafa; padding: 0; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
 		            	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
@@ -225,7 +227,7 @@
 		          </tr><!-- end: tr -->
 		    
       <!-- 1 Column Text + Button : END -->
-      </table>
+      <!--</table>-->
       <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
       	<tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
           <td valign="middle" class="bg_black footer email-section" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background: #000000; padding: 2.5em; color: rgba(255,255,255,.5); mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
@@ -234,9 +236,9 @@
                 <td valign="top" width="33.333%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
                     <tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-                      <td style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-align: left; padding-right: 10px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="left">
-                      	<h3 class="heading" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: 'Playfair Display', serif; margin-top: 0; font-size: 20px; color: rgba(255,255,255,1);">ourCompany</h3>
-                      	<p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: rgba(255,255,255,1);">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                      <td style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-align: left; padding-right: 10px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: rgba(255,255,255,1);" align="left">
+                      	<h3 class="heading" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: 'Playfair Display', serif; margin-top: 0; font-size: 20px; color: rgba(255,255,255,1);"><span class="text" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: rgba(255,255,255,1);">ourCompany</span></h3>
+                      	<p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: rgba(255,255,255,1);"><span class="text" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: rgba(255,255,255,1);">A small river named Duden flows by their place and supplies it with the necessary regelialia.</span></p>
                       </td>
                     </tr>
                   </table>
@@ -245,7 +247,7 @@
                   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
                     <tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
                       <td style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-align: left; padding-left: 5px; padding-right: 5px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="left">
-                      	<h3 class="heading" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: 'Playfair Display', serif; margin-top: 0;; font-size: 20px; color: rgba(255,255,255,1);">Contact Info</h3>
+                      	<h3 class="heading" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: 'Playfair Display', serif; margin-top: 0;; font-size: 20px; color: rgba(255,255,255,1);"><span class="text" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: rgba(255,255,255,1);">Contact Info</span></h3>
                       	<ul style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0; padding: 0;">
 					                <li style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; list-style: none; margin-bottom: 10px;"><span class="text" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: rgba(255,255,255,1);">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
 					                <li style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; list-style: none; margin-bottom: 10px;"><span class="text" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: rgba(255,255,255,1);">+2 392 3929 210</span></li>
@@ -258,7 +260,7 @@
                   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; table-layout: fixed; margin: 0 auto;">
                     <tr style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
                       <td style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-align: left; padding-left: 10px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="left">
-                      	<h3 class="heading" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: 'Playfair Display', serif; margin-top: 0; color: #ffffff; font-size: 20px;">Liens utiles</h3>
+                      	<h3 class="heading" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: 'Playfair Display', serif; margin-top: 0; color: rgba(255,255,255,1); font-size: 20px;"><span class="text" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: rgba(255,255,255,1);">Liens utiles</span></h3>
                       	<ul style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0; padding: 0;">
 					                <li style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; list-style: none; margin-bottom: 10px;"><a href="#" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-decoration: none; color: rgba(255,255,255,1);">Site officiel</a></li>
 					                <li style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; list-style: none; margin-bottom: 10px;"><a href="#" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-decoration: none; color: rgba(255,255,255,1);">Nos produits</a></li>
