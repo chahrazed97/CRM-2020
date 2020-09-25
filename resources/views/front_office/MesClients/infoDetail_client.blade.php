@@ -3,7 +3,7 @@
     <div class="card-body">
         <h4 class="card-title"><i class="fa fa-puzzle-piece"></i>Informations détaillées</h4>
             <div class="list-group">
-                <a class="list-group-item list-group-item-action flex-column align-items-start" style="background-color: #9c9ffd44;">
+                <a class="list-group-item list-group-item-action flex-column align-items-start" style="background-color: rgba(169, 169, 169, 0.219); box-shadow: 10px 10px 5px #aaaaaa;">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{ $client->nom.' '.$client->prenom }}</h5>
                     </div>
@@ -15,7 +15,7 @@
                     </p>    
                     
                 </a>
-                <a class="list-group-item list-group-item-action flex-column align-items-start mt-2" style="background-color: #ffcdf45d;">
+                <a class="list-group-item list-group-item-action flex-column align-items-start mt-2" style="background-color: #ffcdf45d; box-shadow: 10px 10px 5px #aaaaaa;">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">
                         @for ($i = 0; $i < $scorecheck ; $i++)
@@ -33,7 +33,7 @@
                     </p>
                     
                 </a>
-                <a class="list-group-item list-group-item-action flex-column align-items-start mt-2" style="background-color:rgba(0, 0, 255, 0.048); ">
+                <a class="list-group-item list-group-item-action flex-column align-items-start mt-2" style="background-color:rgba(0, 0, 255, 0.048); box-shadow: 10px 10px 5px #aaaaaa;">
                     <p class="mb-1"><b><i class="ti-package mr-2"></i>Produit préféré :</b></br>
                                      @foreach ( $top_produit as $top_prod )
                                      {{ $top_prod }}</br>

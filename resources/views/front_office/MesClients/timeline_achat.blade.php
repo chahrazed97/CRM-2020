@@ -1,6 +1,6 @@
 <!-- timeline area start -->
 <div class="card">
-    <div class="card-body">
+    <div class="card-body" style="height:500px; overflow:auto;">
         <h4 class="header-title">Comportement d'achat</h4>
         <div class="timeline-area">
             @foreach ( $commande_cl as $commande )

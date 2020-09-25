@@ -58,7 +58,7 @@
 <p> conversation vide </p>
 @endif
 <div class="row">
-  <div class="col-7">  
+  <div class="col-7" >  
     <form class="" action="{{ route('Client.ajouter.commentaire', ['client'=> $client]) }}" method="post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="card-body">

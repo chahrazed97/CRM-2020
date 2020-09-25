@@ -118,7 +118,7 @@
                                 <i class="ti-bell dropdown-toggle" data-toggle="dropdown"><span style="background-color: #843df9;">{{ $nbr_totale }}</span></i>
                                 <div class="dropdown-menu notify-box nt-enveloper-box">
                                     <span class="notify-title" style="background-color: #843df9;">Vous avez {{ $nbr_totale }} e-mail(s)</span>
-                                    <div class="nofity-list">
+                                    <div class="nofity-list" style="height:200px; overflow:auto;">
                                     @for ($i=0; $i< $nbr_clients; $i++)
                                      @if (Session::has('msgClient'.$i)){
                                       <?php $msg_client = Session::get('msgClient'.$i); ?>
@@ -158,7 +158,7 @@
                                 <i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span style="background-color: #843df9;">{{ $nbr_emps }}</span></i>
                                 <div class="dropdown-menu notify-box nt-enveloper-box">
                                     <span class="notify-title" style="background-color: #843df9;">Vous avez {{ $nbr_emps }} message(s)</span>
-                                    <div class="nofity-list">
+                                    <div class="nofity-list" style="height:200px; overflow:auto;">
                                     @for ($i = 0; $i<$nbr_emps; $i++)
                                       @if (Session::has('msgEmp'.$i)){ 
                                         <?php $msg_Emp = Session::get('msgEmp'.$i);

@@ -21,12 +21,12 @@
    
         <form class="card-body" action="<?php echo $_SERVER['PHP_SELF'];?>" method="GET">
        
-            <button  id="B1" type="submit" class="btn btn-outline-primary btn-lg btn-block"  value="nvProduit_template" name="bouton">Nouveau produit email template</button>
-            <button id="B2" type="submit" class="btn btn-outline-success btn-lg btn-block" value="template_bienvenue" name="bouton">Email de bienvenue template</button>
-            <button  id="B3" type="submit" class="btn btn-outline-danger btn-lg btn-block" value="offreAnniv_template" name="bouton">Anniversaire client email template
-            <button  id="B4" type="submit" class="btn btn-outline-warning btn-lg btn-block" value="promotion_template" name="bouton">Nouvelle promotion email template</button>
-            <button  id="B5" type="submit" class="btn btn-outline-secondary btn-lg btn-block" value="rappelPromotion_template" name="bouton">Rappel promotion email template
-            <button  id="B6" type="button" class="btn btn-outline-dark btn-lg btn-block" value="" name="bouton">Nouveau evenement email template</button>
+            <button  id="B1" type="submit" class="btn btn-outline-primary btn-lg btn-block"  value="nvProduit_template" name="bouton" style="box-shadow: 10px 10px 5px #aaaaaa;">Nouveau produit email template</button>
+            <button id="B2" type="submit" class="btn btn-outline-success btn-lg btn-block" value="template_bienvenue" name="bouton" style="box-shadow: 10px 10px 5px #aaaaaa;">Email de bienvenue template</button>
+            <button  id="B3" type="submit" class="btn btn-outline-danger btn-lg btn-block" value="offreAnniv_template" name="bouton" style="box-shadow: 10px 10px 5px #aaaaaa;">Anniversaire client email template
+            <button  id="B4" type="submit" class="btn btn-outline-warning btn-lg btn-block" value="promotion_template" name="bouton" style="box-shadow: 10px 10px 5px #aaaaaa;">Nouvelle promotion email template</button>
+            <button  id="B5" type="submit" class="btn btn-outline-secondary btn-lg btn-block" value="rappelPromotion_template" name="bouton" style="box-shadow: 10px 10px 5px #aaaaaa;">Rappel promotion email template
+            <button  id="B6" type="button" class="btn btn-outline-dark btn-lg btn-block" value="" name="bouton" style="box-shadow: 10px 10px 5px #aaaaaa;">Nouveau evenement email template</button>
 
            </div>
         </form>

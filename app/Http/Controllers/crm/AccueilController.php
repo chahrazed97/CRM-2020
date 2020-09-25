@@ -140,6 +140,10 @@ class AccueilController extends Controller
 	if(!isset($titre)){
 		$titre= $type;
 	}
+	$rendez_vs_exist = Activite::where('type_activite', '=', 'rendez-vous')->where('date_act', '=', $date.' '.$time)->count();
+	if($type == 'rendez-vous' and $rendez_vs_exist != 0){
+	   return redirect()->back()->with("err", "Vous avez déjà programmé un rendez-vous à cette heure! .");
+	}else{
 
 	$activite = new Activite();
 	$activite->titre = $titre;
@@ -153,6 +157,7 @@ class AccueilController extends Controller
 
 	//return response()->json(['ok'=>'Data is successfully added']);
 	return redirect()->back()->with("ok", "L'activité " . $activite->titre . " a bien été créée.");
+	}
   }
 
   public function storeLien(Request $request)

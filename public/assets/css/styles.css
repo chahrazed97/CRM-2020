@@ -110,11 +110,13 @@
     height: 100vh;
     width: 280px;
     overflow: hidden;
-    background: #303641;
+    background-image: url('../../img/black_paper.jpg');
+   /* background: #303641; */
     box-shadow: 2px 0 32px rgba(0, 0, 0, 0.05);
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
-}
+    box-shadow: 10px 10px 5px #aaaaaa;
+    
 
 .sbar_collapsed .sidebar-menu {
     left: -280px;
@@ -140,7 +142,8 @@
 
 .sidebar-header {
     padding: 19px 32px 20px;
-    background: #303641;
+    background-image: url('../../img/black_paper.jpg');
+    /*background: #303641; */
     border-bottom: 1px solid #343e50;
 }
 .sidebar-menu .logo{
@@ -206,8 +209,7 @@
     padding-left: 37px;
 }
 
-.metismenu >li:hover>a,
-.metismenu >li.active>a {
+.metismenu >li:hover>a {
     color: #fff;
     background: #343942;
 }
@@ -267,7 +269,7 @@
 }
 
 .mainheader-area .logo a span {
-    color: #843df9;
+   color: #843df9;
 }
 
 .horizontal-menu {
@@ -665,6 +667,7 @@
     padding: 0 30px;
     background: #fff;
     position: relative;
+    /*box-shadow: 5px 5px 8px #aaaaaa;*/
 }
 
 .page-title-area:before {
@@ -730,10 +733,12 @@ ul.breadcrumbs {
             align-items: center;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
-    background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);
+    /*background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
+    background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);*/
+    background-image: url('../../img/black_paper.jpg');
     padding: 17px 38px;
     position: relative;
+    box-shadow: 5px 5px 10px #aaaaaa;
 }
 
 .user-profile img.avatar {
