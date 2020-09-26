@@ -26,6 +26,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @yield('ajax') 
     @yield('ajax2')
+    @yield('inputs')
 </head>
 
 <body>

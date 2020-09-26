@@ -33,7 +33,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="phone" class="col-form-label">Téléphone</label>
-                                        <input class="form-control" type="number" name="phone" minlength="9" maxlength="11" placeholder="entrez le numero du téléphone" id="phone">
+                                        <input class="form-control" type="tel" name="phone" minlength="9" maxlength="11" placeholder="entrez le numero du téléphone" id="phone">
                                         <small class="help-block" id="phone_err" style="color : red;"></small>
                                     </div>
                                 </div>

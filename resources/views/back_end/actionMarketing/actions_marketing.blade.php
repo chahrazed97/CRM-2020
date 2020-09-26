@@ -8,12 +8,16 @@
 @if(session()->has('ok'))
 	<div class="alert alert-success alert-dismissible">{!! session()->get('ok') !!}</div>
 @endif
+@if(session()->has('err'))
+	<div class="alert alert-danger alert-dismissible">{!! session()->get('err') !!}</div>
+@endif
     <div class="row">
 <!-- Progress Table start -->
 <div class="col-12 mt-5">
     <div class="card">
         <div class="card-body">
-            <h4 class="header-title">Table actions marketing</h4>
+            <h4 class="header-title">Table actions marketing <i class="fa fa-cog right" data-toggle="modal" data-target=".bd-example-modal-lg"></i></h4>
+            @include('back_end.actionMarketing.modifier_parametre_modal')
             <div class="single-table">
                 <div class="table-responsive">
                     <table class="table table-hover progress-table text-center">

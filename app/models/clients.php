@@ -4,6 +4,7 @@ namespace App\models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Messg;
+use App\parametreScore;
 use DB;
 use Auth;
 
@@ -117,6 +118,7 @@ class clients extends Model
         return $non_envoye_id;
     }
 
+
     public function Recence()
     {
      $date_fac = DB::table('Facture')->select('date_fac')
@@ -130,20 +132,21 @@ class clients extends Model
      $date_fa = Carbon::parse($date_fac->date_fac);
      $today = Carbon::today();
      $date_diff = $today->diffInDays($date_fa);
+     $parametre_recence = parametreScore::where('parametre', '=', 'recence')->first();
      
-        if ( $date_diff <= 20 ){
+        if ( $date_diff <= $parametre_recence->score4 ){
             $score_r = 5;
         }else{
-                if ( ($date_diff < 75) && ($date_diff > 20) ){
+                if ( ($date_diff < $parametre_recence->score3) && ($date_diff > $parametre_recence->score4) ){
                     $score_r = 4;
                 }else{
-                        if ( ($date_diff <200) && ($date_diff > 75)){
+                        if ( ($date_diff < $parametre_recence->score2) && ($date_diff > $parametre_recence->score75)){
                             $score_r = 3;
                         }else{
-                                if ( ($date_diff <300) && ($date_diff > 200) ){
+                                if ( ($date_diff < $parametre_recence->score1) && ($date_diff > $parametre_recence->score2) ){
                                     $score_r = 2;
                                 }else{
-                                        if ( $date_diff >= 300 ){
+                                        if ( $date_diff >= $parametre_recence->score1 ){
                                             $score_r = 1;
                                         }
                                     }
@@ -167,21 +170,22 @@ class clients extends Model
         ->where('date_fac', '>', $befor_3month)
         ->count();
 
+        $parametre_frequence = parametreScore::where('parametre', '=', 'frequence')->first();
     if ($nbr_fact !== 0){
 
-        if($nbr_fact >= 40){
+        if($nbr_fact >= $parametre_frequence->score4){
             $score_f = 5;
         }else{
-            if($nbr_fact < 40 && $nbr_fact >= 25){
+            if($nbr_fact < $parametre_frequence->score4 && $nbr_fact >= $parametre_frequence->score3){
                 $score_f = 4;
             }else{
-                if($nbr_fact < 25 && $nbr_fact >= 15){
+                if($nbr_fact < $parametre_frequence->score3 && $nbr_fact >= $parametre_frequence->score2){
                     $score_f = 3;
                 }else{
-                    if($nbr_fact < 15 && $nbr_fact >= 5){
+                    if($nbr_fact < $parametre_frequence->score2 && $nbr_fact >= $parametre_frequence->score1){
                         $score_f = 2;
                     }else{
-                        if($nbr_fact < 5){
+                        if($nbr_fact < $parametre_frequence->score1){
                             $score_f = 1;
                         }
                     }
@@ -209,20 +213,22 @@ class clients extends Model
         {
             $total = $montant->total + $total;
         }
+        $parametre_montant = parametreScore::where('parametre', '=', 'montant')->first();
+
         if ($total !== 0){
-        if ($total >= 35000){
+        if ($total >= $parametre_montant->score4){
             $score_m = 5;
         }else{
-            if($total < 35000 && $total >= 20000){
+            if($total < $parametre_montant->score4 && $total >= $parametre_montant->score3){
                 $score_m = 4;
             }else{
-                if($total < 20000 && $total >= 5000){
+                if($total < $parametre_montant->score3 && $total >= $parametre_montant->score2){
                     $score_m = 3;
                 }else{
-                    if($total < 5000 && $total >= 2500){
+                    if($total < $parametre_montant->score2 && $total >= $parametre_montant->score1){
                         $score_m = 2;
                     }else{
-                        if($total <= 2500){
+                        if($total <= $parametre_montant->score1){
                             $score_m = 1;
                         }
                     }

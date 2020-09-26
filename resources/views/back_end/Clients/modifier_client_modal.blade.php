@@ -33,7 +33,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="example-date-input" class="col-form-label">Téléphone</label>
-                                        <input class="form-control" type="number" name="phone" value="{{ $client->phone }}" id="example-date-input">
+                                        <input class="form-control" type="number" minlength="9" maxlength="11" name="phone" value="{{ $client->phone }}" id="example-date-input">
                                         {!! $errors->first('phone', '<small class="help-block">:message</small>') !!}
                                     </div>
                                 </div>

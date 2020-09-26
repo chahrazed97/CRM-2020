@@ -115,7 +115,8 @@
     box-shadow: 2px 0 32px rgba(0, 0, 0, 0.05);
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
-    box-shadow: 10px 10px 5px #aaaaaa;
+    box-shadow: 10px 10px 5px #aaaaaa; 
+}
     
 
 .sbar_collapsed .sidebar-menu {
@@ -733,8 +734,8 @@ ul.breadcrumbs {
             align-items: center;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    /*background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
-    background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);*/
+    background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
+    background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);
     background-image: url('../../img/black_paper.jpg');
     padding: 17px 38px;
     position: relative;

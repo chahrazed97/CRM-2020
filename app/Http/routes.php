@@ -131,5 +131,6 @@ Route::get('evenement/destroy/{evenement}', 'admin\EvenementController@destroy')
 /* Actions Marketing */
 Route::get('Admin/actionMarketing', 'admin\actionMarketingController@index')->name('list.actionMarketing');
 Route::post('actionMarketing/update/{action}', 'admin\actionMarketingController@updateActionMarketing')->name('admin.modifier.actionMarketing');
+Route::post('definirParametres', 'admin\actionMarketingController@updateParametres')->name('definir_parametres');
 
 
