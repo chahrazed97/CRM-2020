@@ -26,7 +26,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fa fa-globe"></i></div>
                             </div>
-                            <input class="form-control" type="text" id="lien" name="url" placeholder="https://example.com"  pattern="" required>
+                            <input class="form-control" type="text" id="lien" name="url" placeholder="https://example.com" required>
                             
                         </div>
                     </div>
