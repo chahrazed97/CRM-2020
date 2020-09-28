@@ -12,7 +12,7 @@ class clients extends Model
 {
     protected $table = 'clients';
     protected $fillable = [
-        'nom', 'prenom', 'phone', 'email', 'metier', 'adresse', 'code_postal', 'date_naissance', 'pays', 'status', 'is_active', 'employee_id', 'deleted_at',
+        'nom', 'prenom', 'phone', 'email', 'metier', 'adresse', 'code_postal', 'date_naissance', 'pays','situation_famille', 'nbr_enfant', 'niveau-etude', 'profile_professionnel','niveau_salaire','status', 'is_active', 'employee_id', 'deleted_at',
     ];
 
     public function activites() 

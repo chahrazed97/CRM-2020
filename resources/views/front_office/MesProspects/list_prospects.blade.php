@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="data-tables datatable-primary">
-                        <table id="dataTable2" class="text-center">
+                        <table id="dataTable2">
                             <thead class="text-capitalize">
                                 <tr>
                                     <th data-priority="1">Nom complet</th>
@@ -40,6 +40,13 @@
                                     <th>Adresse</th>
                                     <th>Pays</th>
                                     <th>Code postale</th>
+                                    <th>Situation de famille</th>
+                                    <th>Nombre d'enfant</th>
+                                    <th>Niveau d'étude</th>
+                                    <th>Profile Professionnel</th>
+                                    <th>Niveau de salaire</th>
+                                    <th>Activité péféré</th>
+                                    <th>Voyageur</th>
                                     <th data-priority="3">Score</th>
                                     <th data-priority="2"></th>
                                     
@@ -55,6 +62,18 @@
                                     <td>{{ $prospect->adresse }}</td>
                                     <td>{{ $prospect->pays }}</td>
                                     <td>{{ $prospect->code_postal }}</td>
+                                    <td>{{ $prospect->situation_famille }}</td>
+                                    <td>{{ $prospect->nbr_enfant }}</td>
+                                    <td>{{ $prospect->niveau_etude }}</td>
+                                    <td>{{ $prospect->profile_professionnel }}</td>
+                                    <td>{{ $prospect->niveau_salaire }}</td>
+                                    <td>{{ $prospect->activite_prefere }}</td>
+                                    <td><?php if($prospect->Voyageur == 0 ){
+                                         echo 'Non';
+                                    }else{
+                                        echo 'Oui';
+                                    }
+                                    ?></td>
                                     <td>
                                         @for ($i = 0; $i < $prospect->scoreProspect() ; $i++)
                                        <span class="fa fa-star checkedStart"></span>

@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="data-tables datatable-primary">
-                        <table id="dataTable2" class="text-center">
+                        <table id="dataTable2">
                             <thead class="text-capitalize">
                                 <tr>
                                     <th data-priority="1">Nom complet</th>
@@ -40,7 +40,13 @@
                                     <th>Adresse</th>
                                     <th>Pays</th>
                                     <th>Code postale</th>
-                                    <th>métier</th>
+                                    <th>Situation de famille</th>
+                                    <th>Nombre d'enfant</th>
+                                    <th>Niveau d'étude</th>
+                                    <th>Profile Professionnel</th>
+                                    <th>Niveau de salaire</th>
+                                    <th>Activité péféré</th>
+                                    <th>Voyageur</th>
                                     <th data-priority="3">Score</th>
                                     <th data-priority="2"></th>
                                     
@@ -56,7 +62,18 @@
                                     <td>{{ $client->adresse }}</td>
                                     <td>{{ $client->pays }}</td>
                                     <td>{{ $client->code_postal }}</td>
-                                    <td>{{ $client->metier }}</td>
+                                    <td>{{ $client->situation_famille }}</td>
+                                    <td>{{ $client->nbr_enfant }}</td>
+                                    <td>{{ $client->niveau_etude }}</td>
+                                    <td>{{ $client->profile_professionnel }}</td>
+                                    <td>{{ $client->niveau_salaire }}</td>
+                                    <td>{{ $client->activite_prefere }}</td>
+                                    <td><?php if($client->Voyageur == 0 ){
+                                         echo 'Non';
+                                    }else{
+                                        echo 'Oui';
+                                    }
+                                    ?></td>
                                     <td>
                                             <?php
                                               if ($client->scoreClient() !== 0)
